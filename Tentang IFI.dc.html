@@ -8,6 +8,19 @@
 <body>
 <x-dc>
 <helmet>
+<style id="ifi-mobile">
+@media (max-width:640px){
+  :is(div,nav,form,footer):has(> :is(a,button)[style*="height: 52px"] ~ :is(a,button)[style*="height: 52px"]),
+  :is(div,nav,form):has(> :is(a,button)[style*="height: 48px"] ~ :is(a,button)[style*="height: 48px"]){display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:stretch!important;align-self:stretch!important;width:100%!important;gap:8px!important}
+  :is(div,nav,form,footer):has(> :is(a,button)[style*="height: 52px"] ~ :is(a,button)[style*="height: 52px"]) > :is(a,button),
+  :is(div,nav,form):has(> :is(a,button)[style*="height: 48px"] ~ :is(a,button)[style*="height: 48px"]) > :is(a,button){flex:1 1 0!important;min-width:0!important;width:auto!important;height:48px!important;padding:0 8px!important;justify-content:center!important;text-align:center!important;font-size:13.5px!important;letter-spacing:-.1px;line-height:1.2!important;white-space:nowrap!important;overflow:hidden;text-overflow:ellipsis}
+  :is(a,button)[style*="height: 52px"]{height:48px!important}
+  section[data-screen-label] h2{margin-bottom:0!important}
+  [data-mcarousel]{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;scroll-snap-type:x mandatory;scrollbar-width:none;gap:12px!important;margin-left:-24px!important;margin-right:-24px!important;padding:0 24px 4px!important;scroll-padding:0 24px}
+  [data-mcarousel]::-webkit-scrollbar{display:none}
+  [data-mcarousel] > *{flex:0 0 84%!important;min-width:0!important;scroll-snap-align:start}
+}
+</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -20,7 +33,7 @@ button{font-family:inherit}
 </helmet>
 
 <div style="background:#111111;color:#FFFFFF;font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(16px,1.25vw,18px);line-height:1.6;overflow-x:hidden">
-<dc-import name="IFI Navbar" active="Tentang" hint-size="100%,1px"></dc-import>
+<dc-import name="IFI Navbar" active="IFI" hint-size="100%,1px"></dc-import>
 
 <header data-screen-label="01 Page header" style="position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;isolation:isolate;margin-bottom:clamp(72px,9vw,120px)">
   <img src="assets/hero-kamera.png" alt="" aria-hidden="true" style="position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:60% 35%;filter:brightness(.9)">
@@ -46,82 +59,115 @@ button{font-family:inherit}
     <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 64px">
       <div style="flex:1 1 480px;display:flex;flex-direction:column;gap:14px">
         <span style="font-size:13px;font-weight:600;color:#A3A3A8">Latar belakang</span>
-        <h2 style="margin:0;font-weight:800;font-size:clamp(28px,2.8vw,40px);line-height:1.15;letter-spacing:-1px;display:flex;flex-direction:column"><span style="white-space:nowrap">Penontonnya sudah ada.</span><span style="color:#A3A3A8">Ekosistemnya yang perlu disambung.</span></h2>
+        <h2 style="margin:0;font-weight:800;font-size:clamp(28px,2.8vw,40px);line-height:1.15;letter-spacing:-1px;text-wrap:balance">Penontonnya sudah ada. <span style="color:#A3A3A8">Ekosistemnya yang perlu disambung.</span></h2>
       </div>
       <p style="flex:0 1 360px;margin:0;font-size:16px;line-height:1.6;color:#A3A3A8;text-wrap:pretty">Layar tonton ikut membentuk masa depan Indonesia. Karena itu layar kita perlu diisi film berkualitas yang lahir dari budaya sendiri.</p>
     </div>
     <div style="display:grid;grid-template-columns:{{ lbCols }};gap:12px;align-items:stretch">
       <div role="tablist" style="display:flex;flex-direction:column;gap:8px">
         <sc-for list="{{ lbItems }}" as="it" hint-placeholder-count="3">
-          <button role="tab" onClick="{{ it.onClick }}" style="flex:1;display:flex;align-items:center;gap:14px;padding:12px 16px 12px 12px;border-radius:20px;border:1px solid {{ it.border }};background:{{ it.bg }};color:#FFFFFF;text-align:left;cursor:pointer;font-family:inherit;transition:background .25s,border-color .25s" style-hover="border-color:#3A3A3E">
+          <button role="tab" onClick="{{ it.onClick }}" style="position:relative;flex:1;display:flex;align-items:center;gap:14px;padding:12px 16px 12px 12px;border-radius:20px;border:1px solid {{ it.border }};background:{{ it.bg }};color:#FFFFFF;text-align:left;cursor:pointer;font-family:inherit;overflow:hidden;transition:background .25s,border-color .25s" style-hover="border-color:#3A3A3E;background:#202023">
             <span style="flex:none;width:56px;height:56px;border-radius:14px;overflow:hidden;background:#111111;opacity:{{ it.thumbOp }};transition:opacity .25s"><img src="{{ it.img }}" alt="" aria-hidden="true" style="width:100%;height:100%;object-fit:cover;object-position:{{ it.pos }};display:block"></span>
             <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
               <span style="font-size:12px;font-weight:700;color:{{ it.numColor }}">{{ it.num }} · {{ it.tag }}</span>
               <strong style="font-size:15px;font-weight:700;line-height:1.35;color:{{ it.fg }}">{{ it.title }}</strong>
             </span>
+            <sc-if value="{{ it.narrow }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="flex:none;width:32px;height:32px;border-radius:999px;background:{{ it.chevBg }};display:flex;align-items:center;justify-content:center;font-size:16px;transform:{{ it.chevRot }};transition:transform .25s">›</span></sc-if>
           </button>
-        </sc-for>
+          <sc-if value="{{ it.narrow }}" hint-placeholder-val="{{ false }}">
+            <div aria-hidden="{{ it.hidden }}" style="display:grid;grid-template-rows:{{ it.rows }};opacity:{{ it.op }};transition:grid-template-rows .45s cubic-bezier(.2,.8,.2,1),opacity .35s ease"><div style="min-height:0;overflow:hidden">
+            <div style="margin:6px 0 6px;border-radius:20px;background:#242427;border:1px solid #3A3A3E;overflow:hidden;display:flex;flex-direction:column">
+              <img src="{{ it.img }}" alt="{{ it.title }}" style="width:100%;aspect-ratio:16/10;object-fit:cover;object-position:{{ it.pos }};display:block;filter:saturate(.85) brightness(.9)">
+              <span style="padding:18px;font-size:15px;line-height:1.6;color:#D4D4D8;text-wrap:pretty">{{ it.text }}</span>
+            </div></div></div>
+          </sc-if>
       </div>
+      <sc-if value="{{ lbWide }}" hint-placeholder-val="{{ true }}">
       <div style="border-radius:24px;background:#242427;border:1px solid #3A3A3E;overflow:hidden;display:grid;grid-template-columns:{{ lbDetailCols }}">
-        <div style="position:relative;min-height:clamp(220px,24vw,300px);background:#111111">
-          <sc-for list="{{ lbItems }}" as="im" hint-placeholder-count="3"><img src="{{ im.img }}" alt="{{ im.title }}" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ im.pos }};display:block;filter:saturate(.85) brightness(.9);opacity:{{ im.imgOp }};transition:opacity .35s"></sc-for>
+        <div style="position:relative;min-height:clamp(240px,26vw,320px);background:#111111;overflow:hidden">
+          <sc-for list="{{ lbItems }}" as="im" hint-placeholder-count="3"><img src="{{ im.img }}" alt="{{ im.title }}" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ im.pos }};display:block;filter:saturate(.85) brightness(.9);opacity:{{ im.imgOp }};transform:{{ im.imgScale }};transition:{{ im.imgT }}"></sc-for>
+          <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(36,36,39,0) 60%,rgba(36,36,39,.55) 100%),linear-gradient(180deg,rgba(17,17,17,0) 60%,rgba(17,17,17,.45) 100%)"></div>
         </div>
         <div style="padding:clamp(20px,2.6vw,32px);display:flex;flex-direction:column;justify-content:space-between;gap:20px">
           <div style="display:flex;flex-direction:column;gap:12px">
-            <span style="align-self:flex-start;padding:4px 12px;border-radius:999px;background:{{ lbCur.pillBg }};color:{{ lbCur.pillFg }};font-size:13px;font-weight:600;line-height:1.4;white-space:nowrap">{{ lbCur.tag }}</span>
+            <span style="align-self:flex-start;padding:4px 12px;border-radius:999px;background:{{ lbCur.pillBg }};color:{{ lbCur.pillFg }};font-size:13px;font-weight:600;line-height:1.4;white-space:nowrap">{{ lbCur.num }} · {{ lbCur.tag }}</span>
             <strong style="font-size:clamp(20px,1.8vw,24px);font-weight:800;line-height:1.25;letter-spacing:-.5px;text-wrap:balance">{{ lbCur.title }}</strong>
             <span style="font-size:15px;line-height:1.6;color:#A3A3A8;text-wrap:pretty">{{ lbCur.text }}</span>
           </div>
-          <div style="display:flex;gap:6px">
-            <sc-for list="{{ lbItems }}" as="d" hint-placeholder-count="3"><button onClick="{{ d.onClick }}" aria-label="{{ d.tag }}" style="width:{{ d.dotW }};height:6px;padding:0;border:0;border-radius:999px;background:{{ d.dotC }};cursor:pointer;transition:width .3s"></button></sc-for>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <div style="display:flex;gap:6px">
+              <sc-for list="{{ lbItems }}" as="d" hint-placeholder-count="3"><button onClick="{{ d.onClick }}" aria-label="{{ d.tag }}" style="width:{{ d.dotW }};height:6px;padding:0;border:0;border-radius:999px;background:{{ d.dotC }};cursor:pointer;transition:width .3s"></button></sc-for>
+            </div>
+            <div style="display:flex;gap:8px">
+              <button onClick="{{ lbPrev }}" aria-label="Sebelumnya" style="width:40px;height:40px;border-radius:999px;border:0;background:#2F2F33;color:#FFFFFF;font-size:18px;cursor:pointer" style-hover="background:#3A3A3E">‹</button>
+              <button onClick="{{ lbNext }}" aria-label="Berikutnya" style="width:40px;height:40px;border-radius:999px;border:0;background:#FFFFFF;color:#111111;font-size:18px;cursor:pointer" style-hover="background:#E4E4E7">›</button>
+            </div>
           </div>
         </div>
       </div>
+      </sc-if>
     </div>
   </div>
 </section>
 
 <section data-screen-label="03 Misi" style="padding:0 16px clamp(72px,9vw,120px)">
-  <div style="max-width:1232px;margin:0 auto;border-radius:clamp(24px,2.2vw,32px);background:#1B1B1D;border:1px solid #2F2F33;padding:clamp(28px,5vw,64px);display:flex;flex-direction:column;gap:clamp(28px,3.4vw,40px)">
+  <div style="max-width:1232px;margin:0 auto;border-radius:clamp(24px,2.2vw,32px);background:#1B1B1D;border:1px solid #2F2F33;padding:clamp(24px,4vw,48px);display:flex;flex-direction:column;gap:clamp(24px,3vw,36px)">
     <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 48px">
-      <div style="display:flex;flex-direction:column;gap:16px"><span style="font-size:13px;font-weight:600;color:#A3A3A8">Misi</span><h2 style="margin:0;font-weight:800;font-size:clamp(32px,3.34vw,48px);line-height:1.15;letter-spacing:-1px">Tiga hal yang kami kejar</h2></div>
+      <div style="display:flex;flex-direction:column;gap:14px"><span style="font-size:13px;font-weight:600;color:#A3A3A8">Misi</span><h2 style="margin:0;font-weight:800;font-size:clamp(28px,2.8vw,40px);line-height:1.15;letter-spacing:-1px">Tiga hal yang kami kejar</h2></div>
       <span style="font-size:14px;color:#A3A3A8">Untuk film Indonesia yang lebih kuat</span>
     </div>
-    <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column">
+    <ol data-mcarousel="" style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px">
       <sc-for list="{{ missions }}" as="m" hint-placeholder-count="3">
-        <li style="display:grid;grid-template-columns:{{ m.cols }};align-items:center;gap:16px clamp(20px,3vw,40px);padding:clamp(20px,2.6vw,32px) 0;border-top:1px solid #2F2F33;transition:padding .3s" style-hover="padding-left:12px">
-          <span style="font-size:clamp(40px,4.4vw,64px);font-weight:800;line-height:1;letter-spacing:-2px;color:{{ m.numColor }};font-variant-numeric:tabular-nums">{{ m.num }}</span>
-          <strong style="font-size:clamp(20px,2vw,28px);font-weight:800;line-height:1.2;letter-spacing:-.6px;text-wrap:balance">{{ m.title }}</strong>
-          <span style="grid-column:{{ m.textCol }};font-size:16px;line-height:1.6;color:#A3A3A8;text-wrap:pretty">{{ m.text }}</span>
-          <div style="display:{{ m.iconDisplay }};width:88px;height:88px;border-radius:20px;background:radial-gradient(70% 60% at 50% 45%,#2F2F33 0%,#1F1F22 100%);align-items:center;justify-content:center"><img src="{{ m.icon }}" alt="" aria-hidden="true" style="width:64px;height:auto;filter:drop-shadow(0 10px 10px rgba(0,0,0,.45))"></div>
+        <li onMouseEnter="{{ m.enter }}" onMouseLeave="{{ m.leave }}" style="display:flex;flex-direction:column;border-radius:24px;background:{{ m.bg }};border:1px solid {{ m.border }};overflow:hidden;transition:background .3s,border-color .3s,transform .3s;transform:{{ m.lift }}">
+          <div style="position:relative;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;background:radial-gradient(60% 70% at 50% 55%,{{ m.glow }} 0%,rgba(36,36,39,0) 70%)">
+            <span style="position:absolute;top:16px;left:18px;font-size:13px;font-weight:700;color:{{ m.numColor }};font-variant-numeric:tabular-nums">{{ m.num }}</span>
+            <span aria-hidden="true" style="position:absolute;left:32%;right:32%;bottom:14%;height:8%;border-radius:999px;background:radial-gradient(closest-side,rgba(0,0,0,.65),rgba(0,0,0,0))"></span>
+            <img src="{{ m.icon }}" alt="" aria-hidden="true" style="position:relative;width:clamp(96px,10vw,128px);height:auto;filter:drop-shadow(0 16px 16px rgba(0,0,0,.5));transform:{{ m.iconT }};transition:transform .5s cubic-bezier(.2,.8,.2,1)">
+          </div>
+          <div style="padding:4px clamp(20px,2.2vw,26px) clamp(20px,2.4vw,26px);display:flex;flex-direction:column;gap:10px;flex:1">
+            <strong style="font-size:clamp(19px,1.7vw,22px);font-weight:800;line-height:1.25;letter-spacing:-.5px;text-wrap:balance">{{ m.title }}</strong>
+            <span style="font-size:15px;line-height:1.6;color:#A3A3A8;text-wrap:pretty">{{ m.text }}</span>
+            <div style="margin-top:auto;padding-top:12px;display:flex;flex-wrap:wrap;gap:6px">
+              <sc-for list="{{ m.links }}" as="l" hint-placeholder-count="2"><a href="{{ l.href }}" style="padding:5px 12px;border-radius:999px;background:#2A2A2D;font-size:13px;font-weight:600;color:#FFFFFF;white-space:nowrap" style-hover="background:#3A3A3E;color:#FFFFFF">{{ l.t }} ›</a></sc-for>
+            </div>
+          </div>
         </li>
       </sc-for>
     </ol>
   </div>
 </section>
 
-<section data-screen-label="04 Progres" style="padding:0 24px clamp(72px,9vw,120px)">
-  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(32px,4vw,48px)">
+<section data-screen-label="04 Progres" style="padding:0 16px clamp(72px,9vw,120px)">
+  <div style="max-width:1232px;margin:0 auto;border-radius:clamp(24px,2.2vw,32px);background:#1B1B1D;border:1px solid #2F2F33;padding:clamp(24px,4vw,48px);display:flex;flex-direction:column;gap:clamp(28px,3.4vw,44px)">
     <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 48px">
-      <div style="display:flex;flex-direction:column;gap:16px"><span style="font-size:13px;font-weight:600;color:#A3A3A8">Progres</span><h2 style="margin:0;font-weight:800;font-size:clamp(32px,3.34vw,48px);line-height:1.15;letter-spacing:-1px">Sejauh ini</h2></div>
-      <div style="flex:0 1 360px;display:flex;flex-direction:column;gap:10px">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font-size:14px;color:#A3A3A8">Tahap selesai</span><strong style="font-size:20px;font-weight:800;letter-spacing:-.4px">2 dari 4</strong></div>
-        <div style="height:6px;border-radius:999px;background:#2F2F33;overflow:hidden"><div style="width:62.5%;height:100%;border-radius:999px;background:#E11D2E"></div></div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <span style="font-size:13px;font-weight:600;color:#A3A3A8">Progres</span>
+        <h2 style="margin:0;font-weight:800;font-size:clamp(28px,2.8vw,40px);line-height:1.15;letter-spacing:-1px">Sejauh ini</h2>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;padding:10px 10px 10px 20px;border-radius:999px;background:#242427;border:1px solid #2F2F33">
+        <span style="font-size:14px;color:#A3A3A8;white-space:nowrap">Tahap selesai</span>
+        <strong style="font-size:18px;font-weight:800;letter-spacing:-.4px;white-space:nowrap">2 <span style="color:#A3A3A8;font-weight:600">dari 4</span></strong>
+        <span style="width:44px;height:44px;border-radius:999px;background:conic-gradient(#E11D2E 0 50%,#2F2F33 50% 100%);display:flex;align-items:center;justify-content:center"><span style="width:34px;height:34px;border-radius:999px;background:#242427;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">50%</span></span>
       </div>
     </div>
-    <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:{{ progCols }};gap:12px">
-      <sc-for list="{{ progress }}" as="s" hint-placeholder-count="4">
-        <li style="position:relative;display:flex;flex-direction:column;gap:16px;padding:24px;border-radius:24px;background:{{ s.cardBg }};border:1px solid {{ s.cardBorder }};overflow:hidden">
-          <div style="height:4px;border-radius:999px;background:#2F2F33;overflow:hidden"><div style="width:{{ s.fill }};height:100%;border-radius:999px;background:#E11D2E"></div></div>
-          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
-            <span style="font-size:13px;font-weight:700;color:#5C5C61;font-variant-numeric:tabular-nums">Tahap {{ s.num }}</span>
-            <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:{{ s.pillBg }};color:{{ s.statusColor }};font-size:12px;font-weight:600;white-space:nowrap"><span style="width:6px;height:6px;border-radius:999px;background:{{ s.dotC }}"></span>{{ s.status }}</span>
-          </div>
-          <strong style="font-size:19px;font-weight:700;line-height:1.3;letter-spacing:-.3px;text-wrap:balance">{{ s.title }}</strong>
-          <span style="font-size:15px;line-height:1.55;color:#A3A3A8;text-wrap:pretty">{{ s.desc }}</span>
-        </li>
-      </sc-for>
-    </ol>
+
+    <div style="position:relative">
+      <sc-if value="{{ tlH }}" hint-placeholder-val="{{ true }}">
+        <div aria-hidden="true" style="position:absolute;left:12.5%;right:12.5%;top:21px;height:2px;background:#2F2F33;border-radius:999px"><div style="width:50%;height:100%;background:#E11D2E;border-radius:999px"></div></div>
+      </sc-if>
+      <ol style="position:relative;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:{{ progCols }};gap:{{ progGap }}">
+        <sc-for list="{{ progress }}" as="s" hint-placeholder-count="4">
+          <li style="display:flex;flex-direction:{{ progDir }};align-items:{{ progAlign }};gap:16px;text-align:{{ progText }}">
+            <span style="flex:none;width:44px;height:44px;border-radius:999px;background:{{ s.nodeBg }};border:{{ s.ring }};box-shadow:{{ s.halo }};display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:{{ s.nodeFg }}">{{ s.mark }}</span>
+            <div style="flex:1;min-width:0;width:100%;display:flex;flex-direction:column;align-items:{{ progAlign }};gap:10px;padding:20px;border-radius:20px;background:{{ s.cardBg }};border:1px solid {{ s.cardBorder }}">
+              <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:{{ s.pillBg }};color:{{ s.statusColor }};font-size:12px;font-weight:600;white-space:nowrap"><span style="width:6px;height:6px;border-radius:999px;background:{{ s.dotC }}"></span>{{ s.status }}</span>
+              <strong style="font-size:18px;font-weight:700;line-height:1.3;letter-spacing:-.3px;text-wrap:balance">{{ s.title }}</strong>
+              <span style="font-size:14px;line-height:1.55;color:#A3A3A8;text-wrap:pretty">{{ s.desc }}</span>
+            </div>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
   </div>
 </section>
 
@@ -149,7 +195,7 @@ button{font-family:inherit}
 <section data-screen-label="06 Partner" style="padding:0 24px clamp(48px,6vw,80px)">
   <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
     <div style="display:flex;flex-direction:column;gap:16px"><span style="font-size:13px;font-weight:600;color:#A3A3A8">Partner</span><h2 style="margin:0;font-weight:800;font-size:clamp(32px,3.34vw,48px);line-height:1.15;letter-spacing:-1px">Bersama mereka</h2></div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px">
+    <div data-mcarousel="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px">
       <sc-for list="{{ partners }}" as="pt" hint-placeholder-count="4">
         <div style="padding:28px;border-radius:24px;background:#1B1B1D;border:1px solid #2F2F33;display:flex;flex-direction:column;gap:20px">
           <div style="height:56px;display:flex;align-items:center">
@@ -169,9 +215,10 @@ button{font-family:inherit}
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { w: 1440, lb: 0 };
+  state = { w: 1440, lb: 0, lbFill: false, lbPause: false };
+  goLb = (i) => { clearTimeout(this.lbT); cancelAnimationFrame(this.lbR); this.setState({ lb: i, lbFill: false }, () => { this.lbR = requestAnimationFrame(() => requestAnimationFrame(() => this.setState({ lbFill: true })));  }); };
   componentDidMount() { this.onResize = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onResize); this.onResize(); }
-  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); clearTimeout(this.lbT); cancelAnimationFrame(this.lbR); }
   renderVals() {
     const h = this.state.w >= 768;
     const steps = [
@@ -188,18 +235,26 @@ class Component extends DCLogic {
     const lb = this.state.lb ?? 0;
     return {
       lbCols: this.state.w >= 960 ? 'minmax(0,.85fr) minmax(0,1.6fr)' : '1fr', lbDetailCols: this.state.w >= 720 ? 'minmax(0,1fr) minmax(0,1fr)' : '1fr',
-      lbItems: LB.map((x, i) => { const on = i === lb; return { ...x, num: '0' + (i + 1), onClick: () => this.setState({ lb: i }), bg: on ? '#242427' : 'transparent', border: on ? '#3A3A3E' : '#2F2F33', bar: on ? '#E11D2E' : 'transparent', numColor: on ? '#FF8A94' : '#5C5C61', fg: on ? '#FFFFFF' : '#A3A3A8', thumbOp: on ? 1 : .5, imgOp: on ? 1 : 0, dotW: on ? '28px' : '6px', dotC: on ? '#E11D2E' : '#3A3A3E' }; }),
-      lbCur: { ...LB[lb], pillBg: lb === 2 ? '#2A1416' : '#2A2A2D', pillFg: lb === 2 ? '#FF8A94' : '#D4D4D8' },
+      lbWide: (this.state.w ?? 1200) >= 960,
+      lbItems: LB.map((x, i) => { const narrow = (this.state.w ?? 1200) < 960, on = i === lb; return { ...x, narrow, inline: narrow && on, rows: (narrow && on) ? '1fr' : '0fr', op: (narrow && on) ? 1 : 0, hidden: (narrow && on) ? 'false' : 'true', chevBg: on ? '#E11D2E' : '#2A2A2D', chevRot: on ? 'rotate(90deg)' : 'none', num: '0' + (i + 1), onClick: () => narrow && lb === i ? this.setState({ lb: -1 }) : this.goLb(i), fillW: on && this.state.lbFill ? '100%' : '0%', fillT: on && this.state.lbFill && !this.state.lbPause ? 'width 6.5s linear' : 'none', imgScale: on ? 'scale(1.06)' : 'scale(1)', imgT: on ? 'opacity .8s ease, transform 7s ease-out' : 'opacity .8s ease, transform .1s', bg: on ? '#242427' : 'transparent', border: on ? '#3A3A3E' : '#2F2F33', bar: on ? '#E11D2E' : 'transparent', numColor: on ? '#FF8A94' : '#A3A3A8', fg: on ? '#FFFFFF' : '#A3A3A8', thumbOp: on ? 1 : .5, imgOp: on ? 1 : 0, dotW: on ? '28px' : '6px', dotC: on ? '#E11D2E' : '#4A4A4F' }; }),
+      lbPrev: () => this.goLb(((this.state.lb ?? 0) + 2) % 3), lbNext: () => this.goLb(((this.state.lb ?? 0) + 1) % 3),
+      lbEnter: () => { clearTimeout(this.lbT); this.setState({ lbPause: true }); }, lbLeave: () => { this.setState({ lbPause: false }, () => this.goLb(this.state.lb)); },
+      lbTabTitle: (this.state.w ?? 1200) >= 720 ? 'block' : 'none',
+      lbCur: { ...LB[Math.max(0, lb)], num: '0' + (Math.max(0, lb) + 1), pillBg: lb === 2 ? '#2A1416' : '#2A2A2D', pillFg: lb === 2 ? '#FF8A94' : '#D4D4D8' },
       missions: [
         { n: '1', title: 'Membuat lebih banyak film yang menginspirasi', text: 'Cerita yang dekat dengan kita, digarap serius, dan layak ditonton bersama di bioskop.' },
         { n: '2', title: 'Membangun ekosistem dari kreator sampai investor', text: 'Kreator, investor, pemasaran, dan lokasi syuting saling terhubung dalam satu koperasi.' },
         { n: '3', title: 'Membuka akses bagi generasi muda', text: 'Course, internship, dan festival supaya anak muda punya jalan masuk ke industri film.' }
-      ].map((m, i) => { const w = this.state.w ?? 1200; return { ...m, num: '0' + m.n, numColor: i === 0 ? '#E11D2E' : '#3A3A3E', icon: ['assets/icon-clapper.png', 'assets/icon-camera.png', 'assets/icon-tickets.png'][i], iconDisplay: w >= 900 ? 'flex' : 'none', textCol: w >= 900 || w < 600 ? 'auto' : '2', cols: w >= 900 ? '96px minmax(0,1.1fr) minmax(0,1fr) 88px' : w >= 600 ? '72px minmax(0,1fr)' : '1fr' }; }),
-      tlH: h, tlV: !h, progCols: (this.state.w ?? 1200) >= 1024 ? 'repeat(4,minmax(0,1fr))' : (this.state.w ?? 1200) >= 600 ? 'repeat(2,minmax(0,1fr))' : '1fr',
+      ].map((m, i) => { const on = this.state.mh === i; return { ...m, num: '0' + m.n, numColor: on ? '#FF8A94' : '#A3A3A8', icon: ['assets/icon-clapper.png', 'assets/icon-camera.png', 'assets/icon-tickets.png'][i],
+        links: [[{ t: 'Vote film', href: 'Membership.dc.html' }, { t: 'Festival', href: 'Festival.dc.html' }], [{ t: 'Industry Hub', href: 'Industry%20Hub.dc.html' }, { t: 'Investor', href: 'Investor.dc.html' }], [{ t: 'Course', href: 'Membership.dc.html' }, { t: 'Internship', href: 'Membership.dc.html' }]][i],
+        bg: on ? '#242427' : '#202023', border: on ? '#4A4A4F' : '#2F2F33', lift: on ? 'translateY(-4px)' : 'none', glow: on ? '#3A3A3E' : '#2A2A2E', iconT: on ? 'translateY(-8px) rotate(-6deg) scale(1.05)' : 'none',
+        enter: () => this.setState({ mh: i }), leave: () => this.setState({ mh: null }) }; }),
+      tlH: h, tlV: !h, progCols: h ? 'repeat(4,minmax(0,1fr))' : '1fr',
       progress: steps.map((s, i) => ({ ...s, hasLine: i < steps.length - 1,
-        dot: s.done ? '#E11D2E' : '#111111', ring: s.done ? '0' : (s.now ? '2px solid #FFFFFF' : '2px solid #5C5C61'),
+        dot: s.done ? '#E11D2E' : '#111111', ring: s.done || s.now ? '0' : '2px solid #3A3A3E',
         line: s.done ? '#E11D2E' : '#2F2F33', status: s.done ? 'Selesai' : (s.now ? 'Sedang berjalan' : 'Berikutnya'),
-        statusColor: s.done ? '#FF8A94' : (s.now ? '#FFFFFF' : '#A3A3A8'), num: String(i + 1), fill: s.done ? '100%' : (s.now ? '50%' : '0%'), pillBg: s.done ? '#2A1416' : (s.now ? '#2A2A2D' : 'transparent'), dotC: s.done ? '#E11D2E' : (s.now ? '#FFFFFF' : '#5C5C61'), cardBg: s.now ? '#242427' : '#1B1B1D', cardBorder: s.now ? '#3A3A3E' : '#2F2F33' })),
+        statusColor: s.done ? '#FF8A94' : (s.now ? '#FFFFFF' : '#A3A3A8'), num: String(i + 1), fill: s.done ? '100%' : (s.now ? '50%' : '0%'), pillBg: s.done ? '#2A1416' : (s.now ? '#2A2A2D' : 'transparent'), dotC: s.done ? '#E11D2E' : (s.now ? '#FFFFFF' : '#5C5C61'), cardBg: s.now ? '#242427' : '#202023', cardBorder: s.now ? '#4A4A4F' : '#2F2F33', mark: s.done ? '✓' : String(i + 1), nodeBg: s.done ? '#E11D2E' : (s.now ? '#FFFFFF' : '#1B1B1D'), nodeFg: s.done ? '#FFFFFF' : (s.now ? '#111111' : '#A3A3A8'), halo: s.now ? '0 0 0 6px rgba(255,255,255,.08)' : (s.done ? '0 0 0 6px rgba(225,29,46,.12)' : 'none') })),
+      progGap: h ? '16px' : '12px', progDir: h ? 'column' : 'row', progAlign: h ? 'center' : 'flex-start', progText: h ? 'center' : 'left',
       board: [['Baskara Sukarja','Global Village'],['Edwin Suryadjaya','Pengusaha'],['Inayah Wahid','NU'],['Maftuchah','NU'],['Ivan Huiskamp','GPU NVIDIA'],['Herimanto','Layar Desa'],['Arya Teja','Sinematografer'],['Leila S. Chudori','Penulis'],['Cacuk Wibisono','Global Village'],['Rohit','Pegiat film, India'],['Heru Purnomo','Javanolog, pegiat film']].map(([nm, af], i) => ({ name: nm, aff: af, bio: 'Bio singkat menyusul.', bg: i % 2 === 0 ? 'url(assets/person-1.png) 74% 12% / auto 165% no-repeat #F2F2F2' : 'url(assets/person-2.png) 74% 8% / auto 150% no-repeat #EDEDED' })),
       partners: [
         { name: 'Global Village', role: 'Penggagas IFI dan pengelola GV Apps tempat semua transaksi member berjalan.' },

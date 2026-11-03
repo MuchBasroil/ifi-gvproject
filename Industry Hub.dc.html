@@ -8,6 +8,24 @@
 <body>
 <x-dc>
 <helmet>
+<style id="ifi-mobile">
+@media (max-width:640px){
+  :is(div,nav,form,footer):has(> :is(a,button)[style*="height: 52px"] ~ :is(a,button)[style*="height: 52px"]),
+  :is(div,nav,form):has(> :is(a,button)[style*="height: 48px"] ~ :is(a,button)[style*="height: 48px"]){display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:stretch!important;align-self:stretch!important;width:100%!important;gap:8px!important}
+  :is(div,nav,form,footer):has(> :is(a,button)[style*="height: 52px"] ~ :is(a,button)[style*="height: 52px"]) > :is(a,button),
+  :is(div,nav,form):has(> :is(a,button)[style*="height: 48px"] ~ :is(a,button)[style*="height: 48px"]) > :is(a,button){flex:1 1 0!important;min-width:0!important;width:auto!important;height:48px!important;padding:0 8px!important;justify-content:center!important;text-align:center!important;font-size:13.5px!important;letter-spacing:-.1px;line-height:1.2!important;white-space:nowrap!important;overflow:hidden;text-overflow:ellipsis}
+  :is(a,button)[style*="height: 52px"]{height:48px!important}
+  section[data-screen-label] h2{margin-bottom:0!important}
+  [data-mscroll]{flex-wrap:nowrap!important;overflow-x:auto!important;scrollbar-width:none;margin-left:-24px!important;margin-right:-24px!important;padding:0 24px!important}
+  [data-mscroll]::-webkit-scrollbar{display:none}
+  [data-mscroll] > *{flex:none!important}
+  [data-mfull]{width:100%!important}
+  [data-mfull] > *{flex:1 1 0!important}
+  [data-mcarousel]{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;scroll-snap-type:x mandatory;scrollbar-width:none;gap:12px!important;margin-left:-24px!important;margin-right:-24px!important;padding:0 24px 4px!important;scroll-padding:0 24px}
+  [data-mcarousel]::-webkit-scrollbar{display:none}
+  [data-mcarousel] > *{flex:0 0 84%!important;min-width:0!important;scroll-snap-align:start}
+}
+</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -41,14 +59,14 @@ button,input,select{font-family:inherit}
       <input value="{{ query }}" onChange="{{ onQuery }}" placeholder="Cari nama lokasi, kota, atau keahlian" aria-label="Cari listing" style="flex:1;min-width:0;height:100%;border:0;background:transparent;color:#FFFFFF;font-size:16px;outline:none">
       <button style="flex:none;height:48px;padding:0 24px;border:0;border-radius:999px;background:#E11D2E;color:#FFFFFF;font-weight:600;font-size:15px;cursor:pointer" style-hover="background:#F23A49">Cari</button>
     </label>
-      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px"><span style="font-size:13px;color:#A3A3A8;margin-right:4px">Populer:</span><span style="padding:6px 14px;border-radius:999px;background:rgba(17,17,17,.75);border:1px solid #3A3A3E;font-size:13px;font-weight:600;white-space:nowrap">Pantai</span><span style="padding:6px 14px;border-radius:999px;background:rgba(17,17,17,.75);border:1px solid #3A3A3E;font-size:13px;font-weight:600;white-space:nowrap">Desa</span><span style="padding:6px 14px;border-radius:999px;background:rgba(17,17,17,.75);border:1px solid #3A3A3E;font-size:13px;font-weight:600;white-space:nowrap">Kota tua</span><span style="padding:6px 14px;border-radius:999px;background:rgba(17,17,17,.75);border:1px solid #3A3A3E;font-size:13px;font-weight:600;white-space:nowrap">Hutan</span><span style="padding:6px 14px;border-radius:999px;background:rgba(17,17,17,.75);border:1px solid #3A3A3E;font-size:13px;font-weight:600;white-space:nowrap">Bangunan bersejarah</span><span style="padding:6px 14px;border-radius:999px;background:rgba(17,17,17,.75);border:1px solid #3A3A3E;font-size:13px;font-weight:600;white-space:nowrap">Penata kamera</span></div>
+      <div data-mscroll="" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px"><span style="flex:none;font-size:13px;color:#A3A3A8;margin-right:4px">Populer:</span><span style="padding:6px 14px;border-radius:999px;background:rgba(17,17,17,.75);border:1px solid #3A3A3E;font-size:13px;font-weight:600;white-space:nowrap">Pantai</span><span style="padding:6px 14px;border-radius:999px;background:rgba(17,17,17,.75);border:1px solid #3A3A3E;font-size:13px;font-weight:600;white-space:nowrap">Desa</span><span style="padding:6px 14px;border-radius:999px;background:rgba(17,17,17,.75);border:1px solid #3A3A3E;font-size:13px;font-weight:600;white-space:nowrap">Kota tua</span><span style="padding:6px 14px;border-radius:999px;background:rgba(17,17,17,.75);border:1px solid #3A3A3E;font-size:13px;font-weight:600;white-space:nowrap">Hutan</span><span style="padding:6px 14px;border-radius:999px;background:rgba(17,17,17,.75);border:1px solid #3A3A3E;font-size:13px;font-weight:600;white-space:nowrap">Bangunan bersejarah</span><span style="padding:6px 14px;border-radius:999px;background:rgba(17,17,17,.75);border:1px solid #3A3A3E;font-size:13px;font-weight:600;white-space:nowrap">Penata kamera</span></div>
     </div>
   </div>
 </header>
 
 <div style="max-width:1248px;margin:0 auto;padding:0 24px clamp(72px,9vw,120px);display:flex;flex-direction:column;gap:28px">
   <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px">
-    <div role="tablist" style="display:flex;gap:4px;padding:4px;border-radius:999px;background:#1B1B1D;border:1px solid #2F2F33">
+    <div role="tablist" data-mfull="" style="display:flex;gap:4px;padding:4px;border-radius:999px;background:#1B1B1D;border:1px solid #2F2F33">
       <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="2"><button role="tab" aria-selected="{{ t.on }}" onClick="{{ t.onClick }}" style="height:44px;padding:0 20px;border:0;border-radius:999px;background:{{ t.bg }};color:{{ t.color }};font-size:15px;font-weight:600;cursor:pointer;white-space:nowrap">{{ t.label }}</button></sc-for>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
@@ -83,21 +101,21 @@ button,input,select{font-family:inherit}
     </sc-if>
 
     <div style="min-width:0;display:flex;flex-direction:column;gap:32px">
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:32px 20px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(calc(50% - 6px),240px),1fr));gap:clamp(20px,3vw,32px) clamp(12px,2vw,20px)">
         <sc-for list="{{ items }}" as="l" hint-placeholder-count="9">
-          <a href="Listing%20Detail.dc.html" style="display:flex;flex-direction:column;gap:14px;color:#FFFFFF" style-hover="color:#FFFFFF">
+          <a href="Listing%20Detail.dc.html" style="min-width:0;display:flex;flex-direction:column;gap:10px;color:#FFFFFF" style-hover="color:#FFFFFF">
             <div style="position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;background:#1B1B1D;border:1px solid #2F2F33">
               <div style="position:absolute;inset:0;background:{{ l.bg }};filter:saturate(.8) brightness(.88);transition:transform .5s,filter .4s" style-hover="transform:scale(1.05);filter:saturate(1) brightness(.95)"></div>
               <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(17,17,17,.4) 0%,rgba(17,17,17,0) 35%);box-shadow:inset 0 0 50px rgba(0,0,0,.35)"></div>
               <sc-if value="{{ l.isCrew }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:38%;aspect-ratio:1;border-radius:999px;background:{{ l.avatar }};border:2px solid #3A3A3E"></div></sc-if>
-              <span style="position:absolute;top:12px;left:12px;padding:4px 12px;border-radius:999px;background:rgba(17,17,17,.8);font-size:12px;font-weight:600;white-space:nowrap">{{ l.tag }}</span>
+              <span style="position:absolute;top:8px;left:8px;padding:3px 10px;border-radius:999px;background:rgba(17,17,17,.8);font-size:12px;font-weight:600;white-space:nowrap">{{ l.tag }}</span>
             </div>
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:0 4px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding:0 2px">
               <div style="min-width:0;display:flex;flex-direction:column;gap:2px">
-                <strong style="font-size:16px;font-weight:700;line-height:1.35">{{ l.name }}</strong>
-                <span style="font-size:14px;color:#A3A3A8">{{ l.place }}</span>
+                <strong style="font-size:clamp(14px,1.4vw,16px);font-weight:700;line-height:1.3;text-wrap:pretty">{{ l.name }}</strong>
+                <span style="font-size:clamp(12px,1.2vw,14px);color:#A3A3A8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ l.place }}</span>
               </div>
-              <span aria-hidden="true" style="flex:none;width:32px;height:32px;border-radius:999px;background:#1B1B1D;border:1px solid #2F2F33;display:flex;align-items:center;justify-content:center;font-size:14px;color:#A3A3A8">→</span>
+              <span aria-hidden="true" style="flex:none;width:{{ arrowSize }};height:32px;border-radius:999px;background:#1B1B1D;border:1px solid #2F2F33;display:{{ arrowDisp }};align-items:center;justify-content:center;font-size:14px;color:#A3A3A8">→</span>
             </div>
           </a>
         </sc-for>
@@ -166,6 +184,7 @@ class Component extends DCLogic {
     const provs = ['Semua provinsi', ...Array.from(new Set([...D.Lokasi, ...D['Pekerja Kreatif']].map(x => x.prov))).sort()];
     const nf = (s.prov !== 'Semua provinsi' ? 1 : 0) + s.cats.length;
     return {
+      arrowSize: '32px', arrowDisp: (this.state.w ?? 1200) < 640 ? 'none' : 'flex',
       desktop, mobile: !desktop, layoutCols: desktop ? '280px minmax(0,1fr)' : '1fr',
       query: s.q, onQuery: (e) => this.setState({ q: e.target.value, page: 1 }),
       tabs: ['Lokasi', 'Pekerja Kreatif'].map(t => ({ label: t, on: t === s.tab, onClick: () => this.setState({ tab: t, cats: [], page: 1 }), bg: t === s.tab ? '#FFFFFF' : 'transparent', color: t === s.tab ? '#111111' : '#A3A3A8' })),
