@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<header style="position:fixed;top:16px;left:16px;right:16px;z-index:50;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none;font-family:'Plus Jakarta Sans',sans-serif">
+  <div style="pointer-events:auto;width:100%;max-width:1232px;height:68px;padding:0 10px 0 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;border-radius:999px;background:{{ navBg }};backdrop-filter:{{ navBlur }};-webkit-backdrop-filter:{{ navBlur }};border:1px solid #2F2F33;box-shadow:{{ navShadow }};transition:background .3s,box-shadow .3s;overflow:hidden">
+    <a href="IFI%20Homepage%20v2.dc.html" style="flex:none;display:flex;align-items:center;gap:12px;color:#FFFFFF;text-decoration:none">
+      <span style="font-size:24px;font-weight:800;letter-spacing:-.5px;line-height:1">IFI</span>
+      <span style="font-size:12px;line-height:1.3;color:#A3A3A8;border-left:1px solid #2F2F33;padding-left:12px;white-space:nowrap">Indonesia Films<br>Initiative</span>
+    </a>
+    <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+      <nav style="flex:1 1 auto;min-width:0;height:40px;overflow:hidden;display:flex;flex-wrap:wrap;justify-content:center;gap:4px;font-size:15px;font-weight:500">
+        <sc-for list="{{ links }}" as="l" hint-placeholder-count="5">
+          <a href="{{ l.href }}" style="height:40px;padding:0 14px;border-radius:999px;display:flex;align-items:center;gap:8px;white-space:nowrap;text-decoration:none;color:{{ l.color }};font-weight:{{ l.weight }}" style-hover="background:#242427;color:#FFFFFF"><sc-if value="{{ l.active }}" hint-placeholder-val="{{ false }}"><span style="width:6px;height:6px;border-radius:999px;background:#E11D2E"></span></sc-if>{{ l.label }}</a>
+        </sc-for>
+      </nav>
+      <div style="flex:none;display:flex;align-items:center;gap:16px">
+        <a href="#" onClick="{{ openLogin }}" style="font-size:15px;font-weight:500;color:#FFFFFF;white-space:nowrap;text-decoration:none" style-hover="color:#A3A3A8">Masuk</a>
+        <button onClick="{{ openJoin }}" style="height:48px;padding:0 24px;border:0;border-radius:999px;background:#E11D2E;color:#FFFFFF;font-weight:600;font-size:15px;white-space:nowrap;cursor:pointer" style-hover="background:#F23A49" style-active="background:#B5121F">Jadi Member</button>
+      </div>
+    </sc-if>
+    <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="{{ menuLabel }}" aria-expanded="{{ menuOpen }}" style="flex:none;width:48px;height:48px;border:0;border-radius:999px;background:#2A2A2D;color:#FFFFFF;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer">
+        <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}"><span style="font-size:22px;line-height:1">×</span></sc-if>
+        <sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}">
+          <span style="width:18px;height:2px;background:#FFFFFF;border-radius:2px"></span>
+          <span style="width:18px;height:2px;background:#FFFFFF;border-radius:2px"></span>
+          <span style="width:18px;height:2px;background:#FFFFFF;border-radius:2px"></span>
+        </sc-if>
+      </button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="pointer-events:auto;width:100%;border-radius:28px;background:#1B1B1D;border:1px solid #2F2F33;box-shadow:0 24px 60px rgba(0,0,0,.6);padding:20px 24px 12px;display:flex;flex-direction:column">
+      <button onClick="{{ openJoin }}" style="height:52px;border:0;border-radius:999px;background:#E11D2E;color:#FFFFFF;font-weight:600;font-size:16px;cursor:pointer;margin-bottom:12px" style-active="background:#B5121F">Jadi Member</button>
+      <sc-for list="{{ links }}" as="l" hint-placeholder-count="5">
+        <a href="{{ l.href }}" style="font-size:18px;font-weight:600;padding:14px 0;border-bottom:1px solid #242427;color:#FFFFFF;text-decoration:none;display:flex;align-items:center;gap:10px"><sc-if value="{{ l.active }}" hint-placeholder-val="{{ false }}"><span style="width:6px;height:6px;border-radius:999px;background:#E11D2E"></span></sc-if>{{ l.label }}</a>
+      </sc-for>
+      <a href="#" onClick="{{ openLogin }}" style="font-size:16px;font-weight:600;padding:14px 0;color:#FFFFFF;text-decoration:none">Masuk lewat GV Apps</a>
+    </div>
+  </sc-if>
+</header>
+
+<sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeModal }}" style="position:fixed;inset:0;z-index:100;background:rgba(17,17,17,.85);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;font-family:'Plus Jakarta Sans',sans-serif;color:#FFFFFF">
+    <div onClick="{{ stop }}" role="dialog" aria-label="Lanjut di GV Apps" style="position:relative;width:100%;max-width:440px;border-radius:24px;background:#1B1B1D;border:1px solid #2F2F33;padding:36px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px">
+      <button onClick="{{ closeModal }}" aria-label="Tutup" style="position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:999px;border:0;background:#2A2A2D;color:#FFFFFF;font-size:20px;cursor:pointer">×</button>
+      <span style="display:inline-flex;padding:6px 14px;border-radius:999px;background:#2A1416;color:#FF8A94;font-size:13px;font-weight:600">{{ modalEyebrow }}</span>
+      <h3 style="margin:0;font-size:24px;font-weight:700;line-height:1.3;letter-spacing:-.3px">{{ modalTitle }}</h3>
+      <sc-if value="{{ showQr }}" hint-placeholder-val="{{ true }}">
+        <div style="width:184px;height:184px;border-radius:20px;background:#FFFFFF;display:flex;align-items:center;justify-content:center;color:#111111;font-size:13px;font-weight:600">QR code GV Apps</div>
+      </sc-if>
+      <p style="margin:0;font-size:15px;color:#A3A3A8">Belum punya aplikasinya? Unduh GV Apps. Semua pembayaran diproses lewat GV Pay.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+        <a href="#" style="height:48px;padding:0 20px;border-radius:999px;background:#2A2A2D;color:#FFFFFF;display:flex;align-items:center;font-size:14px;font-weight:600;text-decoration:none">App Store</a>
+        <a href="#" style="height:48px;padding:0 20px;border-radius:999px;background:#2A2A2D;color:#FFFFFF;display:flex;align-items:center;font-size:14px;font-weight:600;text-decoration:none">Google Play</a>
+      </div>
+    </div>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:120},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;&quot;,&quot;Tentang&quot;,&quot;Membership&quot;,&quot;Festival&quot;,&quot;Industry Hub&quot;,&quot;Investor&quot;],&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { scrolled: false, w: 1440, menu: false, modal: null };
+  componentDidMount() {
+    this.onScroll = () => { const s = window.scrollY > 24; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onGv = (e) => { (window.dataLayer = window.dataLayer || []).push({ event: 'cta_' + (e.detail || 'join') }); this.setState({ modal: e.detail || 'join', menu: false }); };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('ifi:gv', this.onGv);
+    this.onResize(); this.onScroll();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('ifi:gv', this.onGv);
+  }
+  renderVals() {
+    const mobile = this.state.w < 960;
+    const menuOpen = mobile && this.state.menu;
+    const lifted = this.state.scrolled || menuOpen;
+    const active = this.props.active || '';
+    const fire = (k) => (e) => { e && e.preventDefault && e.preventDefault(); window.dispatchEvent(new CustomEvent('ifi:gv', { detail: k })); };
+    const M = {
+      join: ['Jadi Member IFI', 'Pindai untuk daftar di GV Apps'],
+      login: ['Masuk lewat GV Apps', 'Pindai untuk masuk ke GV Apps'],
+      vote: ['Vote di GV Apps', 'Pindai untuk vote di GV Apps'],
+      course: ['Ikut Course', 'Pindai untuk membuka course di GV Apps'],
+      submit: ['Kirim karya', 'Pindai untuk kirim karya lewat GV Apps'],
+      download: ['Unduh GV Apps', 'Pindai untuk mengunduh GV Apps']
+    };
+    const m = M[this.state.modal] || M.join;
+    return {
+      desktop: !mobile, mobile, menuOpen, menuClosed: !menuOpen,
+      menuLabel: menuOpen ? 'Tutup menu' : 'Buka menu',
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      navBg: lifted ? 'rgba(27,27,29,.85)' : 'rgba(27,27,29,.6)',
+      navBlur: lifted ? 'blur(16px)' : 'blur(4px)',
+      navShadow: lifted ? '0 12px 32px rgba(0,0,0,.45)' : 'none',
+      links: [
+        ['Tentang', 'Tentang%20IFI.dc.html'], ['Membership', 'Membership.dc.html'], ['Festival', 'Festival.dc.html'],
+        ['Industry Hub', 'Industry%20Hub.dc.html'], ['Investor', 'Investor.dc.html']
+      ].map(([label, href]) => ({ label, href, active: label === active, color: label === active ? '#FFFFFF' : '#A3A3A8', weight: label === active ? 600 : 500 })),
+      openJoin: fire('join'), openLogin: fire('login'),
+      modalOpen: !!this.state.modal, modalEyebrow: m[0], modalTitle: m[1], showQr: !mobile,
+      closeModal: () => this.setState({ modal: null }),
+      stop: (e) => e.stopPropagation()
+    };
+  }
+}
+</script>
+</body>
+</html>

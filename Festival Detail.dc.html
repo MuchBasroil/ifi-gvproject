@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#111111;color:#FFFFFF;font-family:'Plus Jakarta Sans',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#FFFFFF;text-decoration:none}
+a:hover{color:#F23A49}
+button{font-family:inherit}
+</style>
+</helmet>
+
+<div style="background:#111111;color:#FFFFFF;font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(16px,1.25vw,18px);line-height:1.6;padding-bottom:{{ bottomPad }}">
+<dc-import name="IFI Navbar" active="Festival" hint-size="100%,1px"></dc-import>
+
+<section data-screen-label="01 Hero festival" style="position:relative;padding:clamp(130px,13vw,170px) 24px clamp(40px,5vw,64px);overflow:hidden;isolation:isolate">
+  <img src="assets/fest-horor.png" alt="" aria-hidden="true" style="position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:blur(24px) saturate(.6) brightness(.5);transform:scale(1.1)">
+  <div style="position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(17,17,17,.4),#111111)"></div>
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,48px);align-items:flex-end">
+    <img src="assets/fest-horor.png" alt="Poster festival Film Horor 2 Menit" style="flex:none;width:clamp(150px,18vw,240px);aspect-ratio:2/3;object-fit:cover;border-radius:20px;border:1px solid #2F2F33;box-shadow:0 30px 60px rgba(0,0,0,.5);display:block">
+    <div style="flex:1 1 320px;display:flex;flex-direction:column;gap:16px">
+      <nav aria-label="Breadcrumb" style="display:flex;flex-wrap:wrap;gap:8px;font-size:14px;color:#A3A3A8"><a href="IFI%20Homepage%20v2.dc.html" style="color:#A3A3A8" style-hover="color:#FFFFFF">Home</a><span>/</span><a href="Festival.dc.html" style="color:#A3A3A8" style-hover="color:#FFFFFF">Festival</a><span>/</span><span style="color:#FFFFFF">Film Horor 2 Menit</span></nav>
+      <span style="align-self:flex-start;padding:4px 12px;border-radius:999px;background:#2A1416;color:#FF8A94;font-size:13px;font-weight:600">Sedang buka · Bulanan</span>
+      <h1 style="margin:0;font-weight:800;font-size:clamp(40px,5vw,72px);line-height:1.1;letter-spacing:-1.5px">Film Horor 2 Menit</h1>
+      <span style="color:#A3A3A8">November 2026</span>
+    </div>
+  </div>
+</section>
+
+<div style="max-width:1248px;margin:0 auto;padding:0 24px clamp(72px,9vw,120px);display:grid;grid-template-columns:{{ layoutCols }};gap:clamp(32px,4vw,56px);align-items:start">
+  <div style="min-width:0;display:flex;flex-direction:column;gap:40px">
+    <div role="tablist" style="display:flex;gap:4px;padding:4px;border-radius:999px;background:#1B1B1D;border:1px solid #2F2F33;align-self:flex-start;max-width:100%;overflow-x:auto;scrollbar-width:none">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4"><button role="tab" aria-selected="{{ t.on }}" onClick="{{ t.onClick }}" style="flex:none;height:44px;padding:0 20px;border:0;border-radius:999px;background:{{ t.bg }};color:{{ t.color }};font-size:15px;font-weight:600;cursor:pointer;white-space:nowrap">{{ t.label }}</button></sc-for>
+    </div>
+
+    <sc-if value="{{ tabTentang }}" hint-placeholder-val="{{ true }}">
+      <div data-screen-label="Tab Tentang" style="display:flex;flex-direction:column;gap:20px;max-width:720px">
+        <h2 style="margin:0;font-weight:800;font-size:clamp(28px,2.6vw,36px);line-height:1.2;letter-spacing:-.8px">Tentang festival</h2>
+        <p style="margin:0;color:#D4D4D8">Festival bulanan untuk film horor berdurasi maksimal dua menit. Kami mencari karya yang membangun ketegangan dengan cepat dan meninggalkan kesan setelah layar gelap.</p>
+        <p style="margin:0;color:#A3A3A8">Karya terpilih ditayangkan di GV Apps dan berkesempatan masuk ke IFI Film Festival tahunan. Kategori: fiksi pendek, live action atau animasi.</p>
+      </div>
+    </sc-if>
+    <sc-if value="{{ tabSyarat }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Tab Syarat" style="display:flex;flex-direction:column;gap:20px;max-width:720px">
+        <h2 style="margin:0;font-weight:800;font-size:clamp(28px,2.6vw,36px);line-height:1.2;letter-spacing:-.8px">Syarat ikut</h2>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ rules }}" as="r" hint-placeholder-count="5"><li style="display:flex;gap:14px;padding:16px 20px;border-radius:20px;background:#1B1B1D;border:1px solid #2F2F33;font-size:16px"><span style="flex:none;width:24px;height:24px;border-radius:999px;background:#2F2F33;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800">✓</span>{{ r }}</li></sc-for>
+        </ul>
+      </div>
+    </sc-if>
+    <sc-if value="{{ tabTimeline }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Tab Timeline" style="display:flex;flex-direction:column;gap:24px;max-width:720px">
+        <h2 style="margin:0;font-weight:800;font-size:clamp(28px,2.6vw,36px);line-height:1.2;letter-spacing:-.8px">Timeline</h2>
+        <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column">
+          <sc-for list="{{ timeline }}" as="tl" hint-placeholder-count="5">
+            <li style="position:relative;display:flex;gap:20px;padding-bottom:32px">
+              <sc-if value="{{ tl.hasLine }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;left:9px;top:20px;bottom:0;width:2px;background:{{ tl.line }}"></span></sc-if>
+              <span style="flex:none;width:20px;height:20px;border-radius:999px;background:{{ tl.dot }};border:{{ tl.ring }}"></span>
+              <div style="display:flex;flex-direction:column;gap:2px;margin-top:-3px"><strong style="font-size:18px;font-weight:700">{{ tl.title }}</strong><span style="font-size:15px;color:#A3A3A8">{{ tl.date }}</span></div>
+            </li>
+          </sc-for>
+        </ol>
+      </div>
+    </sc-if>
+    <sc-if value="{{ tabGaleri }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Tab Galeri" style="display:flex;flex-direction:column;gap:24px">
+        <h2 style="margin:0;font-weight:800;font-size:clamp(28px,2.6vw,36px);line-height:1.2;letter-spacing:-.8px">Galeri karya</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:20px">
+          <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="6">
+            <button onClick="{{ g.play }}" style="all:unset;cursor:pointer;display:flex;flex-direction:column;gap:10px">
+              <div style="position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:{{ g.bg }};display:flex;align-items:center;justify-content:center">
+                <span style="width:56px;height:56px;border-radius:999px;background:rgba(17,17,17,.8);display:flex;align-items:center;justify-content:center"><span style="width:0;height:0;margin-left:4px;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:14px solid #FFFFFF"></span></span>
+                <span style="position:absolute;right:10px;bottom:10px;padding:2px 10px;border-radius:999px;background:rgba(17,17,17,.8);font-size:12px;font-weight:600">{{ g.dur }}</span>
+              </div>
+              <div style="display:flex;flex-direction:column"><strong style="font-size:16px;font-weight:700">{{ g.title }}</strong><span style="font-size:14px;color:#A3A3A8">{{ g.by }}</span></div>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+
+  <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+    <aside style="position:sticky;top:104px;padding:28px;border-radius:24px;background:#1B1B1D;border:1px solid #2F2F33;display:flex;flex-direction:column;gap:4px">
+      <span style="font-size:20px;font-weight:700;letter-spacing:-.3px;margin-bottom:8px">Ringkasan</span>
+      <sc-for list="{{ summary }}" as="s" hint-placeholder-count="4">
+        <div style="display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid #2F2F33;font-size:15px"><span style="color:#A3A3A8">{{ s.k }}</span><strong style="font-weight:700;text-align:right">{{ s.v }}</strong></div>
+      </sc-for>
+      <button onClick="{{ gvSubmit }}" style="margin-top:20px;height:52px;border:0;border-radius:999px;background:#E11D2E;color:#FFFFFF;font-weight:600;font-size:16px;cursor:pointer" style-hover="background:#F23A49" style-active="background:#B5121F">Kirim karya lewat GV Apps</button>
+      <span style="font-size:13px;color:#A3A3A8;text-align:center;margin-top:8px">Karya ditayangkan lewat embed, bukan streaming</span>
+    </aside>
+  </sc-if>
+</div>
+
+<sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:12px;right:12px;bottom:12px;z-index:40;padding:10px 10px 10px 20px;border-radius:999px;background:rgba(27,27,29,.92);backdrop-filter:blur(14px);border:1px solid #2F2F33;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 12px 32px rgba(0,0,0,.5)">
+    <div style="display:flex;flex-direction:column;line-height:1.3;min-width:0"><span style="font-size:12px;color:#A3A3A8">Tenggat</span><strong style="font-size:14px;font-weight:700;white-space:nowrap">30 Nov 2026</strong></div>
+    <button onClick="{{ gvSubmit }}" style="flex:none;height:48px;padding:0 22px;border:0;border-radius:999px;background:#E11D2E;color:#FFFFFF;font-weight:600;font-size:15px;cursor:pointer;white-space:nowrap">Kirim karya</button>
+  </div>
+</sc-if>
+
+<dc-import name="IFI Footer" hint-size="100%,420px"></dc-import>
+
+<sc-if value="{{ videoOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeVideo }}" style="position:fixed;inset:0;z-index:100;background:rgba(17,17,17,.9);display:flex;align-items:center;justify-content:center;padding:24px">
+    <div onClick="{{ stop }}" style="position:relative;width:100%;max-width:960px;aspect-ratio:16/9;border-radius:24px;background:#1B1B1D;border:1px solid #2F2F33;display:flex;align-items:center;justify-content:center;color:#A3A3A8;font-size:15px">
+      <button onClick="{{ closeVideo }}" aria-label="Tutup" style="position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:999px;border:0;background:#2A2A2D;color:#FFFFFF;font-size:20px;cursor:pointer">×</button>
+      Embed video YouTube atau GV Apps
+    </div>
+  </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: 1440, tab: 'Tentang', video: false };
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onResize); this.onResize();
+    const h = (window.location.hash || '').replace('#', '');
+    const map = { tentang: 'Tentang', syarat: 'Syarat', timeline: 'Timeline', galeri: 'Galeri karya' };
+    if (map[h]) this.setState({ tab: map[h] });
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  renderVals() {
+    const P = ['linear-gradient(160deg,#4A4A4F 0%,#26262A 55%,#151517 100%)', 'linear-gradient(200deg,#3A3A3E 0%,#1F1F22 60%,#121213 100%)', 'linear-gradient(170deg,#55555A 0%,#2B2B2F 50%,#141416 100%)', 'linear-gradient(150deg,#45454A 0%,#242427 60%,#131314 100%)'];
+    const desktop = this.state.w >= 960;
+    const tab = this.state.tab;
+    const tl = [['Pendaftaran dibuka', '1 November 2026', 1], ['Batas kirim karya', '30 November 2026', 0], ['Penjurian', '1 sampai 10 Desember 2026', 0], ['Pengumuman pemenang', '15 Desember 2026', 0], ['Penayangan di GV Apps', 'Mulai 20 Desember 2026', 0]];
+    return {
+      desktop, mobile: !desktop, bottomPad: desktop ? '0px' : '84px',
+      layoutCols: desktop ? 'minmax(0,1fr) 360px' : '1fr',
+      tabs: ['Tentang', 'Syarat', 'Timeline', 'Galeri karya'].map(t => ({ label: t, on: t === tab, onClick: () => this.setState({ tab: t }), bg: t === tab ? '#FFFFFF' : 'transparent', color: t === tab ? '#111111' : '#A3A3A8' })),
+      tabTentang: tab === 'Tentang', tabSyarat: tab === 'Syarat', tabTimeline: tab === 'Timeline', tabGaleri: tab === 'Galeri karya',
+      rules: ['Durasi karya maksimal 2 menit, termasuk kredit', 'Karya orisinal dan belum pernah menang di festival lain', 'Satu peserta boleh mengirim maksimal 2 karya', 'Format video MP4, resolusi minimal 1080p', 'Pengiriman karya hanya lewat GV Apps'],
+      timeline: tl.map((t, i) => ({ title: t[0], date: t[1], hasLine: i < tl.length - 1, dot: t[2] ? '#E11D2E' : '#111111', ring: t[2] ? '0' : (i === 1 ? '2px solid #FFFFFF' : '2px solid #5C5C61'), line: t[2] ? '#E11D2E' : '#2F2F33' })),
+      gallery: Array.from({ length: 6 }, (_, i) => ({ title: 'Judul karya peserta', by: 'Nama kreator', dur: ['1:58', '2:00', '1:45', '1:30', '1:59', '2:00'][i], bg: P[i % P.length], play: () => { (window.dataLayer = window.dataLayer || []).push({ event: 'video_play' }); this.setState({ video: true }); } })),
+      summary: [{ k: 'Durasi karya', v: 'Maks. 2 menit' }, { k: 'Tenggat', v: '30 Nov 2026' }, { k: 'Hadiah', v: 'Rp10 juta + tayang' }, { k: 'Biaya', v: 'Gratis' }],
+      gvSubmit: () => window.dispatchEvent(new CustomEvent('ifi:gv', { detail: 'submit' })),
+      videoOpen: this.state.video, closeVideo: () => this.setState({ video: false }), stop: (e) => e.stopPropagation()
+    };
+  }
+}
+</script>
+</body>
+</html>

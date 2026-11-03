@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#111111;color:#FFFFFF;font-family:'Plus Jakarta Sans',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#FFFFFF;text-decoration:none}
+a:hover{color:#F23A49}
+button,input{font-family:inherit}
+</style>
+</helmet>
+
+<div style="position:relative;background:#111111;color:#FFFFFF;font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(16px,1.25vw,18px);line-height:1.6;overflow-x:hidden">
+
+<dc-import name="IFI Navbar" active="" hint-size="100%,1px"></dc-import>
+
+<!-- 02 HERO -->
+<section id="top" data-screen-label="02 Hero" style="position:relative;min-height:max(760px,100vh);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(140px,16vh,180px) 24px 40px;overflow:hidden;isolation:isolate">
+  <img src="assets/hero-montage.png" alt="" aria-hidden="true" style="position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center">
+  <div style="position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse 60% 55% at 50% 48%,rgba(17,17,17,.82) 0%,rgba(17,17,17,.55) 60%,rgba(17,17,17,.35) 100%)"></div>
+  <div style="position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(17,17,17,.6) 0%,rgba(17,17,17,0) 22%,rgba(17,17,17,0) 62%,#111111 100%)"></div>
+  <div style="flex:1;display:flex;align-items:center;justify-content:center;width:100%">
+    <div style="max-width:880px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px">
+      <span style="display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:999px;background:#2A1416;color:#FF8A94;font-size:13px;font-weight:600;white-space:nowrap"><span style="width:6px;height:6px;border-radius:999px;background:#E11D2E"></span>Koperasi Film Indonesia</span>
+      <h1 style="margin:0;font-weight:800;font-size:clamp(40px,5vw,72px);line-height:1.1;letter-spacing:-1.5px;text-wrap:balance">Film Indonesia, kita yang tentukan</h1>
+      <p style="margin:0;max-width:640px;color:#D4D4D8;text-wrap:pretty">Indonesia Films Initiative mengajak kamu ikut memenuhi layar tonton dengan film karya anak bangsa yang berkualitas dan menginspirasi. Jadi member, pilih film yang diproduksi, lalu nonton hasilnya di bioskop.</p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:4px">
+        <button onClick="{{ gvJoin }}" style="flex:none;height:52px;padding:0 28px;border:0;border-radius:999px;background:#E11D2E;color:#FFFFFF;font-weight:600;font-size:16px;cursor:pointer;white-space:nowrap" style-hover="background:#F23A49" style-active="background:#B5121F">Jadi Member IFI</button>
+        <button onClick="{{ gvLogin }}" style="flex:none;height:52px;padding:0 28px;border:0;border-radius:999px;background:#2A2A2D;color:#FFFFFF;font-weight:600;font-size:16px;cursor:pointer;white-space:nowrap" style-hover="background:#3A3A3E">Masuk lewat GV Apps</button>
+      </div>
+    </div>
+  </div>
+  <div style="width:100%;max-width:1200px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px 40px;padding-top:48px">
+    <span style="font-size:13px;font-weight:600;color:#A3A3A8">Didukung oleh</span>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 40px">
+      <img src="assets/logo-gv.png" alt="Global Village" style="height:44px;width:auto;display:block">
+      <img src="assets/logo-nu.png" alt="Nahdlatul Ulama" style="height:44px;width:auto;display:block">
+      <img src="assets/logo-pfn.png" alt="PFN Produksi Film Negara" style="height:44px;width:auto;display:block">
+    </div>
+  </div>
+</section>
+
+<!-- 03 MENGAPA IFI -->
+<section id="tentang" data-screen-label="03 Mengapa IFI" style="padding:clamp(72px,9vw,120px) 16px">
+  <div style="position:relative;max-width:1232px;margin:0 auto;border-radius:clamp(24px,2.2vw,32px);overflow:hidden;background:#141214;border:1px solid #2F2F33;isolation:isolate;display:grid;grid-template-columns:{{ whySplit }};min-height:{{ whyMinH }}">
+    <div style="position:{{ whyImgPos }};inset:0;z-index:-2;aspect-ratio:{{ whyImgRatio }};overflow:hidden">
+      <img src="assets/still-sineas.jpg" alt="Sineas memegang kamera film klasik" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ whyObjPos }};transform:scaleX(-1);display:block">
+    </div>
+    <div style="position:absolute;inset:0;z-index:-1;background:{{ whyShade }};pointer-events:none"></div>
+    <div style="grid-column:{{ whyTextCol }};display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:20px;padding:clamp(28px,5vw,72px)">
+      <span style="display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:#2A1416;color:#FF8A94;font-size:13px;font-weight:600"><span style="width:6px;height:6px;border-radius:999px;background:#E11D2E"></span>Mengapa IFI</span>
+      <h2 style="margin:0;max-width:520px;font-weight:800;font-size:clamp(32px,3.34vw,48px);line-height:1.15;letter-spacing:-1px;text-wrap:balance">Layar kita butuh lebih banyak cerita kita</h2>
+      <p style="margin:0;max-width:460px;color:#D4D4D8;text-wrap:pretty">Generasi muda kita lebih banyak menonton budaya pop negara lain. Box office film lokal memang sedang bangkit lewat Agak Laen dan Jumbo, tapi film yang benar-benar menginspirasi masih sedikit. IFI hadir supaya pembuat film, penonton, investor, dan layar tonton saling mendukung.</p>
+      <ol style="list-style:none;margin:8px 0 12px;padding:0;width:100%;max-width:460px;display:flex;flex-direction:column">
+        <sc-for list="{{ stills }}" as="s" hint-placeholder-count="3">
+          <li style="display:flex;align-items:center;gap:16px;padding:14px 0;border-top:1px solid rgba(255,255,255,.12)">
+            <span style="flex:none;width:36px;height:36px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums">{{ s.n }}</span>
+            <span style="font-size:17px;font-weight:600;line-height:1.35">{{ s.cap }}</span>
+          </li>
+        </sc-for>
+      </ol>
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        <button onClick="{{ gvJoin }}" style="height:52px;padding:0 28px;border:0;border-radius:999px;background:#E11D2E;color:#FFFFFF;font-weight:600;font-size:16px;cursor:pointer;white-space:nowrap" style-hover="background:#F23A49" style-active="background:#B5121F">Jadi Member IFI</button>
+        <a href="Tentang%20IFI.dc.html" style="height:52px;padding:0 24px;border-radius:999px;background:#2A2A2D;display:flex;align-items:center;font-weight:600;font-size:16px;color:#FFFFFF;white-space:nowrap" style-hover="background:#3A3A3E;color:#FFFFFF">Tentang IFI</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 CARA KERJA VOTING -->
+<section data-screen-label="04 Cara kerja voting" style="padding:clamp(72px,9vw,120px) 0">
+  <div style="max-width:1248px;margin:0 auto;padding:0 24px;display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 48px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-size:13px;font-weight:600;color:#A3A3A8">Cara kerja voting</span>
+        <h2 style="margin:0;max-width:620px;font-weight:800;font-size:clamp(32px,3.34vw,48px);line-height:1.15;letter-spacing:-1px;text-wrap:balance">Dari suaramu sampai ke layar bioskop</h2>
+      </div>
+      <span style="font-size:14px;color:#A3A3A8">Semua langkah berjalan di GV Apps</span>
+    </div>
+    <ol style="list-style:none;margin:0;padding:0;border-radius:24px;overflow:hidden;background:#2F2F33;border:1px solid #2F2F33;display:grid;grid-template-columns:{{ stepCols }};gap:1px">
+      <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+        <li style="position:relative;display:flex;align-items:center;gap:16px;padding:20px 22px;background:{{ st.bg }}">
+          <span style="flex:none;width:56px;height:56px;border-radius:16px;background:radial-gradient(70% 60% at 50% 45%,#2F2F33 0%,#1F1F22 100%);display:flex;align-items:center;justify-content:center"><img src="{{ st.icon }}" alt="" aria-hidden="true" style="width:40px;height:auto;filter:drop-shadow(0 6px 8px rgba(0,0,0,.45))"></span>
+          <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+            <span style="font-size:12px;font-weight:700;color:{{ st.numColor }}">Langkah {{ st.n }}</span>
+            <strong style="font-size:16px;font-weight:700;line-height:1.3">{{ st.title }}</strong>
+          </div>
+          <sc-if value="{{ st.hasLine }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="position:absolute;right:-13px;top:50%;transform:translateY(-50%);z-index:1;width:24px;height:24px;border-radius:999px;background:#111111;border:1px solid #2F2F33;display:flex;align-items:center;justify-content:center;font-size:13px;color:#A3A3A8">›</span></sc-if>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+  <div style="max-width:1248px;margin:48px auto 0;display:flex;flex-direction:column;gap:16px">
+    <div style="padding:0 24px;display:flex;justify-content:space-between;align-items:center;gap:16px">
+      <span style="font-size:20px;font-weight:700;line-height:1.3;letter-spacing:-.3px">Kandidat film untuk di-vote</span>
+      <div style="display:flex;align-items:center;gap:8px">
+        <a href="#" style="font-size:14px;font-weight:600;color:#A3A3A8;margin-right:8px;white-space:nowrap" style-hover="color:#FFFFFF">Lihat semua</a>
+        <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+          <button onClick="{{ scrollPrev }}" aria-label="Geser ke kiri" style="width:44px;height:44px;border-radius:999px;border:0;background:#2A2A2D;color:#FFFFFF;font-size:18px;cursor:pointer" style-hover="background:#3A3A3E">‹</button>
+          <button onClick="{{ scrollNext }}" aria-label="Geser ke kanan" style="width:44px;height:44px;border-radius:999px;border:0;background:#2A2A2D;color:#FFFFFF;font-size:18px;cursor:pointer" style-hover="background:#3A3A3E">›</button>
+        </sc-if>
+      </div>
+    </div>
+    <div ref="{{ rowRef }}" style="display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:24px;padding:4px 24px 16px;scrollbar-width:none">
+      <sc-for list="{{ films }}" as="f" hint-placeholder-count="6">
+        <article onMouseEnter="{{ f.enter }}" onMouseLeave="{{ f.leave }}" style="flex:none;width:clamp(180px,17vw,232px);scroll-snap-align:start;position:relative;aspect-ratio:2/3;border-radius:20px;overflow:hidden;background:#1B1B1D;transform:{{ f.scale }};transition:transform .25s">
+          <img src="{{ f.src }}" alt="Poster {{ f.title }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:block">
+          <sc-if value="{{ f.hasImg }}" hint-placeholder-val="{{ false }}"><img src="{{ f.img }}" alt="{{ f.title }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></sc-if>
+          <span style="position:absolute;top:12px;left:12px;padding:4px 12px;border-radius:999px;background:rgba(17,17,17,.8);font-size:13px;font-weight:600;white-space:nowrap">{{ f.genre }}</span>
+          <div style="position:absolute;left:0;right:0;bottom:0;padding:72px 16px 16px;display:flex;flex-direction:column;gap:10px;background:linear-gradient(180deg,rgba(17,17,17,0),rgba(17,17,17,.8) 45%,rgba(17,17,17,.92))">
+            <span style="font-size:18px;font-weight:700;line-height:1.3">{{ f.title }}</span>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div style="display:flex;justify-content:space-between;font-size:13px"><span style="color:#A3A3A8">{{ f.voters }} voter</span><strong style="font-weight:700">{{ f.pctLabel }}</strong></div>
+              <div style="height:6px;border-radius:999px;background:#2F2F33;overflow:hidden"><div style="height:100%;width:{{ f.pctLabel }};background:#E11D2E;border-radius:999px"></div></div>
+            </div>
+            <div style="overflow:hidden;max-height:{{ f.btnMax }};opacity:{{ f.btnOpacity }};transition:max-height .25s,opacity .2s">
+              <button onClick="{{ gvVote }}" style="margin-top:4px;height:40px;padding:0 16px;border:0;border-radius:999px;background:#E11D2E;color:#FFFFFF;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap" style-hover="background:#F23A49">Vote di GV Apps</button>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- 06 MEMBERSHIP -->
+<section id="membership" data-screen-label="06 Membership" style="padding:clamp(48px,6vw,72px) 16px">
+  <div style="max-width:1232px;margin:0 auto;border-radius:clamp(24px,2.2vw,32px);background:#1B1B1D;border:1px solid #2F2F33;padding:clamp(28px,5vw,72px)">
+    <sc-if value="{{ singleTier }}" hint-placeholder-val="{{ true }}">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(40px,5vw,72px);align-items:center">
+        <div style="display:flex;flex-direction:column;gap:clamp(32px,4vw,48px)">
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <span style="font-size:13px;font-weight:600;color:#A3A3A8">Membership</span>
+            <h2 style="margin:0;max-width:480px;font-weight:800;font-size:clamp(32px,3.34vw,48px);line-height:1.15;letter-spacing:-1px;text-wrap:balance">Satu kartu untuk semua benefit</h2>
+          </div>
+          <div style="position:relative;width:100%;max-width:540px;aspect-ratio:1.05;margin:8px auto 0">
+            <div style="position:absolute;left:0;top:2%;width:74%;aspect-ratio:1235/1109">
+              <div aria-hidden="true" style="position:absolute;left:12%;right:20%;bottom:4%;height:10%;border-radius:999px;background:radial-gradient(closest-side,rgba(0,0,0,.7),rgba(0,0,0,0))"></div>
+              <img src="assets/ifi-card.png" alt="IFI Membership Card" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block">
+              <span aria-hidden="true" style="position:absolute;left:60%;top:30%;font-size:clamp(18px,2.6vw,34px);font-weight:800;letter-spacing:-1px;line-height:1;color:#D4A537;transform:rotate(-15deg) skewX(-4deg)">IFI</span>
+            </div>
+            <div aria-label="Tampilan pembayaran GV Pay di GV Apps" style="position:absolute;right:2%;bottom:2%;width:40%;aspect-ratio:9/16;border-radius:clamp(24px,3vw,36px);background:#0A0A0A;border:clamp(4px,.6vw,7px) solid #2F2F33;box-shadow:0 40px 70px rgba(0,0,0,.65);padding:clamp(18px,2.4vw,28px) clamp(10px,1.2vw,14px) clamp(10px,1.2vw,14px);display:flex;flex-direction:column;gap:clamp(6px,.8vw,10px);transform:rotate(4deg)">
+              <span style="position:absolute;top:7px;left:50%;transform:translateX(-50%);width:34%;height:8px;border-radius:999px;background:#2F2F33"></span>
+              <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:clamp(9px,.8vw,11px);font-weight:700">GV Apps</span><span style="font-size:clamp(8px,.7vw,10px);color:#A3A3A8">Pembayaran</span></div>
+              <div style="padding:clamp(8px,1vw,12px);border-radius:14px;background:#1B1B1D;display:flex;flex-direction:column;gap:2px">
+                <span style="font-size:clamp(8px,.7vw,10px);line-height:1.3;color:#A3A3A8">Iuran Member IFI</span>
+                <strong style="font-size:clamp(14px,1.5vw,20px);line-height:1.2;font-weight:800;letter-spacing:-.5px">Rp100.000</strong>
+              </div>
+              <span style="font-size:clamp(8px,.7vw,10px);color:#A3A3A8;margin-top:2px">Metode pembayaran</span>
+              <div style="padding:clamp(7px,.9vw,10px);border-radius:14px;background:#1B1B1D;border:1.5px solid #E11D2E;display:flex;align-items:center;gap:8px">
+                <span style="flex:none;width:clamp(20px,2.2vw,28px);height:clamp(20px,2.2vw,28px);border-radius:8px;background:#FFFFFF;color:#111111;display:flex;align-items:center;justify-content:center;font-size:clamp(7px,.65vw,9px);font-weight:800">GV</span>
+                <div style="flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.25"><strong style="font-size:clamp(9px,.8vw,11px);line-height:1.3;font-weight:700">GV Pay</strong><span style="font-size:clamp(7px,.65vw,9px);line-height:1.3;color:#A3A3A8">Saldo tersedia</span></div>
+                <span style="flex:none;width:12px;height:12px;border-radius:999px;border:3.5px solid #E11D2E;background:#FFFFFF"></span>
+              </div>
+              <div style="flex:1;min-height:4px"></div>
+              <div style="height:clamp(28px,3vw,38px);border-radius:999px;background:#E11D2E;display:flex;align-items:center;justify-content:center;font-size:clamp(9px,.8vw,11px);font-weight:700">Bayar dengan GV Pay</div>
+            </div>
+            <div style="position:absolute;left:4%;bottom:6%;padding:10px 16px 10px 10px;border-radius:999px;background:#FFFFFF;color:#111111;display:flex;align-items:center;gap:10px;box-shadow:0 20px 40px rgba(0,0,0,.5)">
+              <span style="flex:none;width:30px;height:30px;border-radius:999px;background:#E11D2E;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800">✓</span>
+              <div style="display:flex;flex-direction:column;line-height:1.25"><strong style="font-size:13px;font-weight:700">Pembayaran berhasil</strong><span style="font-size:12px;color:#5C5C61">IFI Card langsung aktif</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:clamp(24px,3vw,40px);border-radius:24px;background:#242427;display:flex;flex-direction:column;gap:28px">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+            <strong style="font-size:18px;font-weight:700">Member IFI</strong>
+            <span style="padding:4px 12px;border-radius:999px;background:#2A1416;color:#FF8A94;font-size:13px;font-weight:600;white-space:nowrap">Satu harga, semua benefit</span>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+            <span style="font-size:clamp(52px,5.6vw,80px);font-weight:800;line-height:1;letter-spacing:-2.5px">Rp100.000</span>
+            <span style="font-size:15px;color:#A3A3A8">iuran member</span>
+          </div>
+          <ul style="list-style:none;margin:0;padding:24px 0;border-top:1px solid #2F2F33;border-bottom:1px solid #2F2F33;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px 20px">
+            <sc-for list="{{ checklist }}" as="c" hint-placeholder-count="5">
+              <li style="display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="flex:none;width:22px;height:22px;border-radius:999px;background:#FFFFFF;color:#111111;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800">✓</span>{{ c }}</li>
+            </sc-for>
+          </ul>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap"><span><strong style="font-size:22px;font-weight:800;letter-spacing:-.5px">{{ memberLabel }}</strong> <span style="font-size:14px;color:#A3A3A8">dari 100.000 member</span></span><span style="font-size:14px;color:#A3A3A8">{{ memberPct }}</span></div>
+            <div style="height:8px;border-radius:999px;background:#2F2F33;overflow:hidden"><div style="height:100%;width:{{ memberPct }};background:#E11D2E;border-radius:999px"></div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <button onClick="{{ gvJoin }}" style="height:56px;padding:0 28px;border:0;border-radius:999px;background:#E11D2E;color:#FFFFFF;font-weight:600;font-size:16px;cursor:pointer;white-space:nowrap" style-hover="background:#F23A49" style-active="background:#B5121F">Jadi Member IFI</button>
+            <div style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;font-size:13px;color:#A3A3A8">
+              <span>Bayar lewat</span>
+              <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 12px 4px 4px;border-radius:999px;background:#111111;border:1px solid #2F2F33;color:#FFFFFF;font-weight:700"><span style="width:20px;height:20px;border-radius:999px;background:#FFFFFF;color:#111111;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:800">GV</span>GV Pay</span>
+              <span>di GV Apps</span>
+            </div>
+          </div>
+          <ol style="list-style:none;margin:0;padding:16px;border-radius:20px;background:#1B1B1D;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+            <sc-for list="{{ payFlow }}" as="pf" hint-placeholder-count="3">
+              <li style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px">
+                <span style="width:28px;height:28px;border-radius:999px;background:#2A2A2D;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">{{ pf.n }}</span>
+                <span style="font-size:13px;line-height:1.35;color:#D4D4D8">{{ pf.t }}</span>
+              </li>
+            </sc-for>
+          </ol>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ multiTier }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:40px">
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px">
+          <span style="font-size:13px;font-weight:600;color:#A3A3A8">Membership</span>
+          <h2 style="margin:0;font-weight:800;font-size:clamp(32px,3.34vw,48px);line-height:1.15;letter-spacing:-1px">Pilih cara kamu ikut</h2>
+          <span style="font-size:13px;color:#A3A3A8">Nama tier dan harga masih placeholder</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px;align-items:stretch">
+          <sc-for list="{{ tiers }}" as="t" hint-placeholder-count="3">
+            <div style="position:relative;padding:32px;border-radius:24px;background:#242427;border:{{ t.border }};display:flex;flex-direction:column;gap:20px">
+              <sc-if value="{{ t.popular }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:-14px;left:32px;padding:5px 14px;border-radius:999px;background:#E11D2E;font-size:13px;font-weight:600">Paling populer</span></sc-if>
+              <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:13px;font-weight:600;color:#A3A3A8">{{ t.name }}</span><span style="font-size:40px;font-weight:800;letter-spacing:-1.5px;line-height:1.1">{{ t.price }}</span></div>
+              <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;flex:1">
+                <sc-for list="{{ t.items }}" as="c"><li style="display:flex;gap:10px;font-size:15px"><span style="flex:none;width:20px;height:20px;margin-top:2px;border-radius:999px;background:#2F2F33;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800">✓</span>{{ c }}</li></sc-for>
+              </ul>
+              <button onClick="{{ gvJoin }}" style="height:52px;border:0;border-radius:999px;background:{{ t.btnBg }};color:#FFFFFF;font-weight:600;font-size:16px;cursor:pointer">Jadi Member IFI</button>
+            </div>
+          </sc-for>
+        </div>
+        <div style="max-width:560px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;justify-content:space-between;font-size:14px"><span><strong style="font-weight:700">{{ memberLabel }}</strong> <span style="color:#A3A3A8">dari 100.000 member</span></span><span style="color:#A3A3A8">Pembayaran lewat GV Pay di GV Apps</span></div>
+          <div style="height:8px;border-radius:999px;background:#2F2F33;overflow:hidden"><div style="height:100%;width:{{ memberPct }};background:#E11D2E;border-radius:999px"></div></div>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+</section>
+
+<!-- 07 FESTIVAL -->
+<section id="festival" data-screen-label="07 IFI Film Festival" style="padding:clamp(72px,9vw,120px) 24px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(32px,4vw,48px)">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px 64px">
+      <div style="flex:1 1 520px;display:flex;flex-direction:column;gap:16px">
+        <span style="font-size:13px;font-weight:600;color:#A3A3A8">IFI Film Festival</span>
+        <h2 style="margin:0;max-width:640px;font-weight:800;font-size:clamp(32px,3.34vw,48px);line-height:1.15;letter-spacing:-1px;text-wrap:balance">Festival setiap minggu, setiap bulan, setiap tahun</h2>
+      </div>
+      <a href="Festival.dc.html" style="flex:none;height:52px;padding:0 28px;border-radius:999px;background:#2A2A2D;display:flex;align-items:center;font-weight:600;font-size:16px;color:#FFFFFF;white-space:nowrap" style-hover="background:#3A3A3E;color:#FFFFFF">Lihat festival</a>
+    </div>
+
+    <div style="display:grid;grid-template-columns:{{ festCols }};gap:16px;align-items:stretch">
+      <article style="position:relative;min-height:clamp(420px,42vw,540px);border-radius:24px;overflow:hidden;background:#1B1B1D;border:1px solid #2F2F33;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,3vw,36px);isolation:isolate">
+        <img src="assets/fest-horor.png" alt="Poster festival Film Horor 2 Menit" style="position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:50% 30%">
+        <div style="position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(17,17,17,.55) 0%,rgba(17,17,17,.1) 30%,rgba(17,17,17,.55) 60%,#111111 100%)"></div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span style="display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:#E11D2E;font-size:13px;font-weight:600"><span style="width:6px;height:6px;border-radius:999px;background:#FFFFFF"></span>Sedang buka</span>
+          <span style="padding:6px 14px;border-radius:999px;background:rgba(17,17,17,.8);font-size:13px;font-weight:600">Festival bulanan</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <h3 style="margin:0;font-weight:800;font-size:clamp(32px,3.6vw,52px);line-height:1.05;letter-spacing:-1.5px">Film Horor 2 Menit</h3>
+            <span style="font-size:16px;color:#D4D4D8">Bikin penonton merinding dalam dua menit. Terbuka untuk siapa pun.</span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px">
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <span style="font-size:13px;font-weight:600;color:#A3A3A8">Tenggat dalam</span>
+              <div style="display:flex;gap:8px">
+                <sc-for list="{{ festCountdown }}" as="cd" hint-placeholder-count="3">
+                  <div style="min-width:64px;padding:10px 12px;border-radius:16px;background:rgba(17,17,17,.8);border:1px solid #2F2F33;display:flex;flex-direction:column;align-items:center;line-height:1.2"><strong style="font-size:24px;font-weight:800;letter-spacing:-.5px">{{ cd.v }}</strong><span style="font-size:12px;color:#A3A3A8">{{ cd.k }}</span></div>
+                </sc-for>
+              </div>
+            </div>
+            <a href="Festival%20Detail.dc.html" style="height:52px;padding:0 28px;border-radius:999px;background:#E11D2E;display:flex;align-items:center;font-weight:600;font-size:16px;color:#FFFFFF;white-space:nowrap" style-hover="background:#F23A49;color:#FFFFFF">Ikut festival</a>
+          </div>
+        </div>
+      </article>
+
+      <div style="padding:clamp(20px,2.4vw,28px);border-radius:24px;background:#1B1B1D;border:1px solid #2F2F33;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+          <strong style="font-size:20px;font-weight:700;letter-spacing:-.3px">Kalender festival</strong>
+          <div style="display:flex;gap:4px;padding:4px;border-radius:999px;background:#111111">
+            <sc-for list="{{ festChips }}" as="ch" hint-placeholder-count="3"><button onClick="{{ ch.onClick }}" style="height:36px;padding:0 14px;border-radius:999px;border:0;background:{{ ch.bg }};color:#FFFFFF;font-size:13px;font-weight:600;cursor:pointer">{{ ch.label }}</button></sc-for>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;flex:1">
+          <sc-for list="{{ schedule }}" as="sc" hint-placeholder-count="4">
+            <a href="Festival%20Detail.dc.html" style="display:flex;align-items:center;gap:14px;padding:14px;border-radius:20px;background:{{ sc.bg }};opacity:{{ sc.opacity }};color:#FFFFFF;transition:opacity .2s,background .2s" style-hover="background:#2A2A2D;color:#FFFFFF">
+              <span style="flex:none;width:52px;height:52px;border-radius:16px;background:#111111;border:1px solid #2F2F33;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1"><strong style="font-size:17px;font-weight:800">{{ sc.dur }}</strong><span style="font-size:10px;color:#A3A3A8">{{ sc.unit }}</span></span>
+              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><strong style="font-size:16px;font-weight:700;line-height:1.3">{{ sc.name }}</strong><span style="font-size:13px;color:#A3A3A8">{{ sc.when }}</span></div>
+              <span style="flex:none;padding:4px 12px;border-radius:999px;background:{{ sc.stBg }};color:{{ sc.stFg }};font-size:12px;font-weight:600;white-space:nowrap">{{ sc.status }}</span>
+            </a>
+          </sc-for>
+        </div>
+        <span style="font-size:13px;color:#A3A3A8">Karya dikirim dan ditayangkan lewat GV Apps.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 INDUSTRY HUB -->
+<section id="hub" data-screen-label="08 Film Industry Hub" style="padding:clamp(24px,3vw,48px) 16px">
+  <div style="max-width:1232px;margin:0 auto;border-radius:clamp(24px,2.2vw,32px);background:#1B1B1D;border:1px solid #2F2F33;overflow:hidden;display:grid;grid-template-columns:{{ hubMapCols }}">
+    <div style="padding:clamp(28px,4.4vw,56px);display:flex;flex-direction:column;justify-content:center;gap:28px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-size:13px;font-weight:600;color:#A3A3A8">Film Industry Hub</span>
+        <h2 style="margin:0;font-weight:800;font-size:clamp(32px,3.34vw,48px);line-height:1.15;letter-spacing:-1px;text-wrap:balance">Indonesia terlalu luas untuk lokasi yang itu-itu saja</h2>
+        <p style="margin:0;max-width:440px;font-size:16px;line-height:1.6;color:#A3A3A8;text-wrap:pretty">Banyak film memakai lokasi yang sama karena keterbatasan akses. Daftarkan lokasi atau keahlianmu supaya dikenali produser.</p>
+      </div>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;max-width:480px">
+        <li style="display:flex;align-items:center;gap:16px;padding:16px;border-radius:20px;background:#242427;border:1px solid #2F2F33">
+            <span style="flex:none;width:56px;height:56px;border-radius:16px;overflow:hidden;background:url(assets/hub-wae-rebo.png) center / cover no-repeat"></span>
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:8px">
+              <strong style="font-size:16px;font-weight:700;line-height:1.3">Lokasi syuting</strong>
+              <div style="display:flex;flex-wrap:wrap;gap:6px"><span style="padding:3px 10px;border-radius:999px;background:#111111;border:1px solid #2F2F33;font-size:12px;font-weight:600;color:#D4D4D8;white-space:nowrap">Pantai</span><span style="padding:3px 10px;border-radius:999px;background:#111111;border:1px solid #2F2F33;font-size:12px;font-weight:600;color:#D4D4D8;white-space:nowrap">Desa</span><span style="padding:3px 10px;border-radius:999px;background:#111111;border:1px solid #2F2F33;font-size:12px;font-weight:600;color:#D4D4D8;white-space:nowrap">Kota tua</span><span style="padding:3px 10px;border-radius:999px;background:#111111;border:1px solid #2F2F33;font-size:12px;font-weight:600;color:#D4D4D8;white-space:nowrap">Hutan</span></div>
+            </div>
+          </li>
+        <li style="display:flex;align-items:center;gap:16px;padding:16px;border-radius:20px;background:#242427;border:1px solid #2F2F33">
+            <span style="flex:none;width:56px;height:56px;border-radius:16px;overflow:hidden;background:url(assets/person-2.png) 72% 10% / auto 190% no-repeat #EDEDED"></span>
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:8px">
+              <strong style="font-size:16px;font-weight:700;line-height:1.3">Pekerja kreatif</strong>
+              <div style="display:flex;flex-wrap:wrap;gap:6px"><span style="padding:3px 10px;border-radius:999px;background:#111111;border:1px solid #2F2F33;font-size:12px;font-weight:600;color:#D4D4D8;white-space:nowrap">Penulis kritik film</span><span style="padding:3px 10px;border-radius:999px;background:#111111;border:1px solid #2F2F33;font-size:12px;font-weight:600;color:#D4D4D8;white-space:nowrap">Properti</span><span style="padding:3px 10px;border-radius:999px;background:#111111;border:1px solid #2F2F33;font-size:12px;font-weight:600;color:#D4D4D8;white-space:nowrap">Katering</span></div>
+            </div>
+          </li>
+      </ul>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px">
+        <a href="Daftar%20Listing.dc.html" style="height:52px;padding:0 28px;border-radius:999px;background:#E11D2E;display:flex;align-items:center;font-weight:600;font-size:16px;color:#FFFFFF;white-space:nowrap" style-hover="background:#F23A49;color:#FFFFFF">Daftarkan sekarang</a>
+        <a href="Industry%20Hub.dc.html" style="display:flex;align-items:center;gap:8px;font-weight:600;font-size:16px;color:#FFFFFF;white-space:nowrap" style-hover="color:#A3A3A8">Lihat semua lokasi<span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <div style="position:relative;background:#151517;border-left:{{ hubMapDivider }};border-top:{{ hubMapDividerT }};padding:clamp(24px,3.4vw,48px);display:flex;flex-direction:column;justify-content:center;gap:20px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;line-height:1.35"><strong style="font-size:15px;font-weight:700">Sebaran lokasi syuting</strong><span style="font-size:13px;color:#A3A3A8">16 lokasi di 9 provinsi</span></div>
+        <div style="display:flex;align-items:center;gap:16px;font-size:12px;color:#A3A3A8">
+          <span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:3px;background:#E11D2E"></span>Ada listing</span>
+          <span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:3px;background:#2A2A2D"></span>Belum ada</span>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(17,minmax(0,1fr));grid-template-rows:repeat(8,auto);gap:4px">
+        <sc-for list="{{ hubRegions }}" as="rg" hint-placeholder-count="7">
+          <span style="grid-column:{{ rg.col }};grid-row:{{ rg.row }};align-self:{{ rg.align }};justify-self:{{ rg.justify }};font-size:clamp(11px,.95vw,13px);font-weight:700;color:#D4D4D8;white-space:nowrap;line-height:1.2;padding:4px 0">{{ rg.name }}</span>
+        </sc-for>
+        <sc-for list="{{ hubTiles }}" as="t" hint-placeholder-count="38">
+          <a href="Industry%20Hub.dc.html" title="{{ t.title }}" style="grid-column:{{ t.col }};grid-row:{{ t.row }};aspect-ratio:1;border-radius:7px;background:{{ t.bg }};display:flex;align-items:center;justify-content:center;font-size:{{ t.fs }};font-weight:800;color:#FFFFFF;transition:transform .2s" style-hover="transform:scale(1.15)">{{ t.count }}</a>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ hubTop }}" as="p" hint-placeholder-count="4">
+          <a href="Industry%20Hub.dc.html" style="display:flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:#242427;font-size:13px;font-weight:600;color:#FFFFFF;white-space:nowrap" style-hover="background:#2F2F33;color:#FFFFFF">{{ p.name }}<span style="color:#A3A3A8">{{ p.n }}</span></a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 BUSINESS FACILITATING -->
+<section id="investor" data-screen-label="09 Business Facilitating" style="padding:clamp(72px,9vw,120px) 24px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:{{ invCols }};gap:clamp(32px,5vw,72px);align-items:center">
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-size:13px;font-weight:600;color:#A3A3A8">Untuk investor</span>
+        <h2 style="margin:0;font-weight:800;font-size:clamp(32px,3.34vw,48px);line-height:1.15;letter-spacing:-1px;text-wrap:balance">Siapa pun bisa jadi investor film</h2>
+        <p style="margin:0;max-width:440px;font-size:16px;line-height:1.6;color:#A3A3A8;text-wrap:pretty">Business Facilitator IFI membaca data film Indonesia, lalu menyarankan film yang layak didanai.</p>
+      </div>
+      <ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px">
+        <sc-for list="{{ investPoints }}" as="p" hint-placeholder-count="3">
+          <li style="display:flex;align-items:center;gap:8px">
+            <span style="display:flex;align-items:center;gap:8px;padding:8px 14px 8px 8px;border-radius:999px;background:#1B1B1D;border:1px solid #2F2F33;font-size:14px;font-weight:600;white-space:nowrap"><span style="width:24px;height:24px;border-radius:999px;background:{{ p.numBg }};display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">{{ p.n }}</span>{{ p.title }}</span>
+            <sc-if value="{{ p.hasArrow }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="color:#5C5C61">→</span></sc-if>
+          </li>
+        </sc-for>
+      </ol>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px">
+        <a href="Investor.dc.html" style="height:52px;padding:0 28px;border-radius:999px;background:#E11D2E;display:flex;align-items:center;font-weight:600;font-size:16px;color:#FFFFFF;white-space:nowrap" style-hover="background:#F23A49;color:#FFFFFF">Lihat insight</a>
+        <a href="Investor.dc.html#lead" style="display:flex;align-items:center;gap:8px;font-weight:600;font-size:16px;color:#FFFFFF;white-space:nowrap" style-hover="color:#A3A3A8">Hubungi tim IFI<span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:clamp(16px,2.4vw,28px);align-items:stretch;padding:clamp(16px,2vw,20px);border-radius:24px;background:#1B1B1D;border:1px solid #2F2F33;box-shadow:0 30px 70px rgba(0,0,0,.45)">
+        <img src="assets/poster-ada-hantu.png" alt="Ada Hantu di Campus!" style="flex:none;width:clamp(110px,13vw,160px);aspect-ratio:2/3;object-fit:cover;border-radius:16px;display:block">
+        <div style="flex:1;min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:16px;padding:4px 0">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;flex-wrap:wrap;gap:6px"><span style="padding:3px 10px;border-radius:999px;background:#2A1416;color:#FF8A94;font-size:12px;font-weight:600;white-space:nowrap">Paling berpeluang</span><span style="padding:3px 10px;border-radius:999px;background:#2A2A2D;color:#A3A3A8;font-size:12px;font-weight:600;white-space:nowrap">Ilustrasi</span></div>
+            <strong style="font-size:clamp(20px,1.9vw,26px);font-weight:800;line-height:1.2;letter-spacing:-.5px">Ada Hantu di Campus!</strong>
+            <span style="font-size:14px;color:#A3A3A8">Horor komedi, latar kampus</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding-top:16px;border-top:1px solid #2F2F33">
+            <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:12px;color:#A3A3A8">Skor peluang</span><strong style="font-size:clamp(26px,2.4vw,32px);font-weight:800;letter-spacing:-1px;line-height:1">78<span style="font-size:13px;font-weight:600;color:#A3A3A8;letter-spacing:0"> /100</span></strong><div style="height:4px;border-radius:999px;background:#2F2F33;overflow:hidden"><div style="width:78%;height:100%;background:#E11D2E;border-radius:999px"></div></div></div>
+            <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:12px;color:#A3A3A8">Perkiraan penonton</span><strong style="font-size:clamp(26px,2.4vw,32px);font-weight:800;letter-spacing:-1px;line-height:1">1,2 jt</strong></div>
+          </div>
+        </div>
+      </div>
+      <span style="padding-left:4px;font-size:12px;color:#5C5C61">Saran ini membantu mengurangi risiko dengan data, bukan jaminan hasil.</span>
+    </div>
+  </div>
+</section>
+
+<!-- 10 BERSAMA NU -->
+<section id="nu" data-screen-label="10 Bersama NU" style="padding:clamp(24px,3vw,48px) 16px">
+  <div style="position:relative;max-width:1232px;margin:0 auto;border-radius:clamp(24px,2.2vw,32px);overflow:hidden;background:#0D3524;isolation:isolate">
+    <div aria-hidden="true" style="position:absolute;inset:0;z-index:-1;opacity:.5;background:radial-gradient(circle at 50% -10%,rgba(217,180,90,.22) 0%,rgba(217,180,90,0) 45%),repeating-radial-gradient(circle at 50% 0%,rgba(255,255,255,.035) 0 1px,transparent 1px 56px)"></div>
+    <div style="padding:clamp(48px,7vw,96px) clamp(24px,5vw,72px) clamp(32px,4vw,56px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:24px">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <span style="width:clamp(88px,9vw,112px);height:clamp(88px,9vw,112px);border-radius:999px;background:#FFFFFF;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px rgba(242,230,196,.12),0 20px 50px rgba(0,0,0,.35)"><img src="assets/logo-nu.png" alt="Nahdlatul Ulama" style="width:72%;height:auto;display:block"></span>
+        <span style="font-size:14px;font-weight:600;color:#F2E6C4;white-space:nowrap">Bersama Nahdlatul Ulama</span>
+      </div>
+      <h2 style="margin:0;max-width:820px;font-weight:800;font-size:clamp(34px,4.4vw,64px);line-height:1.08;letter-spacing:-1.5px;text-wrap:balance">Bergerak bersama jutaan warga Nahdliyin</h2>
+      <p style="margin:0;max-width:640px;font-size:clamp(16px,1.3vw,18px);line-height:1.65;color:#CFE0D6;text-wrap:pretty">NU adalah organisasi massa terbesar dan tertua di Indonesia, tersebar merata di seluruh wilayah. Generasi mudanya kini jadi penggerak utama menuju masa depan Indonesia.</p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:24px clamp(40px,8vw,120px);margin-top:16px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><span style="font-size:clamp(56px,7vw,104px);font-weight:800;line-height:1;letter-spacing:-3px;color:#F2E6C4">40 juta</span><span style="font-size:15px;color:#CFE0D6">warga Nahdliyin</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><span style="font-size:clamp(56px,7vw,104px);font-weight:800;line-height:1;letter-spacing:-3px;color:#F2E6C4">27 juta</span><span style="font-size:15px;color:#CFE0D6">di antaranya generasi muda</span></div>
+      </div>
+      <button onClick="{{ openVideo }}" style="margin-top:8px;height:52px;padding:0 24px 0 8px;border:0;border-radius:999px;background:#1F8A52;color:#FFFFFF;display:flex;align-items:center;gap:12px;font-weight:700;font-size:16px;cursor:pointer;white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,.3)" style-hover="background:#25A262"><span style="width:38px;height:38px;border-radius:999px;background:#F2E6C4;display:flex;align-items:center;justify-content:center"><span style="width:0;height:0;margin-left:3px;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:11px solid #0D3524"></span></span>Tonton sebaran NU, 15 detik</button>
+    </div>
+    <div style="margin:0 clamp(12px,2vw,24px) clamp(12px,2vw,24px);border-radius:24px;overflow:hidden;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.1);display:grid;grid-template-columns:{{ nuansaCols }}">
+      <div style="position:relative;min-height:{{ nuansaImgH }}">
+        <img src="assets/roadshow-smk-nu.png" alt="Roadshow NUANSA di SMK NU" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% 30%;filter:saturate(.85) brightness(.9)">
+        <span style="position:absolute;left:16px;bottom:16px;padding:6px 14px;border-radius:999px;background:rgba(13,53,36,.85);font-size:13px;font-weight:600">Roadshow SMK NU, Indramayu</span>
+      </div>
+      <div style="padding:clamp(24px,3.4vw,44px);display:flex;flex-direction:column;justify-content:center;gap:14px">
+        <span style="font-size:13px;font-weight:600;color:#F2E6C4">Program bersama</span>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <h3 style="margin:0;font-size:clamp(28px,2.6vw,36px);font-weight:800;line-height:1.15;letter-spacing:-.8px">NUANSA</h3>
+          <span style="font-size:15px;color:#CFE0D6">Nahdlatul Ulama Aktifkan Sinema Akhlak</span>
+        </div>
+        <p style="margin:0;font-size:16px;color:#E4EEE8;max-width:520px;text-wrap:pretty">Bersama NU Jabar, IFI menyiapkan SMK NU di seluruh Indramayu untuk memproduksi konten dan memakai GV Apps sebagai platform monetisasi.</p>
+        <ol style="list-style:none;margin:4px 0 0;padding:16px 0 0;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:8px 24px">
+          <li style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;white-space:nowrap"><span style="width:8px;height:8px;border-radius:999px;background:#F2E6C4"></span>Jawa Barat, berjalan</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#9FBFAE;white-space:nowrap"><span style="width:8px;height:8px;border-radius:999px;border:1px solid #9FBFAE"></span>Pulau Jawa, berikutnya</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 KUTIPAN -->
+<section data-screen-label="11 Kutipan tokoh" style="padding:clamp(72px,9vw,120px) 16px">
+  <figure style="max-width:1232px;margin:0 auto;border-radius:clamp(24px,2.2vw,32px);background:#1B1B1D;border:1px solid #2F2F33;overflow:hidden;display:grid;grid-template-columns:{{ quoteCols }}">
+    <div style="padding:clamp(32px,5vw,72px);display:flex;flex-direction:column;justify-content:space-between;gap:40px">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <span aria-hidden="true" style="font-size:clamp(80px,8vw,120px);font-weight:800;line-height:.7;color:#E11D2E;height:clamp(48px,5vw,72px)">“</span>
+        <blockquote style="margin:0;font-size:clamp(24px,2.6vw,38px);line-height:1.25;font-weight:800;letter-spacing:-.8px;text-wrap:pretty">Film adalah cara paling cepat sebuah bangsa mengenali dirinya. Lewat koperasi, anak muda tidak hanya menonton, tapi ikut memiliki ceritanya.</blockquote>
+      </div>
+      <figcaption style="display:flex;align-items:center;gap:16px;padding-top:24px;border-top:1px solid #2F2F33">
+        <span style="flex:none;width:4px;align-self:stretch;border-radius:999px;background:#E11D2E"></span>
+        <div style="display:flex;flex-direction:column;line-height:1.4"><strong style="font-size:17px;font-weight:700">Nama Board Member</strong><span style="font-size:14px;color:#A3A3A8">Jabatan, Afiliasi</span></div>
+      </figcaption>
+    </div>
+    <div style="position:relative;min-height:{{ quoteImgH }};overflow:hidden;background:#1B1B1D">
+      <img src="assets/foto-tokoh.png" alt="Foto tokoh" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:68% 20%;display:block">
+      <div style="position:absolute;inset:0;background:{{ quoteShade }}"></div>
+    </div>
+  </figure>
+</section>
+
+<!-- 12 BOARD -->
+<section id="board" data-screen-label="12 Board member" style="padding:0 24px clamp(72px,9vw,120px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(32px,4vw,48px)">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px 64px">
+      <div style="flex:1 1 520px;display:flex;flex-direction:column;gap:16px">
+        <span style="font-size:13px;font-weight:600;color:#A3A3A8">Board member</span>
+        <h2 style="margin:0;font-weight:800;font-size:clamp(32px,3.34vw,48px);line-height:1.15;letter-spacing:-1px">Orang-orang di balik IFI</h2>
+        <p style="margin:0;max-width:520px;font-size:16px;line-height:1.6;color:#A3A3A8;text-wrap:pretty">11 orang dari dunia film, sastra, teknologi, usaha, dan komunitas yang menjaga arah koperasi.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px"><span style="padding:5px 12px;border-radius:999px;background:#1B1B1D;border:1px solid #2F2F33;font-size:13px;font-weight:600;color:#D4D4D8;white-space:nowrap">Global Village</span><span style="padding:5px 12px;border-radius:999px;background:#1B1B1D;border:1px solid #2F2F33;font-size:13px;font-weight:600;color:#D4D4D8;white-space:nowrap">NU</span><span style="padding:5px 12px;border-radius:999px;background:#1B1B1D;border:1px solid #2F2F33;font-size:13px;font-weight:600;color:#D4D4D8;white-space:nowrap">Layar Desa</span><span style="padding:5px 12px;border-radius:999px;background:#1B1B1D;border:1px solid #2F2F33;font-size:13px;font-weight:600;color:#D4D4D8;white-space:nowrap">GPU NVIDIA</span><span style="padding:5px 12px;border-radius:999px;background:#1B1B1D;border:1px solid #2F2F33;font-size:13px;font-weight:600;color:#D4D4D8;white-space:nowrap">Sinematografer</span><span style="padding:5px 12px;border-radius:999px;background:#1B1B1D;border:1px solid #2F2F33;font-size:13px;font-weight:600;color:#D4D4D8;white-space:nowrap">Penulis</span><span style="padding:5px 12px;border-radius:999px;background:#1B1B1D;border:1px solid #2F2F33;font-size:13px;font-weight:600;color:#D4D4D8;white-space:nowrap">Pegiat film</span></div>
+      </div>
+      <a href="Tentang%20IFI.dc.html#board" style="flex:none;height:52px;padding:0 24px;border-radius:999px;background:#2A2A2D;display:flex;align-items:center;font-weight:600;font-size:16px;color:#FFFFFF;white-space:nowrap" style-hover="background:#3A3A3E;color:#FFFFFF">Kenali board</a>
+    </div>
+    <div style="display:grid;grid-template-columns:{{ boardCols }};gap:{{ boardGap }}">
+      <sc-for list="{{ board }}" as="b" hint-placeholder-count="11">
+        <div style="grid-column:{{ b.col }};grid-row:{{ b.row }};position:relative;aspect-ratio:{{ b.ratio }};border-radius:{{ b.radius }};overflow:hidden;background:{{ b.bg }};filter:grayscale(1);transition:filter .35s" style-hover="filter:grayscale(0)">
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,0) 45%,rgba(17,17,17,.88) 100%)"></div>
+          <div style="position:absolute;left:0;right:0;bottom:0;padding:{{ b.pad }};display:flex;flex-direction:column;gap:2px">
+            <sc-if value="{{ b.lead }}" hint-placeholder-val="{{ false }}"><span style="align-self:flex-start;margin-bottom:8px;padding:4px 12px;border-radius:999px;background:#E11D2E;font-size:12px;font-weight:600">Ketua</span></sc-if>
+            <strong style="font-size:{{ b.nameSize }};font-weight:700;line-height:1.25">{{ b.name }}</strong>
+            <span style="font-size:{{ b.affSize }};color:#D4D4D8;line-height:1.35">{{ b.aff }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- 13 FAQ -->
+<section data-screen-label="13 FAQ" style="padding:0 24px clamp(72px,9vw,120px)">
+  <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
+    <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px">
+      <span style="font-size:13px;font-weight:600;color:#A3A3A8">FAQ</span>
+      <h2 style="margin:0;font-weight:800;font-size:clamp(32px,3.34vw,48px);line-height:1.15;letter-spacing:-1px">Yang sering ditanyakan</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="7">
+        <div style="border-radius:20px;background:#1B1B1D;border:1px solid #2F2F33">
+          <button onClick="{{ q.toggle }}" aria-expanded="{{ q.open }}" style="width:100%;min-height:64px;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:16px 16px 16px 24px;border:0;background:transparent;color:#FFFFFF;text-align:left;font-size:17px;font-weight:600;cursor:pointer">
+            <span>{{ q.q }}</span>
+            <span style="flex:none;width:40px;height:40px;border-radius:999px;background:{{ q.iconBg }};display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500;line-height:1;transform:{{ q.rot }};transition:transform .25s,background .25s">+</span>
+          </button>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:0 72px 24px 24px;font-size:16px;line-height:1.6;color:#A3A3A8">{{ q.a }}</p></sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<dc-import name="IFI Closing CTA" hint-size="100%,560px"></dc-import>
+<dc-import name="IFI Footer" hint-size="100%,420px"></dc-import>
+
+<sc-if value="{{ videoOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeVideo }}" style="position:fixed;inset:0;z-index:100;background:rgba(17,17,17,.9);display:flex;align-items:center;justify-content:center;padding:24px">
+    <div onClick="{{ stop }}" style="position:relative;width:100%;max-width:960px;aspect-ratio:16/9;border-radius:24px;background:#1B1B1D;border:1px solid #2F2F33;display:flex;align-items:center;justify-content:center;color:#A3A3A8;font-size:15px">
+      <button onClick="{{ closeVideo }}" aria-label="Tutup" style="position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:999px;border:0;background:#2A2A2D;color:#FFFFFF;font-size:20px;cursor:pointer">×</button>
+      Video Bersama NU, 15 detik
+    </div>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;pricingLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Satu kartu&quot;,&quot;3 tier&quot;],&quot;default&quot;:&quot;Satu kartu&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Membership&quot;},&quot;memberCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:23418,&quot;min&quot;:0,&quot;max&quot;:100000,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Data&quot;}}">
+class Component extends DCLogic {
+  state = { w: 1440, hover: -1, cat: 'Mingguan', tab: 'Lokasi', faq: 0, video: false };
+  rowRef = React.createRef();
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this.onResize); this.onResize();
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  renderVals() {
+    const P = [
+      'linear-gradient(160deg,#4A4A4F 0%,#26262A 55%,#151517 100%)',
+      'linear-gradient(200deg,#3A3A3E 0%,#1F1F22 60%,#121213 100%)',
+      'linear-gradient(170deg,#55555A 0%,#2B2B2F 50%,#141416 100%)',
+      'linear-gradient(190deg,#303034 0%,#1C1C1F 55%,#101011 100%)',
+      'linear-gradient(150deg,#45454A 0%,#242427 60%,#131314 100%)',
+      'linear-gradient(210deg,#3E3E43 0%,#222225 55%,#111112 100%)'
+    ];
+    const w = this.state.w, mobile = w < 960;
+    const fire = (k) => (e) => { e && e.stopPropagation && e.stopPropagation(); window.dispatchEvent(new CustomEvent('ifi:gv', { detail: k })); };
+    const row = (o, n) => Array.from({ length: n }, (_, i) => ({ bg: P[(i * 2 + o) % P.length] }));
+    const members = this.props.memberCount ?? 23418;
+    const single = (this.props.pricingLayout ?? 'Satu kartu') === 'Satu kartu';
+    const cats = ['Mingguan', 'Bulanan', 'Tahunan'];
+    const fp = [
+      { cat: 'Mingguan', title: 'Film Lucu 30 Detik', meta: 'Minggu ke-44', badge: 'Buka' },
+      { cat: 'Mingguan', title: 'Film Lucu 30 Detik', meta: 'Minggu ke-43', badge: 'Penjurian' },
+      { cat: 'Mingguan', title: 'Film Lucu 30 Detik', meta: 'Minggu ke-42', badge: 'Selesai' },
+      { cat: 'Mingguan', title: 'Film Lucu 30 Detik', meta: 'Minggu ke-41', badge: 'Selesai' },
+      { cat: 'Bulanan', title: 'Film Horor 2 Menit', meta: 'November 2026', badge: 'Buka' },
+      { cat: 'Bulanan', title: 'Film Musikal 3 Menit', meta: 'November 2026', badge: 'Buka' },
+      { cat: 'Bulanan', title: 'Film Horor 2 Menit', meta: 'Oktober 2026', badge: 'Selesai' },
+      { cat: 'Bulanan', title: 'Film Musikal 3 Menit', meta: 'Oktober 2026', badge: 'Selesai' },
+      { cat: 'Tahunan', title: 'IFI Film Festival 2026', meta: 'Puncak tahunan', badge: 'Segera' },
+      { cat: 'Tahunan', title: 'IFI Film Festival 2025', meta: 'Arsip pemenang', badge: 'Selesai' }
+    ];
+    const prov = [['ACEH','Aceh',1,1,.2],['SUMUT','Sumatera Utara',2,2,.3],['RIAU','Riau',3,2,.15],['KEPRI','Kepulauan Riau',4,2,.08],['SUMBAR','Sumatera Barat',2,3,.12],['JAMBI','Jambi',3,3,.15],['BABEL','Bangka Belitung',5,3,.08],['BKL','Bengkulu',3,4,.1],['SUMSEL','Sumatera Selatan',4,4,.3],['LPG','Lampung',4,5,.45],['BTN','Banten',5,6,.5],['DKI','DKI Jakarta',6,6,.45],['JABAR','Jawa Barat',7,6,.75],['JATENG','Jawa Tengah',8,6,.9],['JATIM','Jawa Timur',9,6,1],['DIY','DI Yogyakarta',8,7,.5],['BALI','Bali',10,7,.12],['NTB','Nusa Tenggara Barat',11,7,.35],['NTT','Nusa Tenggara Timur',12,7,.1],['KALBAR','Kalimantan Barat',6,3,.2],['KALTENG','Kalimantan Tengah',7,3,.18],['KALTIM','Kalimantan Timur',8,3,.2],['KALTARA','Kalimantan Utara',8,2,.06],['KALSEL','Kalimantan Selatan',7,4,.45],['GTLO','Gorontalo',10,2,.2],['SULUT','Sulawesi Utara',11,2,.1],['SULTENG','Sulawesi Tengah',10,3,.18],['SULBAR','Sulawesi Barat',9,4,.15],['SULSEL','Sulawesi Selatan',10,4,.35],['SULTRA','Sulawesi Tenggara',11,4,.15],['MALUT','Maluku Utara',12,2,.08],['MALUKU','Maluku',12,4,.06],['PBD','Papua Barat Daya',13,3,.05],['PB','Papua Barat',14,3,.05],['PAPUA','Papua',16,3,.05],['PT','Papua Tengah',15,4,.05],['PP','Papua Pegunungan',16,4,.05],['PS','Papua Selatan',17,4,.05]];
+    const faqData = [
+      ['Apa itu Koperasi Film Indonesia?', 'IFI atau Indonesia Films Initiative adalah koperasi film yang diinisiasi Global Village dan didukung NU serta PFN. Member ikut memilih, belajar, dan menonton film Indonesia bersama.'],
+      ['Berapa iuran member?', 'Iuran member IFI Rp100.000.'],
+      ['Bagaimana cara bayarnya?', 'Pembayaran dilakukan di GV Apps melalui GV Pay. Website IFI tidak memproses pembayaran langsung.'],
+      ['Bagaimana cara vote film?', 'Masuk ke GV Apps, buka halaman kandidat film, tonton cuplikannya, lalu pilih film yang paling ingin kamu lihat di bioskop.'],
+      ['Apa hubungan IFI dengan GV Apps?', 'GV Apps adalah aplikasi tempat semua aktivitas member berjalan: pendaftaran, pembayaran, voting, dan course. Website ini menjadi pintu informasinya.'],
+      ['Apakah saya bisa mendaftarkan lokasi tanpa jadi member?', 'Bisa. Siapa pun boleh mendaftarkan lokasi atau keahlian di Film Industry Hub. Listing tampil setelah ditinjau tim IFI.'],
+      ['Bagaimana cara ikut festival?', 'Pilih festival yang sedang buka, cek syarat dan durasinya, lalu kirim karyamu lewat GV Apps.']
+    ];
+    const chipOn = (c) => c === this.state.cat;
+    return {
+      desktop: !mobile, mobile,
+      gvJoin: fire('join'), gvLogin: fire('login'), gvVote: fire('vote'),
+      whyCols: w >= 720 ? 'repeat(3,minmax(0,1fr))' : '1fr', whyGap: w >= 1024 ? '24px' : '16px', whySplit: w >= 900 ? 'minmax(0,1fr) minmax(0,1.05fr)' : '1fr',
+      whyMinH: w >= 900 ? 'clamp(560px,48vw,680px)' : '0px', whyTextCol: w >= 900 ? '2' : '1',
+      whyImgPos: w >= 900 ? 'absolute' : 'relative', whyImgRatio: w >= 900 ? 'auto' : '4/3',
+      whyObjPos: w >= 900 ? '30% 30%' : '22% 25%',
+      whyShade: w >= 900 ? 'linear-gradient(90deg,rgba(20,18,20,0) 30%,rgba(20,18,20,.85) 55%,#141214 75%)' : 'linear-gradient(180deg,rgba(20,18,20,0) 25%,#141214 calc(min(75vw,520px)))',
+      whyAreas: w >= 900 ? '"a b" "a c"' : '"a" "b" "c"',
+      stills: [
+        { n: '01', src: 'assets/still-fotografer.jpg', alt: 'Kreator muda memegang kamera', cap: 'Dibuat oleh talenta lokal', pos: '60% 35%' },
+        { n: '02', src: 'assets/still-bioskop.png', alt: 'Penonton muda di bioskop', cap: 'Ditonton bersama di bioskop', pos: 'center' },
+        { n: '03', src: 'assets/still-layar-tancap.png', alt: 'Layar tancap di lapangan desa', cap: 'Sampai ke layar desa', pos: 'center' }
+      ],
+      stepCols: w >= 960 ? 'repeat(4,minmax(0,1fr))' : w >= 600 ? 'repeat(2,minmax(0,1fr))' : '1fr',
+      stepLineH: w >= 960, stepLineV: w < 600,
+      steps: [{ n: '1', title: 'Daftar jadi member', icon: 'assets/ifi-card.png' }, { n: '2', title: 'Tonton cuplikan kandidat', icon: 'assets/icon-clapper.png' }, { n: '3', title: 'Vote film favoritmu', icon: 'assets/icon-ballot.png' }, { n: '4', title: 'Film tayang di bioskop', icon: 'assets/icon-tickets.png' }].map((x, i) => ({ ...x, hasLine: w >= 960 && i < 3, bg: i === 3 ? '#242427' : '#1B1B1D', numColor: i === 3 ? '#FF8A94' : '#A3A3A8' })),
+      stepDisplay: w >= 1040 ? 'flex' : 'grid',
+      payFlow: [{ n: '1', t: 'Buka GV Apps' }, { n: '2', t: 'Pilih Member IFI' }, { n: '3', t: 'Bayar dengan GV Pay' }],
+      benRatio: w >= 1024 ? '1/1' : '16/10', benIcon: w >= 1024 ? '58%' : '36%',
+      bentoCols: w >= 1024 ? 'repeat(4,minmax(0,1fr))' : w >= 600 ? 'repeat(2,minmax(0,1fr))' : '1fr',
+      spanTicketCol: w >= 600 ? 'span 2' : 'auto', spanTicketRow: w >= 1024 ? 'span 2' : 'auto',
+      spanWide: w >= 600 ? 'span 2' : 'auto', spanOne: 'auto', stepGrid: w >= 600 ? 'repeat(2,minmax(0,1fr))' : '1fr',
+      rowRef: this.rowRef,
+      scrollPrev: () => this.rowRef.current && this.rowRef.current.scrollBy({ left: -600, behavior: 'smooth' }),
+      scrollNext: () => this.rowRef.current && this.rowRef.current.scrollBy({ left: 600, behavior: 'smooth' }),
+      films: [
+        { title: 'Gila Dangdut Around The Globe', genre: 'Komedi musikal', pct: 34, voters: 8421, src: 'assets/poster-gila-dangdut.png' },
+        { title: 'Ada Hantu di Campus!', genre: 'Horor komedi', pct: 29, voters: 7186, src: 'assets/poster-ada-hantu.png' },
+        { title: 'Orang-Orang Baik', genre: 'Drama keluarga', pct: 22, voters: 5450, src: 'assets/poster-orang-baik.png' },
+        { title: 'Rentan', genre: 'Drama', pct: 12, voters: 2984, src: 'assets/poster-rentan.png' },
+        { title: 'Home Sweet Loan', genre: 'Drama keluarga', pct: 10, voters: 2461, src: 'assets/poster-home-sweet-loan.png' },
+        { title: 'Prajurit Terakhir', genre: 'Perang', pct: 8, voters: 1973, src: 'assets/poster-prajurit-terakhir.png' },
+        { title: 'Jadi Tuh Barang', genre: 'Komedi', pct: 6, voters: 1480, src: 'assets/poster-jadi-tuh-barang.png' },
+        { title: 'Modual Nekad', genre: 'Komedi keluarga', pct: 4, voters: 987, src: 'assets/poster-modual-nekad.png' }
+      ].map((f, i) => {
+        const on = mobile || this.state.hover === i;
+        return { ...f, hasImg: !!f.img, bg: P[(i * 2 + 1) % P.length], pctLabel: f.pct + '%', voters: f.voters.toLocaleString('id-ID'),
+          btnMax: on ? '48px' : '0px', btnOpacity: on ? 1 : 0, scale: (!mobile && this.state.hover === i) ? 'scale(1.03)' : 'none',
+          enter: () => this.setState({ hover: i }), leave: () => this.setState({ hover: -1 }) };
+      }),
+      singleTier: single, multiTier: !single,
+      checklist: ['Creative Film Course online dan offline', 'Kesempatan Internship Produksi Film', '2 tiket nonton film IFI di bioskop', 'Hak vote film yang akan diproduksi', 'IFI Membership Card digital'],
+      memberLabel: members.toLocaleString('id-ID'),
+      memberPct: Math.min(100, members / 1000).toFixed(1) + '%',
+      tiers: [
+        { name: 'Pelajar', price: 'Rp50.000', items: ['Hak vote', '1 tiket nonton film IFI', 'Course online'], popular: false },
+        { name: 'Member IFI', price: 'Rp100.000', items: ['Hak vote', '2 tiket nonton film IFI', 'Course online dan offline', 'Internship produksi'], popular: true },
+        { name: 'Pendukung', price: 'Rp250.000', items: ['Semua benefit Member IFI', 'Nama di kredit film', 'Undangan pemutaran perdana'], popular: false }
+      ].map(t => ({ ...t, border: t.popular ? '2px solid #E11D2E' : '1px solid #2F2F33', btnBg: t.popular ? '#E11D2E' : '#2A2A2D' })),
+      festChips: cats.map(c => ({ label: c, onClick: () => this.setState({ cat: c }), bg: chipOn(c) ? '#E11D2E' : '#2A2A2D' })),
+      festCols: w >= 960 ? 'minmax(0,1.45fr) minmax(0,1fr)' : '1fr',
+      festPosters: fp.filter(f => f.cat === this.state.cat).map((f, i) => ({ ...f, bg: P[(i + 2) % P.length] })),
+      schedule: [
+        { name: 'Film Lucu 30 Detik', when: 'Setiap minggu', dur: '30', unit: 'detik', cat: 'Mingguan', status: 'Buka' },
+        { name: 'Film Horor 2 Menit', when: 'Setiap bulan', dur: '2', unit: 'menit', cat: 'Bulanan', status: 'Buka' },
+        { name: 'Film Musikal 3 Menit', when: 'Setiap bulan', dur: '3', unit: 'menit', cat: 'Bulanan', status: 'Buka' },
+        { name: 'IFI Film Festival', when: 'Puncak tahunan', dur: '1', unit: 'tahun', cat: 'Tahunan', status: 'Segera' }
+      ].map(x => { const on = x.cat === this.state.cat; return { ...x, bg: on ? '#242427' : 'transparent', opacity: on ? 1 : .55, stBg: x.status === 'Buka' ? '#2A1416' : '#2A2A2D', stFg: x.status === 'Buka' ? '#FF8A94' : '#A3A3A8' }; }),
+      festCountdown: (() => { let d = Math.max(0, new Date('2026-11-30T23:59:00+07:00').getTime() - Date.now()); const dd = Math.floor(d / 864e5); d -= dd * 864e5; const hh = Math.floor(d / 36e5); d -= hh * 36e5; const mm = Math.floor(d / 6e4); return [{ v: String(dd), k: 'hari' }, { v: String(hh).padStart(2, '0'), k: 'jam' }, { v: String(mm).padStart(2, '0'), k: 'menit' }]; })(),
+      hubTabs: ['Lokasi', 'Pekerja Kreatif'].map(t => ({ label: t, onClick: () => this.setState({ tab: t }), bg: t === this.state.tab ? '#FFFFFF' : 'transparent', color: t === this.state.tab ? '#111111' : '#A3A3A8' })),
+      hubHref: this.state.tab === 'Lokasi' ? 'Daftar%20Listing.dc.html?jenis=lokasi' : 'Daftar%20Listing.dc.html?jenis=kru',
+      hubLoc: this.state.tab === 'Lokasi', hubCrew: this.state.tab !== 'Lokasi',
+      hubCount: this.state.tab === 'Lokasi' ? 'Contoh lokasi terdaftar' : 'Contoh pekerja kreatif terdaftar',
+      hubLocCols: w >= 900 ? 'repeat(3,minmax(0,1fr))' : w >= 600 ? 'repeat(2,minmax(0,1fr))' : '1fr',
+      hubCrewCols: w >= 900 ? 'repeat(4,minmax(0,1fr))' : w >= 520 ? 'repeat(2,minmax(0,1fr))' : '1fr',
+      locations: [
+        { name: 'Pantai Klayar', place: 'Pacitan, Jawa Timur', tag: 'Pantai', bg: P[2], src: 'assets/loc-pantai-klayar.png' },
+        { name: 'Desa Tegallalang', place: 'Gianyar, Bali', tag: 'Desa', bg: P[0], src: 'assets/loc-desa.png' },
+        { name: 'Kota Lama Semarang', place: 'Semarang, Jawa Tengah', tag: 'Kota tua', bg: P[4], src: 'assets/loc-kota-lama.png' }
+      ],
+      crew: [
+        { name: 'Nama Pekerja Kreatif', skill: 'Penulis Kritik Film', city: 'Jakarta Selatan', bg: 'url(assets/person-1.png) 72% 14% / auto 210% no-repeat #F2F2F2' },
+        { name: 'Nama Pekerja Kreatif', skill: 'Penyedia Properti', city: 'Yogyakarta', bg: 'url(assets/person-2.png) 72% 10% / auto 190% no-repeat #EDEDED' },
+        { name: 'Nama Pekerja Kreatif', skill: 'Penata Kamera', city: 'Bandung', bg: 'url(assets/person-1.png) 72% 14% / auto 210% no-repeat #F2F2F2' },
+        { name: 'Nama Pekerja Kreatif', skill: 'Penata Suara', city: 'Surabaya', bg: 'url(assets/person-2.png) 72% 10% / auto 190% no-repeat #EDEDED' }
+      ],
+      quoteCols: w >= 900 ? 'minmax(0,1.5fr) minmax(0,1fr)' : '1fr', quoteImgH: w >= 900 ? '100%' : '360px', quoteShade: w >= 900 ? 'linear-gradient(90deg,#1B1B1D 0%,rgba(27,27,29,0) 28%)' : 'linear-gradient(180deg,#1B1B1D 0%,rgba(27,27,29,0) 25%)',
+      invPtCols: w >= 960 ? '1fr' : w >= 640 ? 'repeat(3,minmax(0,1fr))' : '1fr',
+      invCols: w >= 960 ? 'minmax(0,1fr) minmax(0,1.1fr)' : '1fr',
+      invDivider: w >= 960 ? '1px solid #2F2F33' : '0',
+      investPoints: [
+        { n: '1', title: 'Kumpulkan data', text: 'Data sejarah film Indonesia: genre, jumlah penonton, dan pendapatan.' },
+        { n: '2', title: 'Baca peluang pasar', text: 'Jalur distribusi di dalam dan luar negeri untuk tiap jenis film.' },
+        { n: '3', title: 'Kamu dapat saran', text: 'Film yang layak didanai, lengkap dengan perkiraan penontonnya.' }
+      ].map((p, i, arr) => ({ ...p, title: ['Data film', 'Peluang pasar', 'Saran film'][i], hasArrow: i < arr.length - 1, numBg: i === arr.length - 1 ? '#E11D2E' : '#2A2A2D' })),
+      invFilms: [
+        { title: 'Ada Hantu di Campus!', genre: 'Horor komedi, latar kampus', score: 78, aud: '1,2 juta', src: 'assets/poster-ada-hantu.png' },
+        { title: 'Gila Dangdut Around The Globe', genre: 'Komedi musikal', score: 71, aud: '900 ribu', src: 'assets/poster-gila-dangdut.png' },
+        { title: 'Orang-Orang Baik', genre: 'Drama keluarga', score: 64, aud: '650 ribu', src: 'assets/poster-orang-baik.png' }
+      ].map((f, i) => ({ ...f, rank: String(i + 1), top: i === 0, pct: f.score + '%', barColor: i === 0 ? '#E11D2E' : '#FFFFFF', bg: i === 0 ? '#242427' : 'transparent', border: i === 0 ? '#3A3A3E' : '#2F2F33', posterW: i === 0 ? (mobile ? '72px' : '88px') : (mobile ? '56px' : '64px'), titleSize: i === 0 ? '18px' : '16px' })),
+      hubMapCols: w >= 960 ? 'minmax(0,1fr) minmax(0,1.2fr)' : '1fr', hubMapDivider: w >= 960 ? '1px solid #2F2F33' : '0', hubMapDividerT: w >= 960 ? '0' : '1px solid #2F2F33',
+      hubTiles: prov.map(([code, title, col, r]) => { const n = ({ JATIM: 2, BALI: 1, JATENG: 2, DIY: 3, NTB: 3, NTT: 1, DKI: 1, JABAR: 2, SUMUT: 1 })[code] || 0; return { title: title + (n ? ', ' + n + ' lokasi' : ''), col: String(col), row: String(r), count: n ? String(n) : '', fs: 'clamp(10px,.9vw,13px)', bg: n ? `rgba(225,29,46,${(0.45 + n * 0.14).toFixed(2)})` : '#2A2A2D' }; }),
+      hubRegions: [['Sumatera', '1 / span 3', '6', 'start', 'center'], ['Kalimantan', '6 / span 3', '1', 'end', 'center'], ['Sulawesi', '9 / span 3', '1', 'end', 'center'], ['Maluku', '12 / span 2', '5', 'start', 'start'], ['Papua', '13 / span 5', '2', 'end', 'center'], ['Jawa', '5 / span 5', '8', 'start', 'center'], ['Nusa Tenggara', '10 / span 4', '8', 'start', 'center']].map(([name, col, row, align, justify]) => ({ name, col, row, align, justify })),
+      hubTop: [['DI Yogyakarta', 3], ['Nusa Tenggara Barat', 3], ['Jawa Timur', 2], ['Jawa Tengah', 2], ['Jawa Barat', 2]].map(([name, n]) => ({ name, n: String(n) })),
+      provinces: prov.map(([code, title, col, r, v]) => ({ code: mobile ? '' : code.slice(0, 4), title: title, col: String(col), row: String(r), bg: `rgba(255,255,255,${(0.08 + v * 0.92).toFixed(2)})`, fg: v > .5 ? '#111111' : '#A3A3A8' })),
+      nuCols: w >= 960 ? 'minmax(0,1fr) minmax(0,1.2fr)' : '1fr', nuStatCols: w >= 960 ? '1fr' : w >= 560 ? 'repeat(2,minmax(0,1fr))' : '1fr', nuDivider: w >= 960 ? '1px solid #2F2F33' : '0', nuDividerB: w >= 960 ? '0' : '1px solid #2F2F33',
+      nuProv: [['Jawa Timur', 32], ['Jawa Tengah', 24], ['Jawa Barat', 18], ['Banten', 7], ['Lampung', 5], ['Kalimantan Selatan', 4]].map(([name, v], i) => ({ name, v: v + '%', pct: (v / 32 * 100) + '%', color: i === 0 ? '#E11D2E' : '#FFFFFF' })), nuansaCols: w >= 860 ? 'minmax(0,1fr) minmax(0,1.1fr)' : '1fr', nuansaImgH: w >= 860 ? '100%' : '260px',
+      openVideo: () => { (window.dataLayer = window.dataLayer || []).push({ event: 'video_nu' }); this.setState({ video: true }); },
+      closeVideo: () => this.setState({ video: false }), videoOpen: this.state.video,
+      stop: (e) => e.stopPropagation(),
+      boardCols: w >= 960 ? 'repeat(7,minmax(0,1fr))' : w >= 600 ? 'repeat(4,minmax(0,1fr))' : 'repeat(2,minmax(0,1fr))', boardGap: w >= 960 ? '12px' : '10px',
+      board: [['Baskara Sukarja','Global Village'],['Edwin Suryadjaya','Pengusaha'],['Inayah Wahid','NU'],['Maftuchah','NU'],['Ivan Huiskamp','GPU NVIDIA'],['Herimanto','Layar Desa'],['Arya Teja','Sinematografer'],['Leila S. Chudori','Penulis'],['Cacuk Wibisono','Global Village'],['Rohit','Pegiat film, India'],['Heru Purnomo','Javanolog, pegiat film']].map(([nm, af], i) => { const lead = i === 0, wide = w < 600, tab = w >= 600 && w < 960; return { lead, name: nm, aff: af,
+        col: lead ? 'span 2' : 'auto', row: lead && !wide && !tab ? 'span 2' : 'auto', ratio: lead ? (wide ? '4/3' : tab ? 'auto' : '1/1') : '1/1',
+        radius: lead ? '24px' : '20px', pad: lead ? '20px 22px' : '12px 14px', nameSize: lead ? '20px' : '14px', affSize: lead ? '14px' : '12px',
+        bg: i % 2 === 0 ? 'url(assets/person-1.png) 74% 12% / auto 165% no-repeat #F2F2F2' : 'url(assets/person-2.png) 74% 8% / auto 150% no-repeat #EDEDED' }; }),
+      faqs: faqData.map(([q, a], i) => { const open = this.state.faq === i; return { q, a, open, iconBg: open ? '#E11D2E' : '#2A2A2D', rot: open ? 'rotate(45deg)' : 'none', toggle: () => this.setState(s => ({ faq: s.faq === i ? -1 : i })) }; })
+    };
+  }
+}
+</script>
+</body>
+</html>

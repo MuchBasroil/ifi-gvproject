@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#111111;color:#FFFFFF;font-family:'Plus Jakarta Sans',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#FFFFFF;text-decoration:none}
+a:hover{color:#F23A49}
+button,input,textarea{font-family:inherit}
+</style>
+</helmet>
+
+<div style="background:#111111;color:#FFFFFF;font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(16px,1.25vw,18px);line-height:1.6;padding-bottom:{{ bottomPad }}">
+<dc-import name="IFI Navbar" active="Industry Hub" hint-size="100%,1px"></dc-import>
+
+<div style="max-width:1248px;margin:0 auto;padding:clamp(120px,12vw,140px) 24px 0;display:flex;flex-direction:column;gap:24px">
+  <nav aria-label="Breadcrumb" style="display:flex;flex-wrap:wrap;gap:8px;font-size:14px;color:#A3A3A8"><a href="IFI%20Homepage%20v2.dc.html" style="color:#A3A3A8" style-hover="color:#FFFFFF">Home</a><span>/</span><a href="Industry%20Hub.dc.html" style="color:#A3A3A8" style-hover="color:#FFFFFF">Industry Hub</a><span>/</span><span style="color:#FFFFFF">Pantai Klayar</span></nav>
+
+  <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+    <div data-screen-label="01 Galeri" style="display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:repeat(2,minmax(0,1fr));gap:12px;height:clamp(360px,36vw,500px)">
+      <div style="grid-row:1/3;border-radius:24px;background:linear-gradient(160deg,#55555A 0%,#2B2B2F 50%,#141416 100%);display:flex;align-items:flex-end;padding:20px"><span style="font-size:13px;color:#A3A3A8">Foto utama lokasi</span></div>
+      <sc-for list="{{ thumbs }}" as="t" hint-placeholder-count="4"><div style="border-radius:20px;background:{{ t.bg }}"></div></sc-for>
+    </div>
+  </sc-if>
+  <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div onScroll="{{ onGalScroll }}" style="display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -24px;padding:0 24px;scrollbar-width:none">
+        <sc-for list="{{ slides }}" as="sl" hint-placeholder-count="5"><div style="flex:none;width:calc(100vw - 48px);aspect-ratio:4/3;border-radius:20px;background:{{ sl.bg }};scroll-snap-align:center"></div></sc-for>
+      </div>
+      <div style="display:flex;justify-content:center;gap:6px"><sc-for list="{{ dots }}" as="d"><span style="width:{{ d.w }};height:6px;border-radius:999px;background:{{ d.bg }};transition:width .2s"></span></sc-for></div>
+    </div>
+  </sc-if>
+</div>
+
+<div style="max-width:1248px;margin:0 auto;padding:clamp(32px,4vw,48px) 24px clamp(72px,9vw,120px);display:grid;grid-template-columns:{{ layoutCols }};gap:clamp(32px,4vw,56px);align-items:start">
+  <div style="min-width:0;display:flex;flex-direction:column;gap:40px">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <h1 style="margin:0;font-weight:800;font-size:clamp(36px,4.2vw,60px);line-height:1.1;letter-spacing:-1.5px">Pantai Klayar</h1>
+      <span style="color:#A3A3A8">Pacitan, Jawa Timur</span>
+      <div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ tags }}" as="tg"><span style="padding:4px 14px;border-radius:999px;background:#2A2A2D;font-size:13px;font-weight:600">{{ tg }}</span></sc-for></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;max-width:720px">
+      <h2 style="margin:0;font-size:24px;font-weight:700;letter-spacing:-.3px">Tentang lokasi</h2>
+      <p style="margin:0;color:#D4D4D8">Pantai berpasir putih yang diapit tebing karang, dengan semburan air laut alami di sela batu. Cahaya terbaik saat pagi dan menjelang senja. Akses jalan bisa dilalui mobil produksi sampai area parkir.</p>
+      <p style="margin:0;color:#A3A3A8">Cocok untuk adegan pesisir, drama keluarga, dan film perjalanan. Izin syuting dibantu pengelola setempat.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <h2 style="margin:0;font-size:24px;font-weight:700;letter-spacing:-.3px">Fasilitas</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,160px),1fr));gap:12px">
+        <sc-for list="{{ facilities }}" as="f" hint-placeholder-count="6">
+          <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:20px;background:#1B1B1D;border:1px solid #2F2F33">
+            <span style="flex:none;width:40px;height:40px;border-radius:999px;background:#242427;display:flex;align-items:center;justify-content:center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ f.icon }}"></path></svg>
+            </span>
+            <span style="font-size:15px;font-weight:600">{{ f.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <h2 style="margin:0;font-size:24px;font-weight:700;letter-spacing:-.3px">Lokasi</h2>
+      <div style="position:relative;aspect-ratio:16/9;border-radius:24px;overflow:hidden;background:#1B1B1D;border:1px solid #2F2F33;background-image:linear-gradient(#242427 1px,transparent 1px),linear-gradient(90deg,#242427 1px,transparent 1px);background-size:40px 40px;display:flex;align-items:center;justify-content:center">
+        <span style="width:22px;height:22px;border-radius:999px;background:#E11D2E;border:4px solid #FFFFFF;box-shadow:0 6px 16px rgba(0,0,0,.5)"></span>
+        <span style="position:absolute;left:16px;bottom:14px;padding:6px 14px;border-radius:999px;background:rgba(17,17,17,.8);font-size:13px;font-weight:600">Peta lokasi, titik perkiraan</span>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+    <aside style="position:sticky;top:104px;padding:28px;border-radius:24px;background:#1B1B1D;border:1px solid #2F2F33">
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;flex-direction:column;gap:4px"><strong style="font-size:20px;font-weight:700;letter-spacing:-.3px">Tertarik memakai lokasi ini?</strong><span style="font-size:14px;color:#A3A3A8">Pesanmu diteruskan ke pemilik lewat email. Kontak pemilik tidak ditampilkan langsung.</span></div>
+          <input required placeholder="Nama" aria-label="Nama" style="height:52px;padding:0 18px;border-radius:14px;border:1px solid #2F2F33;background:#111111;color:#FFFFFF;font-size:16px;outline:none" style-focus="border-color:#E11D2E;box-shadow:0 0 0 3px rgba(225,29,46,.3)">
+          <input required type="email" placeholder="Email" aria-label="Email" style="height:52px;padding:0 18px;border-radius:14px;border:1px solid #2F2F33;background:#111111;color:#FFFFFF;font-size:16px;outline:none" style-focus="border-color:#E11D2E;box-shadow:0 0 0 3px rgba(225,29,46,.3)">
+          <textarea rows="4" placeholder="Ceritakan rencana produksimu" aria-label="Rencana produksi" style="padding:14px 18px;border-radius:14px;border:1px solid #2F2F33;background:#111111;color:#FFFFFF;font-size:16px;line-height:1.5;outline:none;resize:vertical" style-focus="border-color:#E11D2E;box-shadow:0 0 0 3px rgba(225,29,46,.3)"></textarea>
+          <label style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:#A3A3A8;line-height:1.5"><input required type="checkbox" style="width:18px;height:18px;margin:1px 0 0;accent-color:#E11D2E;flex:none">Saya setuju data saya diproses sesuai Kebijakan Privasi dan UU PDP.</label>
+          <button type="submit" style="height:52px;border:0;border-radius:999px;background:#E11D2E;color:#FFFFFF;font-weight:600;font-size:16px;cursor:pointer" style-hover="background:#F23A49" style-active="background:#B5121F">Kirim minat</button>
+        </form>
+      </sc-if>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:10px;text-align:center;padding:24px 0"><span style="align-self:center;width:56px;height:56px;border-radius:999px;background:#2A1416;color:#FF8A94;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800">✓</span><strong style="font-size:20px;font-weight:700">Pesan terkirim</strong><span style="font-size:15px;color:#A3A3A8">Pemilik lokasi akan menghubungimu lewat email.</span></div>
+      </sc-if>
+    </aside>
+  </sc-if>
+</div>
+
+<section data-screen-label="Listing serupa" style="padding:0 0 clamp(48px,6vw,80px)">
+  <div style="max-width:1248px;margin:0 auto;display:flex;flex-direction:column;gap:16px">
+    <span style="padding:0 24px;font-size:20px;font-weight:700;letter-spacing:-.3px">Listing serupa</span>
+    <div style="display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:24px;padding:4px 24px 16px;scrollbar-width:none">
+      <sc-for list="{{ similar }}" as="l" hint-placeholder-count="5">
+        <a href="Listing%20Detail.dc.html" style="flex:none;width:clamp(220px,22vw,280px);scroll-snap-align:start;display:flex;flex-direction:column;gap:12px;padding:10px 10px 18px;border-radius:24px;background:#1B1B1D;border:1px solid #2F2F33;color:#FFFFFF" style-hover="background:#242427;color:#FFFFFF">
+          <div style="aspect-ratio:4/3;border-radius:16px;background:{{ l.bg }}"></div>
+          <div style="padding:0 6px;display:flex;flex-direction:column;gap:6px"><strong style="font-size:16px;font-weight:700">{{ l.name }}</strong><span style="font-size:14px;color:#A3A3A8">{{ l.place }}</span><span style="align-self:flex-start;padding:3px 12px;border-radius:999px;background:#2F2F33;font-size:13px;font-weight:600">{{ l.tag }}</span></div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:12px;right:12px;bottom:12px;z-index:40;padding:10px 10px 10px 20px;border-radius:999px;background:rgba(27,27,29,.92);backdrop-filter:blur(14px);border:1px solid #2F2F33;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 12px 32px rgba(0,0,0,.5)">
+    <span style="font-size:14px;font-weight:600;min-width:0">Tertarik memakai lokasi ini?</span>
+    <button onClick="{{ openSheet }}" style="flex:none;height:48px;padding:0 22px;border:0;border-radius:999px;background:#E11D2E;color:#FFFFFF;font-weight:600;font-size:15px;cursor:pointer">Kirim minat</button>
+  </div>
+</sc-if>
+<sc-if value="{{ sheetOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeSheet }}" style="position:fixed;inset:0;z-index:60;background:rgba(17,17,17,.7);display:flex;align-items:flex-end">
+    <form onClick="{{ stop }}" onSubmit="{{ submit }}" style="width:100%;max-height:90vh;overflow:auto;border-radius:28px 28px 0 0;background:#1B1B1D;border-top:1px solid #2F2F33;padding:12px 24px 24px;display:flex;flex-direction:column;gap:14px">
+      <span style="align-self:center;width:44px;height:5px;border-radius:999px;background:#5C5C61"></span>
+      <strong style="font-size:20px;font-weight:700">Tertarik memakai lokasi ini?</strong>
+      <span style="font-size:14px;color:#A3A3A8">Pesanmu diteruskan ke pemilik lewat email.</span>
+      <input required placeholder="Nama" aria-label="Nama" style="height:52px;padding:0 18px;border-radius:14px;border:1px solid #2F2F33;background:#111111;color:#FFFFFF;font-size:16px;outline:none" style-focus="border-color:#E11D2E">
+      <input required type="email" placeholder="Email" aria-label="Email" style="height:52px;padding:0 18px;border-radius:14px;border:1px solid #2F2F33;background:#111111;color:#FFFFFF;font-size:16px;outline:none" style-focus="border-color:#E11D2E">
+      <textarea rows="3" placeholder="Ceritakan rencana produksimu" aria-label="Rencana produksi" style="padding:14px 18px;border-radius:14px;border:1px solid #2F2F33;background:#111111;color:#FFFFFF;font-size:16px;outline:none" style-focus="border-color:#E11D2E"></textarea>
+      <label style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#A3A3A8"><input required type="checkbox" style="width:20px;height:20px;margin:1px 0 0;accent-color:#E11D2E;flex:none">Saya setuju data saya diproses sesuai Kebijakan Privasi dan UU PDP.</label>
+      <button type="submit" style="height:52px;border:0;border-radius:999px;background:#E11D2E;color:#FFFFFF;font-weight:600;font-size:16px;cursor:pointer">Kirim minat</button>
+    </form>
+  </div>
+</sc-if>
+
+<dc-import name="IFI Footer" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: 1440, sent: false, sheet: false, slide: 0 };
+  componentDidMount() { this.onResize = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onResize); this.onResize(); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  renderVals() {
+    const P = ['linear-gradient(160deg,#4A4A4F 0%,#26262A 55%,#151517 100%)', 'linear-gradient(200deg,#3A3A3E 0%,#1F1F22 60%,#121213 100%)', 'linear-gradient(170deg,#55555A 0%,#2B2B2F 50%,#141416 100%)', 'linear-gradient(150deg,#45454A 0%,#242427 60%,#131314 100%)', 'linear-gradient(210deg,#3E3E43 0%,#222225 55%,#111112 100%)'];
+    const desktop = this.state.w >= 960;
+    return {
+      desktop, mobile: !desktop, bottomPad: desktop ? '0px' : '84px',
+      layoutCols: desktop ? 'minmax(0,1fr) 380px' : '1fr',
+      thumbs: [P[0], P[1], P[3], P[4]].map(bg => ({ bg })),
+      slides: P.map(bg => ({ bg })),
+      dots: P.map((_, i) => ({ w: i === this.state.slide ? '20px' : '6px', bg: i === this.state.slide ? '#FFFFFF' : '#5C5C61' })),
+      onGalScroll: (e) => { const el = e.currentTarget; const i = Math.round(el.scrollLeft / (el.clientWidth - 36)); if (i !== this.state.slide) this.setState({ slide: Math.max(0, Math.min(4, i)) }); },
+      tags: ['Pantai', 'Tebing', 'Matahari terbit'],
+      facilities: [
+        { label: 'Listrik', icon: 'M13 2L4 14h7l-1 8 9-12h-7z' },
+        { label: 'Parkir', icon: 'M5 3h14v18H5zM9 17V7h4a3 3 0 010 6H9' },
+        { label: 'Toilet', icon: 'M7 3v18M17 3v18M4 10h6M14 10h6' },
+        { label: 'Sinyal 4G', icon: 'M4 20v-4M9 20v-8M14 20V8M19 20V4' },
+        { label: 'Akses mobil', icon: 'M3 16l2-6h14l2 6v3H3zM7 19v2M17 19v2' },
+        { label: 'Ruang istirahat', icon: 'M3 18V9h18v9M3 14h18M7 9V6h10v3' }
+      ],
+      notSent: !this.state.sent, sent: this.state.sent,
+      submit: (e) => { e.preventDefault(); (window.dataLayer = window.dataLayer || []).push({ event: 'form_minat_listing' }); this.setState({ sent: true, sheet: false }); },
+      sheetOpen: !desktop && this.state.sheet, openSheet: () => this.setState({ sheet: true }), closeSheet: () => this.setState({ sheet: false }),
+      stop: (e) => e.stopPropagation(),
+      similar: [['Pantai Parangtritis', 'Bantul, DI Yogyakarta', 'Pantai'], ['Pantai Tanjung Aan', 'Lombok Tengah, NTB', 'Pantai'], ['Pantai Pink', 'Lombok Timur, NTB', 'Pantai'], ['Hutan Mangrove Wonorejo', 'Surabaya, Jawa Timur', 'Hutan'], ['Desa Penglipuran', 'Bangli, Bali', 'Desa']].map((x, i) => ({ name: x[0], place: x[1], tag: x[2], bg: P[i % 5] }))
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#111111;color:#FFFFFF;font-family:'Plus Jakarta Sans',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#FFFFFF;text-decoration:none}
+a:hover{color:#F23A49}
+button{font-family:inherit}
+</style>
+</helmet>
+
+<div style="background:#111111;color:#FFFFFF;font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(16px,1.25vw,18px);line-height:1.6;overflow-x:hidden">
+<dc-import name="IFI Navbar" active="Membership" hint-size="100%,1px"></dc-import>
+
+<header data-screen-label="01 Page header" style="position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;isolation:isolate;margin-bottom:clamp(56px,7vw,96px)">
+  <img src="assets/hero-deal.png" alt="" aria-hidden="true" style="position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:55% 60%;filter:saturate(.75) brightness(.55)">
+  <div style="position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(17,17,17,.7) 0%,rgba(17,17,17,.25) 30%,rgba(17,17,17,.6) 62%,#111111 100%),linear-gradient(90deg,rgba(17,17,17,.85) 0%,rgba(17,17,17,.2) 70%)"></div>
+  <div style="width:100%;max-width:1248px;margin:0 auto;padding:clamp(120px,12vw,160px) 24px clamp(32px,4vw,48px);display:flex;flex-direction:column;gap:clamp(32px,4vw,48px)">
+    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:20px;max-width:760px">
+      <nav aria-label="Breadcrumb" style="display:flex;align-items:center;gap:8px;font-size:14px;color:#D4D4D8"><a href="IFI%20Homepage%20v2.dc.html" style="color:#D4D4D8" style-hover="color:#FFFFFF">Home</a><span style="color:#A3A3A8">/</span><span style="color:#FFFFFF">Membership</span></nav>
+      <h1 style="margin:0;font-weight:800;font-size:clamp(48px,7vw,104px);line-height:.98;letter-spacing:-3px">Jadi member IFI</h1>
+      <p style="margin:0;max-width:560px;font-size:clamp(17px,1.4vw,20px);line-height:1.55;color:#E4E4E7;text-wrap:pretty">Dengan satu iuran, kamu ikut menentukan film Indonesia mana yang diproduksi, belajar dari pembuat film, dan menonton hasilnya di bioskop.</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;margin-top:4px">
+        <button onClick="{{ gvJoin }}" style="height:52px;padding:0 28px;border:0;border-radius:999px;background:#E11D2E;color:#FFFFFF;font-weight:600;font-size:16px;cursor:pointer;white-space:nowrap" style-hover="background:#F23A49" style-active="background:#B5121F">Jadi Member IFI</button>
+        <div style="display:flex;flex-direction:column;line-height:1.3"><strong style="font-size:20px;font-weight:800;letter-spacing:-.4px">Rp100.000</strong><span style="font-size:13px;color:#D4D4D8">dibayar lewat GV Pay di GV Apps</span></div>
+      </div>
+    </div>
+    <ul style="list-style:none;margin:0;padding:24px 0 0;border-top:1px solid rgba(255,255,255,.16);display:grid;grid-template-columns:{{ hdrBenCols }};gap:16px 24px">
+      <li style="display:flex;align-items:center;gap:12px"><span style="flex:none;width:28px;height:28px;border-radius:999px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">1</span><span style="display:flex;flex-direction:column;line-height:1.35"><strong style="font-size:15px;font-weight:700">Creative Film Course</strong><span style="font-size:13px;color:#A3A3A8">Online dan offline</span></span></li><li style="display:flex;align-items:center;gap:12px"><span style="flex:none;width:28px;height:28px;border-radius:999px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">2</span><span style="display:flex;flex-direction:column;line-height:1.35"><strong style="font-size:15px;font-weight:700">Internship produksi</strong><span style="font-size:13px;color:#A3A3A8">Di set film IFI</span></span></li><li style="display:flex;align-items:center;gap:12px"><span style="flex:none;width:28px;height:28px;border-radius:999px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">3</span><span style="display:flex;flex-direction:column;line-height:1.35"><strong style="font-size:15px;font-weight:700">2 tiket bioskop</strong><span style="font-size:13px;color:#A3A3A8">Film hasil pilihan member</span></span></li><li style="display:flex;align-items:center;gap:12px"><span style="flex:none;width:28px;height:28px;border-radius:999px;background:#E11D2E;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">4</span><span style="display:flex;flex-direction:column;line-height:1.35"><strong style="font-size:15px;font-weight:700">Hak vote</strong><span style="font-size:13px;color:#A3A3A8">Pilih film yang diproduksi</span></span></li>
+    </ul>
+  </div>
+</header>
+
+<section data-screen-label="02 Harga" style="padding:0 16px clamp(72px,9vw,120px)">
+  <div style="max-width:1232px;margin:0 auto;border-radius:clamp(24px,2.2vw,32px);background:#1B1B1D;border:1px solid #2F2F33;padding:clamp(28px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,6vw,72px);align-items:center">
+    <div style="display:flex;align-items:center"><div style="position:relative;width:100%;max-width:520px;aspect-ratio:1235/1109;margin:0 auto">
+            <div aria-hidden="true" style="position:absolute;left:12%;right:20%;bottom:4%;height:10%;border-radius:999px;background:radial-gradient(closest-side,rgba(0,0,0,.7),rgba(0,0,0,0))"></div>
+            <img src="assets/ifi-card.png" alt="IFI Membership Card" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block">
+            <span aria-hidden="true" style="position:absolute;left:60%;top:30%;font-size:clamp(22px,3.4vw,44px);font-weight:800;letter-spacing:-1px;line-height:1;color:#D4A537;transform:rotate(-15deg) skewX(-4deg)">IFI</span>
+          </div></div>
+    <div style="padding:clamp(24px,3vw,40px);border-radius:24px;background:#242427;display:flex;flex-direction:column;gap:24px">
+      <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:13px;font-weight:600;color:#A3A3A8">Member IFI</span><span style="font-size:clamp(48px,5.6vw,80px);font-weight:800;line-height:1.05;letter-spacing:-2px">Rp100.000</span></div>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px">
+        <sc-for list="{{ checklist }}" as="c" hint-placeholder-count="5"><li style="display:flex;gap:12px;align-items:flex-start;font-size:16px"><span style="flex:none;width:22px;height:22px;margin-top:2px;border-radius:999px;background:#2F2F33;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800">✓</span>{{ c }}</li></sc-for>
+      </ul>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px"><span><strong style="font-weight:700">{{ memberLabel }}</strong> <span style="color:#A3A3A8">dari 100.000 member</span></span><span style="color:#A3A3A8">{{ memberPct }}</span></div>
+        <div style="height:8px;border-radius:999px;background:#2F2F33;overflow:hidden"><div style="height:100%;width:{{ memberPct }};background:#E11D2E;border-radius:999px"></div></div>
+      </div>
+      <button onClick="{{ gvJoin }}" style="height:52px;border:0;border-radius:999px;background:#E11D2E;color:#FFFFFF;font-weight:600;font-size:16px;cursor:pointer" style-hover="background:#F23A49" style-active="background:#B5121F">Jadi Member IFI</button>
+      <span style="font-size:13px;color:#A3A3A8;text-align:center">Pembayaran lewat GV Pay di GV Apps</span>
+    </div>
+  </div>
+</section>
+
+<section id="benefit" data-screen-label="03 Benefit lengkap" style="padding:0 16px clamp(72px,9vw,120px)">
+  <div style="max-width:1232px;margin:0 auto;border-radius:clamp(24px,2.2vw,32px);background:#1B1B1D;border:1px solid #2F2F33;padding:clamp(24px,4vw,48px);display:flex;flex-direction:column;gap:clamp(24px,3vw,36px)">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 64px">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <span style="font-size:13px;font-weight:600;color:#A3A3A8">Benefit</span>
+        <h2 style="margin:0;font-weight:800;font-size:clamp(28px,2.8vw,40px);line-height:1.15;letter-spacing:-1px">Apa saja yang kamu dapat</h2>
+      </div>
+      <span style="font-size:14px;color:#A3A3A8">4 benefit dalam satu iuran Rp100.000</span>
+    </div>
+    <div style="display:grid;grid-template-columns:{{ benCols }};gap:12px;align-items:stretch">
+      <div role="tablist" style="display:flex;flex-direction:column;gap:8px">
+        <sc-for list="{{ benTabs }}" as="it" hint-placeholder-count="4">
+          <button role="tab" onClick="{{ it.onClick }}" style="flex:1;display:flex;align-items:center;gap:14px;padding:12px 16px 12px 12px;border-radius:20px;border:1px solid {{ it.border }};background:{{ it.bg }};color:#FFFFFF;text-align:left;cursor:pointer;font-family:inherit;transition:background .25s,border-color .25s" style-hover="border-color:#3A3A3E">
+            <span style="flex:none;width:56px;height:56px;border-radius:14px;overflow:hidden;background:#111111;opacity:{{ it.thumbOp }};transition:opacity .25s"><img src="{{ it.src }}" alt="" aria-hidden="true" style="width:100%;height:100%;object-fit:cover;display:block"></span>
+            <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
+              <span style="font-size:12px;font-weight:700;color:{{ it.numColor }}">{{ it.num }}</span>
+              <strong style="font-size:15px;font-weight:700;line-height:1.35;color:{{ it.fg }}">{{ it.title }}</strong>
+            </span>
+          </button>
+        </sc-for>
+      </div>
+      <div style="border-radius:24px;background:#242427;border:1px solid #3A3A3E;overflow:hidden;display:grid;grid-template-columns:{{ benDetailCols }}">
+        <div style="position:relative;min-height:clamp(240px,26vw,340px);background:#111111">
+          <sc-for list="{{ benTabs }}" as="im" hint-placeholder-count="4"><img src="{{ im.src }}" alt="{{ im.img }}" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.85) brightness(.9);opacity:{{ im.imgOp }};transition:opacity .35s"></sc-for>
+        </div>
+        <div style="padding:clamp(20px,2.6vw,32px);display:flex;flex-direction:column;justify-content:space-between;gap:20px">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span style="align-self:flex-start;padding:4px 12px;border-radius:999px;background:#2A1416;color:#FF8A94;font-size:13px;font-weight:600;line-height:1.4;white-space:nowrap">{{ benCur.n }}</span>
+            <strong style="font-size:clamp(20px,1.8vw,24px);font-weight:800;line-height:1.25;letter-spacing:-.5px;text-wrap:balance">{{ benCur.title }}</strong>
+            <span style="font-size:15px;line-height:1.6;color:#A3A3A8;text-wrap:pretty">{{ benCur.text }}</span>
+            <sc-if value="{{ benCur.hasList }}" hint-placeholder-val="{{ false }}">
+              <ul style="list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;border-top:1px solid #3A3A3E">
+                <sc-for list="{{ benCur.list }}" as="li"><li style="display:flex;flex-direction:column;gap:2px;padding:10px 0;border-bottom:1px solid #3A3A3E"><strong style="font-size:14px;font-weight:700">{{ li.k }}</strong><span style="font-size:13px;color:#A3A3A8">{{ li.v }}</span></li></sc-for>
+              </ul>
+            </sc-if>
+          </div>
+          <div style="display:flex;gap:6px">
+            <sc-for list="{{ benTabs }}" as="d" hint-placeholder-count="4"><button onClick="{{ d.onClick }}" aria-label="{{ d.title }}" style="width:{{ d.dotW }};height:6px;padding:0;border:0;border-radius:999px;background:{{ d.dotC }};cursor:pointer;transition:width .3s"></button></sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="04 Cara daftar" style="padding:0 16px clamp(72px,9vw,120px)">
+  <div style="max-width:1232px;margin:0 auto;border-radius:clamp(24px,2.2vw,32px);background:#1B1B1D;border:1px solid #2F2F33;padding:clamp(28px,5vw,64px);display:flex;flex-direction:column;gap:48px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+      <div style="display:flex;flex-direction:column;gap:16px;max-width:560px"><span style="font-size:13px;font-weight:600;color:#A3A3A8">Cara daftar</span><h2 style="margin:0;font-weight:800;font-size:clamp(32px,3.34vw,48px);line-height:1.15;letter-spacing:-1px">Empat langkah di GV Apps</h2></div>
+      <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;align-items:center;gap:16px;padding:12px 20px 12px 12px;border-radius:24px;background:#242427">
+          <div style="width:96px;height:96px;border-radius:16px;background:#FFFFFF;display:flex;align-items:center;justify-content:center;color:#111111;font-size:11px;font-weight:700;text-align:center">QR unduh</div>
+          <div style="display:flex;flex-direction:column;gap:2px"><strong style="font-size:15px;font-weight:700">Pindai untuk unduh</strong><span style="font-size:13px;color:#A3A3A8">GV Apps di iOS dan Android</span></div>
+        </div>
+      </sc-if>
+    </div>
+    <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:24px">
+      <sc-for list="{{ regSteps }}" as="r" hint-placeholder-count="4">
+        <li style="display:flex;flex-direction:column;gap:20px">
+          <div style="align-self:center;width:min(100%,200px);aspect-ratio:9/18;border-radius:32px;background:#0A0A0A;border:6px solid #2F2F33;padding:28px 14px 14px;position:relative;display:flex;flex-direction:column;gap:10px">
+            <span style="position:absolute;top:8px;left:50%;transform:translateX(-50%);width:56px;height:10px;border-radius:999px;background:#2F2F33"></span>
+            <span style="font-size:11px;font-weight:600;color:#A3A3A8">GV Apps</span>
+            <strong style="font-size:15px;font-weight:700;line-height:1.3">{{ r.screen }}</strong>
+            <div style="flex:1;border-radius:14px;background:#1B1B1D"></div>
+            <div style="height:36px;border-radius:999px;background:{{ r.btn }};display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600">{{ r.cta }}</div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <span style="flex:none;width:36px;height:36px;border-radius:999px;background:#2A2A2D;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px">{{ r.n }}</span>
+            <div style="display:flex;flex-direction:column;gap:2px"><strong style="font-size:18px;font-weight:700">{{ r.title }}</strong><span style="font-size:14px;color:#A3A3A8">{{ r.text }}</span></div>
+          </div>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<section data-screen-label="05 FAQ member" style="padding:0 24px clamp(48px,6vw,80px)">
+  <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
+    <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px"><span style="font-size:13px;font-weight:600;color:#A3A3A8">FAQ member</span><h2 style="margin:0;font-weight:800;font-size:clamp(32px,3.34vw,48px);line-height:1.15;letter-spacing:-1px">Seputar keanggotaan</h2></div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="6">
+        <div style="border-radius:20px;background:#1B1B1D;border:1px solid #2F2F33">
+          <button onClick="{{ q.toggle }}" aria-expanded="{{ q.open }}" style="width:100%;min-height:64px;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:16px 16px 16px 24px;border:0;background:transparent;color:#FFFFFF;text-align:left;font-size:17px;font-weight:600;cursor:pointer">
+            <span>{{ q.q }}</span>
+            <span style="flex:none;width:40px;height:40px;border-radius:999px;background:{{ q.iconBg }};display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500;line-height:1;transform:{{ q.rot }};transition:transform .25s,background .25s">+</span>
+          </button>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:0 72px 24px 24px;font-size:16px;line-height:1.6;color:#A3A3A8">{{ q.a }}</p></sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<dc-import name="IFI Closing CTA" hint-size="100%,560px"></dc-import>
+<dc-import name="IFI Footer" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;memberCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:23418,&quot;min&quot;:0,&quot;max&quot;:100000,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  state = { w: 1440, faq: 0 };
+  componentDidMount() { this.onResize = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onResize); this.onResize(); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  renderVals() {
+    const P = ['linear-gradient(160deg,#4A4A4F 0%,#26262A 55%,#151517 100%)', 'linear-gradient(200deg,#3A3A3E 0%,#1F1F22 60%,#121213 100%)', 'linear-gradient(170deg,#55555A 0%,#2B2B2F 50%,#141416 100%)', 'linear-gradient(150deg,#45454A 0%,#242427 60%,#131314 100%)'];
+    const members = this.props.memberCount ?? 23418;
+    const fire = (k) => () => window.dispatchEvent(new CustomEvent('ifi:gv', { detail: k }));
+    const faqData = [
+      ['Berapa iuran member IFI?', 'Iuran member IFI Rp100.000, dibayar di GV Apps melalui GV Pay.'],
+      ['Apakah iurannya sekali bayar atau berkala?', 'Detail periode iuran akan diumumkan resmi oleh tim IFI di GV Apps.'],
+      ['Bagaimana cara menukar tiket nonton?', 'Tiket tersimpan di GV Apps. Saat film IFI rilis, kamu bisa menukarnya sesuai jadwal penayangan.'],
+      ['Kapan Creative Film Course dimulai?', 'Jadwal kelas online dan offline diumumkan di GV Apps. Member mendapat notifikasi saat kelas baru dibuka.'],
+      ['Siapa yang bisa ikut internship?', 'Member IFI yang memenuhi syarat program. Info seleksi diumumkan setiap ada produksi baru.'],
+      ['Apakah saya bisa vote lebih dari satu film?', 'Aturan voting per periode tertera di halaman kandidat film di GV Apps.']
+    ];
+    const BEN = [
+        { n: 'Benefit 1', title: 'Creative Film Course', text: 'Kelas online dan offline yang diajar langsung oleh praktisi film. Cocok untuk pemula yang ingin mulai berkarya.', hasList: true, list: [{ k: 'Scriptwriting', v: 'Menyusun ide, struktur cerita, dan naskah siap produksi.' }, { k: 'Staging production', v: 'Blocking, arahan pemain, dan alur kerja di set.' }, { k: 'Lighting', v: 'Dasar pencahayaan untuk suasana dan karakter.' }], img: 'Kelas Creative Film Course', bg: P[0], src: 'assets/ben-course.png' },
+        { n: 'Benefit 2', title: 'Internship produksi film', text: 'Kesempatan magang di set produksi film IFI. Kamu bekerja bersama kru profesional di departemen kamera, artistik, dan produksi.', hasList: false, list: [], img: 'Internship di set produksi', bg: P[1], src: 'assets/ben-internship.png' },
+        { n: 'Benefit 3', title: '2 tiket nonton film IFI', text: 'Setiap member mendapat 2 tiket bioskop untuk film IFI. Ajak satu orang terdekat menonton film hasil pilihan bersama.', hasList: false, list: [], img: 'Nonton bareng di bioskop', bg: P[2], src: 'assets/ben-tiket.png' },
+        { n: 'Benefit 4', title: 'Hak vote', text: 'Tonton cuplikan kandidat film, lalu pilih yang paling ingin kamu lihat diproduksi. Film dengan dukungan terbanyak masuk tahap produksi.', hasList: false, list: [], img: 'Vote kandidat film di GV Apps', bg: P[3], src: 'assets/ben-vote.png' }
+      ].map((b, i) => ({ ...b, dir: i % 2 ? 'row-reverse' : 'row' }));
+    return {
+      hdrBenCols: (this.state.w ?? 1200) >= 720 ? 'repeat(4,minmax(0,1fr))' : 'repeat(2,minmax(0,1fr))',
+      desktop: this.state.w >= 960,
+      gvJoin: fire('join'),
+      checklist: ['Creative Film Course online dan offline', 'Kesempatan Internship Produksi Film', '2 tiket nonton film IFI di bioskop', 'Hak vote film yang akan diproduksi', 'IFI Membership Card digital'],
+      memberLabel: members.toLocaleString('id-ID'), memberPct: Math.min(100, members / 1000).toFixed(1) + '%',
+      benefits: BEN,
+      benTabs: BEN.map((b, j) => { const on = j === (this.state.ben ?? 0); return { ...b, num: '0' + (j + 1), onClick: () => this.setState({ ben: j }), bg: on ? '#242427' : 'transparent', border: on ? '#3A3A3E' : '#2F2F33', numColor: on ? '#FF8A94' : '#5C5C61', fg: on ? '#FFFFFF' : '#A3A3A8', thumbOp: on ? 1 : .5, imgOp: on ? 1 : 0, dotW: on ? '28px' : '6px', dotC: on ? '#E11D2E' : '#3A3A3E' }; }),
+      benCur: BEN[this.state.ben ?? 0],
+      benCols: (this.state.w ?? 1200) >= 960 ? 'minmax(0,.85fr) minmax(0,1.6fr)' : '1fr', benDetailCols: (this.state.w ?? 1200) >= 720 ? 'minmax(0,1fr) minmax(0,1fr)' : '1fr',
+      regSteps: [
+        { n: '1', title: 'Unduh GV Apps', text: 'Tersedia di App Store dan Google Play.', screen: 'Selamat datang di GV Apps', cta: 'Mulai', btn: '#E11D2E' },
+        { n: '2', title: 'Buat akun', text: 'Daftar dengan nomor HP atau email.', screen: 'Buat akun baru', cta: 'Lanjut', btn: '#E11D2E' },
+        { n: '3', title: 'Bayar iuran lewat GV Pay', text: 'Iuran Rp100.000, aman di GV Pay.', screen: 'Iuran member IFI Rp100.000', cta: 'Bayar dengan GV Pay', btn: '#E11D2E' },
+        { n: '4', title: 'Dapatkan IFI Card digital', text: 'Kartu member langsung aktif di aplikasi.', screen: 'IFI Membership Card aktif', cta: 'Lihat kartu', btn: '#2A2A2D' }
+      ],
+      faqs: faqData.map(([q, a], i) => { const open = this.state.faq === i; return { q, a, open, iconBg: open ? '#E11D2E' : '#2A2A2D', rot: open ? 'rotate(45deg)' : 'none', toggle: () => this.setState(s => ({ faq: s.faq === i ? -1 : i })) }; })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<section data-screen-label="CTA penutup" style="padding:clamp(48px,6vw,96px) 16px;font-family:'Plus Jakarta Sans',sans-serif;color:#FFFFFF">
+  <div style="position:relative;max-width:1232px;margin:0 auto;border-radius:clamp(24px,2.2vw,32px);overflow:hidden;isolation:isolate;padding:clamp(72px,10vw,140px) 24px;text-align:center;background:linear-gradient(160deg,#4A4A4F 0%,#2B2B2F 50%,#18181A 100%)">
+    <span style="position:absolute;right:24px;top:20px;font-size:13px;color:#A3A3A8">Still film</span>
+    <div style="position:absolute;inset:0;z-index:-1;background:rgba(17,17,17,.6)"></div>
+    <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:24px">
+      <h2 style="margin:0;font-weight:800;font-size:clamp(32px,3.34vw,48px);line-height:1.15;letter-spacing:-1px;text-wrap:balance">Cerita berikutnya bisa kamu yang pilih</h2>
+      <p style="margin:0;max-width:540px;font-size:clamp(16px,1.25vw,18px);color:#D4D4D8">Jadi bagian dari 100.000 member pertama yang ikut memilih, belajar, dan menonton film Indonesia bersama.</p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px">
+        <button onClick="{{ join }}" style="height:52px;padding:0 28px;border:0;border-radius:999px;background:#E11D2E;color:#FFFFFF;font-weight:600;font-size:16px;cursor:pointer;white-space:nowrap" style-hover="background:#F23A49" style-active="background:#B5121F">Jadi Member IFI</button>
+        <button onClick="{{ download }}" style="height:52px;padding:0 28px;border:0;border-radius:999px;background:#2A2A2D;color:#FFFFFF;font-weight:600;font-size:16px;cursor:pointer;white-space:nowrap" style-hover="background:#3A3A3E">Unduh GV Apps</button>
+      </div>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:560}}">
+class Component extends DCLogic {
+  renderVals() {
+    const fire = (k) => () => window.dispatchEvent(new CustomEvent('ifi:gv', { detail: k }));
+    return { join: fire('join'), download: fire('download') };
+  }
+}
+</script>
+</body>
+</html>
