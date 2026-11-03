@@ -10,10 +10,10 @@
 <helmet>
 <style id="ifi-mobile">
 @media (max-width:640px){
-  :is(div,nav,form,footer):has(> :is(a,button)[style*="height: 52px"] ~ :is(a,button)[style*="height: 52px"]),
-  :is(div,nav,form):has(> :is(a,button)[style*="height: 48px"] ~ :is(a,button)[style*="height: 48px"]){display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:stretch!important;align-self:stretch!important;width:100%!important;gap:8px!important}
-  :is(div,nav,form,footer):has(> :is(a,button)[style*="height: 52px"] ~ :is(a,button)[style*="height: 52px"]) > :is(a,button),
-  :is(div,nav,form):has(> :is(a,button)[style*="height: 48px"] ~ :is(a,button)[style*="height: 48px"]) > :is(a,button){flex:1 1 0!important;min-width:0!important;width:auto!important;height:48px!important;padding:0 8px!important;justify-content:center!important;text-align:center!important;font-size:13.5px!important;letter-spacing:-.1px;line-height:1.2!important;white-space:nowrap!important;overflow:hidden;text-overflow:ellipsis}
+  :is(div,nav,form,footer):not(header *):has(> :is(a,button)[style*="height: 52px"] ~ :is(a,button)[style*="height: 52px"]),
+  :is(div,nav,form):not(header *):has(> :is(a,button)[style*="height: 48px"] ~ :is(a,button)[style*="height: 48px"]){display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:stretch!important;align-self:stretch!important;width:100%!important;gap:8px!important}
+  :is(div,nav,form,footer):not(header *):has(> :is(a,button)[style*="height: 52px"] ~ :is(a,button)[style*="height: 52px"]) > :is(a,button),
+  :is(div,nav,form):not(header *):has(> :is(a,button)[style*="height: 48px"] ~ :is(a,button)[style*="height: 48px"]) > :is(a,button){flex:1 1 0!important;min-width:0!important;width:auto!important;height:48px!important;padding:0 8px!important;justify-content:center!important;text-align:center!important;font-size:13.5px!important;letter-spacing:-.1px;line-height:1.2!important;white-space:nowrap!important;overflow:hidden;text-overflow:ellipsis}
   :is(a,button)[style*="height: 52px"]{height:48px!important}
   section[data-screen-label] h2{margin-bottom:0!important}
   [data-mstats]{gap:0!important;border-radius:20px;background:#1B1B1D;border:1px solid #2F2F33;overflow:hidden}
