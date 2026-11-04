@@ -47,7 +47,7 @@ button{font-family:inherit}
     <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px 48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.16)">
       <p style="flex:1 1 360px;margin:0;max-width:480px;font-size:16px;line-height:1.6;color:#D4D4D8;text-wrap:pretty">Indonesia Films Initiative ingin meningkatkan kecintaan pada film karya anak bangsa dan mengisi layar tonton dengan karya yang menginspirasi.</p>
       <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px">
-        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:13px;font-weight:600;color:#D4D4D8">Diinisiasi oleh</span><img src="assets/logo-gv.png" alt="Global Village" style="height:40px;width:auto;display:block"></div>
+        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:13px;font-weight:600;color:#D4D4D8">Diinisiasi oleh</span><img src="assets/logo-gv-2026.png" alt="Global Village" style="height:40px;width:auto;display:block"></div>
         <div style="display:flex;align-items:center;gap:12px"><span style="font-size:13px;font-weight:600;color:#D4D4D8">Didukung oleh</span><img src="assets/logo-nu.png" alt="Nahdlatul Ulama" style="height:40px;width:auto;display:block"><img src="assets/logo-pfn.png" alt="PFN Produksi Film Negara" style="height:40px;width:auto;display:block"></div>
       </div>
     </div>
@@ -281,7 +281,7 @@ class Component extends DCLogic {
         { name: 'NU', role: 'Mitra komunitas yang membuka akses ke warga Nahdliyin dan jaringan SMK NU.' },
         { name: 'PFN', role: 'Mitra produksi dan distribusi film nasional.' },
         { name: 'Layar Desa', role: 'Mitra pemutaran film hingga ke desa-desa.' }
-      ].map(p => { const logo = { 'Global Village': 'assets/logo-gv.png', 'NU': 'assets/logo-nu.png', 'PFN': 'assets/logo-pfn.png' }[p.name]; return { ...p, logo, hasLogo: !!logo, noLogo: !logo }; })
+      ].map(p => { const logo = { 'Global Village': 'assets/logo-gv-2026.png', 'NU': 'assets/logo-nu.png', 'PFN': 'assets/logo-pfn.png' }[p.name]; return { ...p, logo, hasLogo: !!logo, noLogo: !logo }; })
     };
   }
 }
