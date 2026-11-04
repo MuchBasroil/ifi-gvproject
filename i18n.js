@@ -15,14 +15,17 @@
   function tr(s) {
     var d = dict(); if (!d) return null; var n = norm(s); if (!n) return null;
     if (d[n] != null) return d[n];
+    var m = n.match(/^(.+), (\d+) lokasi$/); if (m) return m[1] + ', ' + m[2] + (m[2] === '1' ? ' location' : ' locations');
+    m = n.match(/^Poster (.+)$/); if (m) return (d[m[1]] || m[1]) + ' poster';
+    m = n.match(/^Foto (.+)$/); if (m) return 'Photo of ' + (d[m[1]] || m[1]);
     return null;
   }
   function doText(node) {
     var v = node.nodeValue; if (!v || !/[A-Za-z]/.test(v)) return;
-    var t = tr(v); if (t != null && t !== norm(v)) { node.nodeValue = v.replace(norm(v), t); if (node.parentElement) queueFit(node.parentElement); }
+    var t = tr(v); if (t != null && t !== norm(v)) { var nv = v.indexOf(norm(v)) >= 0 ? v.replace(norm(v), t) : t; if (nv !== v) { node.nodeValue = nv; if (node.parentElement) queueFit(node.parentElement); } }
   }
   function doEl(el) {
-    for (var i = 0; i < ATTR.length; i++) { var a = el.getAttribute && el.getAttribute(ATTR[i]); if (a) { var t = tr(a); if (t != null) el.setAttribute(ATTR[i], t); } }
+    for (var i = 0; i < ATTR.length; i++) { var a = el.getAttribute && el.getAttribute(ATTR[i]); if (a) { var t = tr(a); if (t != null && t !== a) el.setAttribute(ATTR[i], t); } }
   }
   function walk(root) {
     if (!dict()) return;
