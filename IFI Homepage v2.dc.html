@@ -129,8 +129,14 @@ button,input{font-family:inherit}
     </ol>
   </div>
   <div style="max-width:1248px;margin:48px auto 0;display:flex;flex-direction:column;gap:16px">
-    <div style="padding:0 24px;display:flex;justify-content:space-between;align-items:center;gap:16px">
-      <span style="font-size:20px;font-weight:700;line-height:1.3;letter-spacing:-.3px">Kandidat film untuk di-vote</span>
+    <div style="padding:0 24px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px 16px">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:20px;font-weight:700;line-height:1.3;letter-spacing:-.3px">Kandidat film untuk di-vote</span>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px">
+          <span style="display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border-radius:999px;background:#2A1416;color:#FF8A94;font-size:13px;font-weight:600;white-space:nowrap"><span style="width:6px;height:6px;border-radius:999px;background:#E11D2E"></span>Vote sedang dibuka</span>
+          <span style="font-size:13px;color:#A3A3A8;white-space:nowrap">{{ totalVoters }} voter</span>
+        </div>
+      </div>
       <div style="display:flex;align-items:center;gap:8px">
         <a href="#" style="font-size:14px;font-weight:600;color:#A3A3A8;margin-right:8px;white-space:nowrap" style-hover="color:#FFFFFF">Lihat semua</a>
         <sc-if value="{{ filmArrows }}" hint-placeholder-val="{{ false }}">
@@ -141,10 +147,11 @@ button,input{font-family:inherit}
     </div>
     <div ref="{{ rowRef }}" style="display:flex;justify-content:{{ filmJustify }};gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:24px;padding:4px 24px 16px;scrollbar-width:none">
       <sc-for list="{{ films }}" as="f" hint-placeholder-count="4">
-        <article onMouseEnter="{{ f.enter }}" onMouseLeave="{{ f.leave }}" style="flex:none;width:clamp(180px,17vw,232px);scroll-snap-align:start;position:relative;aspect-ratio:2/3;border-radius:20px;overflow:hidden;background:#1B1B1D;transform:{{ f.scale }};transition:transform .25s">
+        <article onMouseEnter="{{ f.enter }}" onMouseLeave="{{ f.leave }}" style="flex:none;width:clamp(200px,19vw,260px);scroll-snap-align:start;position:relative;aspect-ratio:2/3;border-radius:20px;overflow:hidden;background:#1B1B1D;border:1px solid {{ f.border }};box-shadow:{{ f.shadow }};transform:{{ f.scale }};transition:transform .25s,box-shadow .25s">
           <img src="{{ f.src }}" alt="Poster {{ f.title }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ f.pos }};display:block">
           <sc-if value="{{ f.hasImg }}" hint-placeholder-val="{{ false }}"><img src="{{ f.img }}" alt="{{ f.title }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></sc-if>
           <span style="position:absolute;top:12px;left:12px;padding:4px 12px;border-radius:999px;background:rgba(17,17,17,.8);font-size:13px;font-weight:600;white-space:nowrap">{{ f.genre }}</span>
+          <span style="position:absolute;top:12px;right:12px;min-width:32px;height:32px;padding:0 8px;border-radius:999px;background:{{ f.rankBg }};display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800">#{{ f.rank }}</span>
           <div style="position:absolute;left:0;right:0;bottom:0;padding:72px 16px 16px;display:flex;flex-direction:column;gap:10px;background:linear-gradient(180deg,rgba(17,17,17,0),rgba(17,17,17,.8) 45%,rgba(17,17,17,.92))">
             <span style="font-size:18px;font-weight:700;line-height:1.3">{{ f.title }}</span>
             <div style="display:flex;flex-direction:column;gap:6px">
@@ -163,10 +170,16 @@ button,input{font-family:inherit}
 
 <!-- 05 CUPLIKAN -->
 <section data-screen-label="05 Tonton cuplikan" style="padding:0 24px clamp(48px,6vw,72px)">
-  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:16px">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px">
-      <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:13px;font-weight:600;color:#A3A3A8">Langkah 2</span><span style="font-size:20px;font-weight:700;line-height:1.3;letter-spacing:-.3px">Tonton dulu, baru pilih</span></div>
-      <span style="font-size:13px;color:#A3A3A8;white-space:nowrap">2 video</span>
+  <div style="max-width:1200px;margin:0 auto;padding:clamp(20px,2.6vw,32px);border-radius:24px;background:#1B1B1D;border:1px solid #2F2F33;display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px 32px">
+      <div style="flex:1 1 360px;display:flex;align-items:center;gap:16px">
+        <span aria-hidden="true" style="flex:none;width:48px;height:48px;border-radius:999px;background:#E11D2E;display:flex;align-items:center;justify-content:center"><span style="width:0;height:0;margin-left:4px;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:14px solid #FFFFFF"></span></span>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <span style="font-size:20px;font-weight:700;line-height:1.3;letter-spacing:-.3px">Tonton dulu, baru pilih</span>
+          <span style="font-size:15px;line-height:1.5;color:#A3A3A8;text-wrap:pretty">Sebelum vote, tonton cuplikan seperti ini. Cuplikan semua kandidat film ada di GV Apps.</span>
+        </div>
+      </div>
+      <button onClick="{{ voteGv }}" style="flex:none;height:48px;padding:0 24px;border:0;border-radius:999px;background:#2A2A2D;color:#FFFFFF;font-size:15px;font-weight:600;cursor:pointer;white-space:nowrap;font-family:inherit" style-hover="background:#3A3A3E">Vote di GV Apps</button>
     </div>
     <div data-mcarousel="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px">
       <sc-for list="{{ clips }}" as="v" hint-placeholder-count="2">
@@ -276,7 +289,7 @@ button,input{font-family:inherit}
       <div style="display:flex;flex-direction:column;gap:40px">
         <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px">
           <span style="font-size:13px;font-weight:600;color:#A3A3A8">Membership</span>
-          <h2 style="margin:0;font-weight:800;font-size:clamp(32px,3.34vw,48px);line-height:1.15;letter-spacing:-1px">Pilih cara kamu ikut</h2>
+          <h2 style="margin:0;font-weight:800;font-size:clamp(32px,3.34vw,48px);line-height:1.15;letter-spacing:-1px">Pilih paket member</h2>
           <span style="font-size:13px;color:#A3A3A8">Nama tier dan harga masih placeholder</span>
         </div>
         <div data-mcarousel="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px;align-items:stretch">
@@ -307,7 +320,7 @@ button,input{font-family:inherit}
     <div style="position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#161618 0%,rgba(22,22,24,.95) 38%,rgba(22,22,24,.35) 70%,rgba(22,22,24,.15) 100%),linear-gradient(180deg,rgba(22,22,24,0) 55%,rgba(22,22,24,.92) 100%)"></div>
     <div style="display:flex;flex-direction:column;gap:20px;max-width:760px">
       <span style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:#2A1416;color:#FF8A94;font-size:13px;font-weight:600"><span style="width:6px;height:6px;border-radius:999px;background:#E11D2E"></span>Bab berikutnya</span>
-      <h2 style="margin:0;font-weight:800;font-size:clamp(40px,5.6vw,80px);line-height:1.02;letter-spacing:-2px;text-wrap:balance">Sudah vote? Ini baru permulaan.</h2>
+      <h2 style="margin:0;max-width:600px;font-weight:800;font-size:clamp(34px,4.4vw,60px);line-height:1.05;letter-spacing:-1.5px;text-wrap:balance">Sudah vote? Ini baru permulaan.</h2>
       <p style="margin:0;max-width:520px;font-size:clamp(16px,1.4vw,18px);color:#D4D4D8;text-wrap:pretty">Di IFI kamu juga bisa bikin film, membuka lokasi untuk syuting, atau ikut mendanai film berikutnya.</p>
     </div>
     <nav aria-label="Cara lain ikut" style="display:flex;flex-wrap:wrap;gap:12px"><a href="#festival" style="flex:1 1 220px;min-width:0;display:flex;align-items:center;gap:14px;padding:14px 16px 14px 14px;border-radius:20px;background:rgba(17,17,17,.8);border:1px solid #3A3A3E;color:#FFFFFF;text-decoration:none;transition:background .25s,border-color .25s" style-hover="background:#242427;border-color:#5C5C61;color:#FFFFFF"><span style="flex:none;width:40px;height:40px;border-radius:999px;background:#2A2A2D;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">1</span><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><strong style="font-size:16px;font-weight:700;line-height:1.3">Ikut festival film</strong><span style="font-size:13px;color:#A3A3A8;line-height:1.4">Untuk pembuat film</span></span><span aria-hidden="true" style="flex:none;width:32px;height:32px;border-radius:999px;background:#FFFFFF;color:#111111;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700">↓</span></a><a href="#hub" style="flex:1 1 220px;min-width:0;display:flex;align-items:center;gap:14px;padding:14px 16px 14px 14px;border-radius:20px;background:rgba(17,17,17,.8);border:1px solid #3A3A3E;color:#FFFFFF;text-decoration:none;transition:background .25s,border-color .25s" style-hover="background:#242427;border-color:#5C5C61;color:#FFFFFF"><span style="flex:none;width:40px;height:40px;border-radius:999px;background:#2A2A2D;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">2</span><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><strong style="font-size:16px;font-weight:700;line-height:1.3">Daftarkan lokasi</strong><span style="font-size:13px;color:#A3A3A8;line-height:1.4">Untuk pemilik lokasi</span></span><span aria-hidden="true" style="flex:none;width:32px;height:32px;border-radius:999px;background:#FFFFFF;color:#111111;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700">↓</span></a><a href="#investor" style="flex:1 1 220px;min-width:0;display:flex;align-items:center;gap:14px;padding:14px 16px 14px 14px;border-radius:20px;background:rgba(17,17,17,.8);border:1px solid #3A3A3E;color:#FFFFFF;text-decoration:none;transition:background .25s,border-color .25s" style-hover="background:#242427;border-color:#5C5C61;color:#FFFFFF"><span style="flex:none;width:40px;height:40px;border-radius:999px;background:#2A2A2D;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">3</span><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><strong style="font-size:16px;font-weight:700;line-height:1.3">Jadi investor film</strong><span style="font-size:13px;color:#A3A3A8;line-height:1.4">Untuk investor</span></span><span aria-hidden="true" style="flex:none;width:32px;height:32px;border-radius:999px;background:#FFFFFF;color:#111111;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700">↓</span></a></nav>
@@ -472,21 +485,13 @@ button,input{font-family:inherit}
   </div>
 </section>
 
-<section data-screen-label="09b Di balik IFI" style="padding:0 24px">
-  <div style="max-width:1200px;margin:0 auto;padding-top:clamp(32px,4vw,48px);border-top:1px solid #2F2F33;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px 48px">
-    <div style="flex:1 1 440px;display:flex;flex-direction:column;gap:12px">
-      <span style="font-size:13px;font-weight:600;color:#FF8A94">Di balik IFI</span>
-      <h2 style="margin:0;max-width:620px;font-weight:800;font-size:clamp(28px,2.8vw,40px);line-height:1.15;letter-spacing:-1px;text-wrap:balance">Siapa yang mendukung dan menjalankan IFI</h2>
-      <p style="margin:0;max-width:560px;font-size:16px;color:#A3A3A8;text-wrap:pretty">IFI diinisiasi Global Village, didukung NU dan PFN, dan dijalankan oleh orang-orang dari dunia film dan komunitas.</p>
-    </div>
-    <nav aria-label="Di balik IFI" style="display:flex;flex-wrap:wrap;gap:8px"><a href="#nu" style="display:flex;align-items:center;gap:10px;height:48px;padding:0 18px 0 8px;border-radius:999px;background:#1B1B1D;border:1px solid #2F2F33;color:#FFFFFF;font-size:15px;font-weight:600;white-space:nowrap;text-decoration:none" style-hover="background:#242427;border-color:#3A3A3E;color:#FFFFFF"><span style="width:32px;height:32px;border-radius:999px;background:#2A2A2D;display:flex;align-items:center;justify-content:center"><span style="width:8px;height:8px;border-radius:999px;background:#FFFFFF"></span></span>Bersama NU</a><a href="#board" style="display:flex;align-items:center;gap:10px;height:48px;padding:0 18px 0 8px;border-radius:999px;background:#1B1B1D;border:1px solid #2F2F33;color:#FFFFFF;font-size:15px;font-weight:600;white-space:nowrap;text-decoration:none" style-hover="background:#242427;border-color:#3A3A3E;color:#FFFFFF"><span style="width:32px;height:32px;border-radius:999px;background:#2A2A2D;display:flex;align-items:center;justify-content:center"><span style="width:8px;height:8px;border-radius:999px;background:#FFFFFF"></span></span>Board member</a></nav>
-  </div>
-</section>
+
 
 <!-- 10 BERSAMA NU -->
 <section id="nu" data-screen-label="10 Bersama NU" style="padding:clamp(24px,3vw,48px) 16px">
-  <div style="position:relative;max-width:1232px;margin:0 auto;border-radius:clamp(24px,2.2vw,32px);overflow:hidden;background:#0D3524;isolation:isolate">
-    <div aria-hidden="true" style="position:absolute;inset:0;z-index:-1;opacity:.5;background:radial-gradient(circle at 50% -10%,rgba(217,180,90,.22) 0%,rgba(217,180,90,0) 45%),repeating-radial-gradient(circle at 50% 0%,rgba(255,255,255,.035) 0 1px,transparent 1px 56px)"></div>
+  <div style="position:relative;max-width:1232px;margin:0 auto;border-radius:clamp(24px,2.2vw,32px);overflow:hidden;background:linear-gradient(180deg,#14573A 0%,#0F4530 38%,#0B3323 72%,#08261A 100%);isolation:isolate">
+    <div aria-hidden="true" style="position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse 70% 55% at 50% 0%,rgba(242,230,196,.2) 0%,rgba(242,230,196,0) 70%),radial-gradient(ellipse 60% 45% at 50% 100%,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 70%)"></div>
+    <div aria-hidden="true" style="position:absolute;inset:0;z-index:-1;opacity:.6;background:repeating-radial-gradient(circle at 50% 0%,rgba(255,255,255,.035) 0 1px,transparent 1px 56px);-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 75%);mask-image:linear-gradient(180deg,#000 0%,transparent 75%)"></div>
     <div style="padding:clamp(36px,5vw,72px) clamp(20px,5vw,72px) clamp(24px,3vw,40px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(16px,2vw,24px)">
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
         <span style="width:clamp(64px,7vw,96px);height:clamp(64px,7vw,96px);border-radius:999px;background:#FFFFFF;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px rgba(242,230,196,.12),0 20px 50px rgba(0,0,0,.35)"><img src="assets/logo-nu.png" alt="Nahdlatul Ulama" style="width:72%;height:auto;display:block"></span>
@@ -522,26 +527,6 @@ button,input{font-family:inherit}
       </div>
     </div>
   </div>
-</section>
-
-<!-- 11 KUTIPAN -->
-<section data-screen-label="11 Kutipan tokoh" style="padding:clamp(72px,9vw,120px) 16px">
-  <figure style="max-width:1232px;margin:0 auto;border-radius:clamp(24px,2.2vw,32px);background:#1B1B1D;border:1px solid #2F2F33;overflow:hidden;display:grid;grid-template-columns:{{ quoteCols }}">
-    <div style="padding:clamp(32px,5vw,72px);display:flex;flex-direction:column;justify-content:space-between;gap:40px">
-      <div style="display:flex;flex-direction:column;gap:20px">
-        <span aria-hidden="true" style="font-size:clamp(80px,8vw,120px);font-weight:800;line-height:.7;color:#E11D2E;height:clamp(48px,5vw,72px)">“</span>
-        <blockquote style="margin:0;font-size:clamp(24px,2.6vw,38px);line-height:1.25;font-weight:800;letter-spacing:-.8px;text-wrap:pretty">Film adalah cara paling cepat sebuah bangsa mengenali dirinya. Lewat koperasi, anak muda tidak hanya menonton, tapi ikut memiliki ceritanya.</blockquote>
-      </div>
-      <figcaption style="display:flex;align-items:center;gap:16px;padding-top:24px;border-top:1px solid #2F2F33">
-        <span style="flex:none;width:4px;align-self:stretch;border-radius:999px;background:#E11D2E"></span>
-        <div style="display:flex;flex-direction:column;line-height:1.4"><strong style="font-size:17px;font-weight:700">Nama Board Member</strong><span style="font-size:14px;color:#A3A3A8">Jabatan, Afiliasi</span></div>
-      </figcaption>
-    </div>
-    <div style="position:relative;min-height:{{ quoteImgH }};overflow:hidden;background:#1B1B1D">
-      <img src="assets/foto-tokoh.png" alt="Foto tokoh" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:68% 20%;display:block">
-      <div style="position:absolute;inset:0;background:{{ quoteShade }}"></div>
-    </div>
-  </figure>
 </section>
 
 <!-- 12 BOARD -->
@@ -606,18 +591,29 @@ button,input{font-family:inherit}
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;pricingLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Satu kartu&quot;,&quot;3 tier&quot;],&quot;default&quot;:&quot;Satu kartu&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Membership&quot;},&quot;memberCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:23418,&quot;min&quot;:0,&quot;max&quot;:100000,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Data&quot;},&quot;clip1Url&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Video cuplikan&quot;},&quot;clip2Url&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Video cuplikan&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;pricingLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Satu kartu&quot;,&quot;3 tier&quot;],&quot;default&quot;:&quot;Satu kartu&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Membership&quot;},&quot;memberCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:23418,&quot;min&quot;:0,&quot;max&quot;:100000,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Data&quot;},&quot;clip1Url&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Video cuplikan&quot;},&quot;clip2Url&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Video cuplikan&quot;},&quot;boardLead&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Pak Edwin&quot;,&quot;Mbak Inayah&quot;,&quot;Pak Maftuch&quot;],&quot;default&quot;:&quot;Pak Edwin&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Board&quot;}}">
 class Component extends DCLogic {
   state = { w: 1440, hover: -1, cat: 'Mingguan', tab: 'Lokasi', faq: 0, video: false };
   rowRef = React.createRef();
   checkFilmOverflow = () => { const el = this.rowRef && this.rowRef.current; if (!el) return; const o = el.scrollWidth > el.clientWidth + 2; if (o !== !!this.state.filmOverflow) this.setState({ filmOverflow: o }); };
   componentDidUpdate() { this.checkFilmOverflow(); }
   componentDidMount() {
+    this.onAnchor = (e) => {
+      const a = e.target.closest && e.target.closest('a[href^="#"]'); if (!a) return;
+      const id = a.getAttribute('href').slice(1); if (!id) return;
+      const el = document.getElementById(id); if (!el) return;
+      e.preventDefault();
+      const top = el.getBoundingClientRect().top + window.scrollY - 96;
+      window.scrollTo({ top, behavior: 'smooth' });
+      history.replaceState(null, '', '#' + id);
+    };
+    document.addEventListener('click', this.onAnchor);
     this._fo = () => this.checkFilmOverflow(); window.addEventListener('resize', this._fo); setTimeout(this._fo, 300);
     this.onResize = () => this.setState({ w: window.innerWidth });
     window.addEventListener('resize', this.onResize); this.onResize();
   }
-  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  componentWillUnmount() {
+    document.removeEventListener('click', this.onAnchor); window.removeEventListener('resize', this.onResize); }
   renderVals() {
     const P = [
       'linear-gradient(160deg,#4A4A4F 0%,#26262A 55%,#151517 100%)',
@@ -657,6 +653,8 @@ class Component extends DCLogic {
     ];
     const chipOn = (c) => c === this.state.cat;
     return {
+      totalVoters: (8421 + 7186 + 5450 + 3717).toLocaleString('id-ID'),
+      voteGv: () => window.dispatchEvent(new CustomEvent('ifi:gv', { detail: 'vote' })),
       desktop: !mobile, mobile,
       gvJoin: fire('join'), gvLogin: fire('login'), gvVote: fire('vote'),
       whyCols: w >= 720 ? 'repeat(3,minmax(0,1fr))' : '1fr', whyGap: w >= 1024 ? '24px' : '16px', whySplit: w >= 900 ? 'minmax(0,1fr) minmax(0,1.05fr)' : '1fr',
@@ -690,7 +688,7 @@ class Component extends DCLogic {
         { title: 'Gila Dangdut', genre: 'Musikal', pct: 15, voters: 3717, src: 'assets/deck-gila-dangdut.png', pos: '28% 50%' }
       ].map((f, i, arr) => {
         const on = mobile || this.state.hover === i;
-        return { ...f, hasImg: !!f.img, bg: P[(i * 2 + 1) % P.length], pctLabel: f.pct + '%', voters: f.voters.toLocaleString('id-ID'),
+        return { ...f, hasImg: !!f.img, bg: P[(i * 2 + 1) % P.length], pctLabel: f.pct + '%', voters: f.voters.toLocaleString('id-ID'), rank: i + 1, rankBg: i === 0 ? '#E11D2E' : 'rgba(17,17,17,.8)', border: i === 0 ? '#E11D2E' : '#2F2F33', shadow: on ? '0 24px 48px rgba(0,0,0,.55)' : 'none',
           btnMax: on ? '48px' : '0px', btnOpacity: on ? 1 : 0, scale: (!mobile && this.state.hover === i) ? 'scale(1.03)' : 'none',
           enter: () => this.setState({ hover: i }), leave: () => this.setState({ hover: -1 }) };
       }),
@@ -772,7 +770,7 @@ class Component extends DCLogic {
       closeVideo: () => this.setState({ video: false }), videoOpen: this.state.video,
       stop: (e) => e.stopPropagation(),
       boardCols: w >= 960 ? 'repeat(7,minmax(0,1fr))' : w >= 600 ? 'repeat(4,minmax(0,1fr))' : 'repeat(2,minmax(0,1fr))', boardGap: w >= 960 ? '12px' : '10px',
-      board: [['Baskara Sukarja','Global Village'],['Edwin Suryadjaya','Pengusaha'],['Inayah Wahid','NU'],['Maftuchah','NU'],['Ivan Huiskamp','GPU NVIDIA'],['Herimanto','Layar Desa'],['Arya Teja','Sinematografer'],['Leila S. Chudori','Penulis'],['Cacuk Wibisono','Global Village'],['Rohit','Pegiat film, India'],['Heru Purnomo','Javanolog, pegiat film']].map(([nm, af], i) => { const lead = i === 0, wide = w < 600, tab = w >= 600 && w < 960; return { lead, name: nm, aff: af,
+      board: (() => { const L = [['Baskara Sukarja','Global Village'],['Edwin Suryadjaya','Pengusaha'],['Inayah Wahid','NU'],['Maftuchah','NU'],['Ivan Huiskamp','GPU NVIDIA'],['Herimanto','Layar Desa'],['Arya Teja','Sinematografer'],['Leila S. Chudori','Penulis'],['Cacuk Wibisono','Global Village'],['Rohit','Pegiat film, India'],['Heru Purnomo','Javanolog, pegiat film']]; const pick = { 'Pak Edwin': 'Edwin Suryadjaya', 'Mbak Inayah': 'Inayah Wahid', 'Pak Maftuch': 'Maftuchah' }[this.props.boardLead ?? 'Pak Edwin'] || 'Edwin Suryadjaya'; const k = L.findIndex(x => x[0] === pick); return k > 0 ? [L[k], ...L.slice(0, k), ...L.slice(k + 1)] : L; })().map(([nm, af], i) => { const lead = i === 0, wide = w < 600, tab = w >= 600 && w < 960; return { lead, name: nm, aff: af,
         col: lead ? 'span 2' : 'auto', row: lead && !wide && !tab ? 'span 2' : 'auto', ratio: lead ? (wide ? '4/3' : tab ? 'auto' : '1/1') : '1/1',
         radius: lead ? '24px' : '20px', pad: lead ? '20px 22px' : '12px 14px', nameSize: lead ? '20px' : '14px', affSize: lead ? '14px' : '12px',
         bg: i % 2 === 0 ? 'url(assets/person-1.png) 74% 12% / auto 165% no-repeat #F2F2F2' : 'url(assets/person-2.png) 74% 8% / auto 150% no-repeat #EDEDED' }; }),
