@@ -36,15 +36,15 @@ button{font-family:inherit}
 <dc-import name="IFI Navbar" active="Festival" hint-size="100%,1px"></dc-import>
 
 <section data-screen-label="01 Hero festival" style="position:relative;padding:clamp(130px,13vw,170px) 24px clamp(40px,5vw,64px);overflow:hidden;isolation:isolate">
-  <img src="assets/poster-ahdc.png" alt="" aria-hidden="true" style="position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:blur(24px) saturate(.6) brightness(.5);transform:scale(1.1)">
+  <img src="{{ fx.poster }}" alt="" aria-hidden="true" style="position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:blur(24px) saturate(.6) brightness(.5);transform:scale(1.1)">
   <div style="position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(17,17,17,.4),#111111)"></div>
   <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,48px);align-items:flex-end">
-    <img src="assets/poster-ahdc.png" alt="Poster festival Film Serem 2 Menit" style="flex:none;width:clamp(150px,18vw,240px);aspect-ratio:2/3;object-fit:cover;border-radius:20px;border:1px solid #2F2F33;box-shadow:0 30px 60px rgba(0,0,0,.5);display:block">
+    <img src="{{ fx.poster }}" alt="{{ fx.alt }}" style="flex:none;width:clamp(150px,18vw,240px);aspect-ratio:2/3;object-fit:cover;border-radius:20px;border:1px solid #2F2F33;box-shadow:0 30px 60px rgba(0,0,0,.5);display:block">
     <div style="flex:1 1 320px;display:flex;flex-direction:column;gap:16px">
-      <nav aria-label="Breadcrumb" style="display:flex;flex-wrap:wrap;gap:8px;font-size:14px;color:#A3A3A8"><a href="IFI%20Homepage%20v2.dc.html" style="color:#A3A3A8" style-hover="color:#FFFFFF">Home</a><span>/</span><a href="Festival.dc.html" style="color:#A3A3A8" style-hover="color:#FFFFFF">Festival</a><span>/</span><span style="color:#FFFFFF">Film Serem 2 Menit</span></nav>
-      <span style="align-self:flex-start;padding:4px 12px;border-radius:999px;background:#2A1416;color:#FF8A94;font-size:13px;font-weight:600">Sedang buka · Bulanan</span>
-      <h1 style="margin:0;font-weight:800;font-size:clamp(40px,5vw,72px);line-height:1.1;letter-spacing:-1.5px">Film Serem 2 Menit</h1>
-      <span style="color:#A3A3A8">November 2026</span>
+      <nav aria-label="Breadcrumb" style="display:flex;flex-wrap:wrap;gap:8px;font-size:14px;color:#A3A3A8"><a href="IFI%20Homepage%20v2.dc.html" style="color:#A3A3A8" style-hover="color:#FFFFFF">Home</a><span>/</span><a href="Festival.dc.html" style="color:#A3A3A8" style-hover="color:#FFFFFF">Festival</a><span>/</span><span style="color:#FFFFFF">{{ fx.name }}</span></nav>
+      <span style="align-self:flex-start;padding:4px 12px;border-radius:999px;background:#2A1416;color:#FF8A94;font-size:13px;font-weight:600">{{ fx.badge }}</span>
+      <h1 style="margin:0;font-weight:800;font-size:clamp(40px,5vw,72px);line-height:1.1;letter-spacing:-1.5px">{{ fx.name }}</h1>
+      <span style="color:#A3A3A8">{{ fx.edition }}</span>
     </div>
   </div>
 </section>
@@ -58,8 +58,8 @@ button{font-family:inherit}
     <sc-if value="{{ tabTentang }}" hint-placeholder-val="{{ true }}">
       <div data-screen-label="Tab Tentang" style="display:flex;flex-direction:column;gap:20px;max-width:720px">
         <h2 style="margin:0;font-weight:800;font-size:clamp(28px,2.6vw,36px);line-height:1.2;letter-spacing:-.8px">Tentang festival</h2>
-        <p style="margin:0;color:#D4D4D8">Festival bulanan untuk film serem berdurasi maksimal dua menit. Kami mencari karya yang membangun ketegangan dengan cepat dan meninggalkan kesan setelah layar gelap.</p>
-        <p style="margin:0;color:#A3A3A8">Karya terpilih ditayangkan di GV Apps dan berkesempatan masuk ke IFI Film Festival tahunan. Kategori: fiksi pendek, live action atau animasi.</p>
+        <p style="margin:0;color:#D4D4D8">{{ fx.about1 }}</p>
+        <p style="margin:0;color:#A3A3A8">{{ fx.about2 }}</p>
       </div>
     </sc-if>
     <sc-if value="{{ tabSyarat }}" hint-placeholder-val="{{ false }}">
@@ -116,7 +116,7 @@ button{font-family:inherit}
 
 <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
   <div style="position:fixed;left:12px;right:12px;bottom:12px;z-index:40;padding:10px 10px 10px 20px;border-radius:999px;background:rgba(27,27,29,.92);backdrop-filter:blur(14px);border:1px solid #2F2F33;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 12px 32px rgba(0,0,0,.5)">
-    <div style="display:flex;flex-direction:column;line-height:1.3;min-width:0"><span style="font-size:12px;color:#A3A3A8">Tenggat</span><strong style="font-size:14px;font-weight:700;white-space:nowrap">30 Nov 2026</strong></div>
+    <div style="display:flex;flex-direction:column;line-height:1.3;min-width:0"><span style="font-size:12px;color:#A3A3A8">Tenggat</span><strong style="font-size:14px;font-weight:700;white-space:nowrap">{{ fx.deadline }}</strong></div>
     <button onClick="{{ gvSubmit }}" style="flex:none;height:48px;padding:0 22px;border:0;border-radius:999px;background:#E11D2E;color:#FFFFFF;font-weight:600;font-size:15px;cursor:pointer;white-space:nowrap">Kirim karya</button>
   </div>
 </sc-if>
@@ -135,7 +135,7 @@ button{font-family:inherit}
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { w: 1440, tab: 'Tentang', video: false };
+  state = { w: 1440, tab: 'Tentang', video: false, f: (() => { try { return new URLSearchParams(window.location.search).get('f') || 'serem'; } catch (e) { return 'serem'; } })() };
   componentDidMount() {
     this.onResize = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onResize); this.onResize();
     const h = (window.location.hash || '').replace('#', '');
@@ -147,16 +147,37 @@ class Component extends DCLogic {
     const P = ['linear-gradient(160deg,#4A4A4F 0%,#26262A 55%,#151517 100%)', 'linear-gradient(200deg,#3A3A3E 0%,#1F1F22 60%,#121213 100%)', 'linear-gradient(170deg,#55555A 0%,#2B2B2F 50%,#141416 100%)', 'linear-gradient(150deg,#45454A 0%,#242427 60%,#131314 100%)'];
     const desktop = this.state.w >= 960;
     const tab = this.state.tab;
-    const tl = [['Pendaftaran dibuka', '1 November 2026', 1], ['Batas kirim karya', '30 November 2026', 0], ['Penjurian', '1 sampai 10 Desember 2026', 0], ['Pengumuman pemenang', '15 Desember 2026', 0], ['Penayangan di GV Apps', 'Mulai 20 Desember 2026', 0]];
+    const FX = {
+      lucu: { name: 'Film Lucu 30 Detik', poster: 'assets/poster-agen-bayu.jpg', badge: 'Sedang buka · Mingguan', edition: 'Minggu ke-45 · November 2026', deadline: '9 Nov 2026', maxDur: 'Maks. 30 detik', rule: 'Durasi karya maksimal 30 detik, termasuk kredit', prize: 'Rp2 juta + tayang',
+        about1: 'Festival mingguan untuk film lucu berdurasi maksimal 30 detik. Kami mencari ide segar yang bikin penonton tertawa dalam sekali tonton.', about2: 'Karya terpilih ditayangkan di GV Apps dan berkesempatan masuk ke IFI Film Festival tahunan. Kategori: komedi pendek, live action atau animasi.',
+        tl: [['Pendaftaran dibuka', '3 November 2026', 1], ['Batas kirim karya', '9 November 2026', 0], ['Penjurian', '10 sampai 11 November 2026', 0], ['Pengumuman pemenang', '12 November 2026', 0], ['Penayangan di GV Apps', 'Mulai 13 November 2026', 0]], durs: ['0:30', '0:28', '0:30', '0:25', '0:30', '0:29'] },
+      serem: { name: 'Film Serem 2 Menit', poster: 'assets/poster-ahdc.png', badge: 'Sedang buka · Bulanan', edition: 'November 2026', deadline: '30 Nov 2026', maxDur: 'Maks. 2 menit', rule: 'Durasi karya maksimal 2 menit, termasuk kredit', prize: 'Rp10 juta + tayang',
+        about1: 'Festival bulanan untuk film serem berdurasi maksimal dua menit. Kami mencari karya yang membangun ketegangan dengan cepat dan meninggalkan kesan setelah layar gelap.', about2: 'Karya terpilih ditayangkan di GV Apps dan berkesempatan masuk ke IFI Film Festival tahunan. Kategori: fiksi pendek, live action atau animasi.',
+        tl: [['Pendaftaran dibuka', '1 November 2026', 1], ['Batas kirim karya', '30 November 2026', 0], ['Penjurian', '1 sampai 10 Desember 2026', 0], ['Pengumuman pemenang', '15 Desember 2026', 0], ['Penayangan di GV Apps', 'Mulai 20 Desember 2026', 0]], durs: ['1:58', '2:00', '1:45', '1:30', '1:59', '2:00'] },
+      musikal: { name: 'Film Musikal 3 Menit', poster: 'assets/deck-gila-dangdut.png', badge: 'Sedang buka · Bulanan', edition: 'November 2026', deadline: '30 Nov 2026', maxDur: 'Maks. 3 menit', rule: 'Durasi karya maksimal 3 menit, termasuk kredit', prize: 'Rp10 juta + tayang',
+        about1: 'Festival bulanan untuk film musikal berdurasi maksimal tiga menit. Kami mencari karya yang bercerita lewat lagu, musik, dan gerak.', about2: 'Karya terpilih ditayangkan di GV Apps dan berkesempatan masuk ke IFI Film Festival tahunan. Lagu harus orisinal atau sudah berizin.',
+        tl: [['Pendaftaran dibuka', '1 November 2026', 1], ['Batas kirim karya', '30 November 2026', 0], ['Penjurian', '1 sampai 10 Desember 2026', 0], ['Pengumuman pemenang', '15 Desember 2026', 0], ['Penayangan di GV Apps', 'Mulai 20 Desember 2026', 0]], durs: ['2:58', '3:00', '2:45', '2:30', '2:59', '3:00'] },
+      ifi: { name: 'IFI Film Festival', poster: 'assets/poster-bumi-yang-subur.jpg', badge: 'Segera · Tahunan', edition: 'Edisi 2026', deadline: '31 Des 2026', maxDur: 'Sesuai kategori', rule: 'Durasi karya mengikuti kategori yang dipilih', prize: 'Rp100 juta + produksi',
+        about1: 'Puncak tahunan IFI. Pemenang festival mingguan dan bulanan bertemu dengan karya undangan untuk memperebutkan kesempatan produksi film panjang.', about2: 'Karya terpilih ditayangkan di GV Apps dan diputar dalam malam penganugerahan IFI Film Festival.',
+        tl: [['Pendaftaran dibuka', '1 Desember 2026', 0], ['Batas kirim karya', '31 Desember 2026', 0], ['Penjurian', 'Januari 2027', 0], ['Malam penganugerahan', 'Februari 2027', 0], ['Penayangan di GV Apps', 'Mulai Februari 2027', 0]], durs: ['12:40', '8:15', '15:00', '9:30', '11:05', '14:20'] }
+    };
+    const fx = { ...(FX[this.state.f] || FX.serem) }; fx.alt = 'Poster festival ' + fx.name;
+    const q = (() => { try { return new URLSearchParams(window.location.search); } catch (e) { return new URLSearchParams(''); } })();
+    const qp = q.get('p'), qe = q.get('e'), qs = q.get('s');
+    if (qp && /^[\w.-]+\.(png|jpe?g|webp)$/.test(qp)) fx.poster = 'assets/' + qp;
+    if (qe) fx.edition = qe;
+    const per = fx.badge.split(' · ')[1];
+    if (qs === 'Penjurian') fx.badge = 'Sedang dinilai · ' + per; else if (qs === 'Selesai') fx.badge = 'Selesai · ' + per;
+    const tl = fx.tl;
     return {
       desktop, mobile: !desktop, bottomPad: desktop ? '0px' : '84px',
       layoutCols: desktop ? 'minmax(0,1fr) 360px' : '1fr',
       tabs: ['Tentang', 'Syarat', 'Timeline', 'Galeri karya'].map(t => ({ label: t, on: t === tab, onClick: () => this.setState({ tab: t }), bg: t === tab ? '#FFFFFF' : 'transparent', color: t === tab ? '#111111' : '#A3A3A8' })),
       tabTentang: tab === 'Tentang', tabSyarat: tab === 'Syarat', tabTimeline: tab === 'Timeline', tabGaleri: tab === 'Galeri karya',
-      rules: ['Durasi karya maksimal 2 menit, termasuk kredit', 'Karya orisinal dan belum pernah menang di festival lain', 'Satu peserta boleh mengirim maksimal 2 karya', 'Format video MP4, resolusi minimal 1080p', 'Pengiriman karya hanya lewat GV Apps'],
-      timeline: tl.map((t, i) => ({ title: t[0], date: t[1], hasLine: i < tl.length - 1, dot: t[2] ? '#E11D2E' : '#111111', ring: t[2] ? '0' : (i === 1 ? '2px solid #FFFFFF' : '2px solid #5C5C61'), line: t[2] ? '#E11D2E' : '#2F2F33' })),
-      gallery: Array.from({ length: 6 }, (_, i) => ({ title: 'Judul karya peserta', by: 'Nama kreator', dur: ['1:58', '2:00', '1:45', '1:30', '1:59', '2:00'][i], bg: P[i % P.length], play: () => { (window.dataLayer = window.dataLayer || []).push({ event: 'video_play' }); this.setState({ video: true }); } })),
-      summary: [{ k: 'Durasi karya', v: 'Maks. 2 menit' }, { k: 'Tenggat', v: '30 Nov 2026' }, { k: 'Hadiah', v: 'Rp10 juta + tayang' }, { k: 'Biaya', v: 'Gratis' }],
+      fx, rules: [fx.rule, 'Karya orisinal dan belum pernah menang di festival lain', 'Satu peserta boleh mengirim maksimal 2 karya', 'Format video MP4, resolusi minimal 1080p', 'Pengiriman karya hanya lewat GV Apps'],
+      timeline: tl.map((t, i) => ({ title: t[0], date: t[1], hasLine: i < tl.length - 1, dot: t[2] ? '#E11D2E' : '#111111', ring: t[2] ? '0' : (i === tl.findIndex(x => !x[2]) ? '2px solid #FFFFFF' : '2px solid #5C5C61'), line: t[2] ? '#E11D2E' : '#2F2F33' })),
+      gallery: Array.from({ length: 6 }, (_, i) => ({ title: 'Judul karya peserta', by: 'Nama kreator', dur: fx.durs[i], bg: P[i % P.length], play: () => { (window.dataLayer = window.dataLayer || []).push({ event: 'video_play' }); this.setState({ video: true }); } })),
+      summary: [{ k: 'Durasi karya', v: fx.maxDur }, { k: 'Tenggat', v: fx.deadline }, { k: 'Hadiah', v: fx.prize }, { k: 'Biaya', v: 'Gratis' }],
       gvSubmit: () => window.dispatchEvent(new CustomEvent('ifi:gv', { detail: 'submit' })),
       videoOpen: this.state.video, closeVideo: () => this.setState({ video: false }), stop: (e) => e.stopPropagation()
     };
